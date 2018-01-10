@@ -1,0 +1,191 @@
+#YSF-BTN-HOLDER {
+    position:fixed;
+    max-width:30px;
+    max-height:120px;
+    right:30px;
+    bottom:10px;
+    cursor:pointer;
+    overflow:visible;
+    filter:alpha(opacity=100);
+    opacity:1;
+    z-index:9990
+}
+#YSF-BTN-HOLDER:hover {
+    filter:alpha(opacity=95);
+    opacity:.95
+}
+#YSF-BTN-HOLDER img {
+    display:block;
+    width:100%;
+    overflow:hidden;
+}
+#YSF-BTN-CIRCLE {
+    display:none;
+    position:absolute;
+    width:20px;
+    height:20px;
+    right:0;
+    top:0;
+    font-size:10px;
+    color:#fff;
+    text-align:center;
+    line-height:18px;
+    white-space:nowrap;
+    background:url(https://qiyukf.com/sdk//res/img/sdk/popo.png) no-repeat;
+    background-position:1px;
+    z-index:1;
+    font-family:"Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Microsoft YaHei",sans-serif;
+}
+#YSF-BTN-BUBBLE {
+    display:none;
+    position:absolute;
+    left:-270px;
+    top:-2px;
+    width:278px;
+    height:80px;
+    box-sizing:border-box;
+    padding:14px 22px;
+    filter:alpha(opacity=100);
+    opacity:1;
+    background:url(https://qiyukf.com/sdk//res/img/sdk/bg_floatMsg.png) no-repeat;
+    z-index:1;
+}
+#YSF-BTN-BUBBLE:hover {
+    filter:alpha(opacity=95);
+    opacity:.95
+}
+#YSF-BTN-CONTENT {
+    height:45px;
+    padding:0;
+    white-space:normal;
+    word-break:break-all;
+    text-align:left;
+    font-size:14px;
+    line-height:1.6;
+    color:#222;
+    overflow:hidden;
+    z-index:0;
+}
+#YSF-BTN-ARROW {
+    display:none;
+}
+#YSF-BTN-CLOSE {
+    position:absolute;
+    width:15px;
+    height:15px;
+    right:4px;
+    top:-3px;
+    filter:alpha(opacity=90);
+    opacity:.9;
+    cursor:pointer;
+    background:url(https://qiyukf.com/sdk//res/img/sdk/btn-close.png) no-repeat;
+    z-index:1
+}
+#YSF-BTN-CLOSE:hover {
+    filter:alpha(opacity=100);
+    opacity:1;
+}
+#YSF-PANEL-CORPINFO.ysf-chat-layeropen {
+    width:511px;
+    height:470px;
+    box-shadow:0 0 20px 0 rgba(0,0,0,.15);
+}
+#YSF-PANEL-CORPINFO {
+    position:fixed;
+    bottom:0px;
+    right:20px;
+    width:0;
+    height:0;
+    z-index:99999;
+}
+#YSF-PANEL-INFO.ysf-chat-layeropen {
+    width:311px;
+    height:470px;
+    filter:alpha(opacity=100);
+    opacity:1;
+    box-shadow:0 0 20px 0 rgba(0,0,0,.15);
+}
+#YSF-PANEL-INFO {
+    position:fixed;
+    bottom:0px;
+    right:20px;
+    width:0px;
+    height:0px;
+    filter:alpha(opacity=0);
+    opacity:0;
+    z-index:99999;
+}
+#YSF-IFRAME-LAYER {
+    border:0;
+    outline:none;
+}
+.ysf-online-invite-mask {
+    z-index:10000;
+    position:fixed;
+    _position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    width:100%;
+    height:100%;
+    background:#fff;
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter:alpha(opacity=0);
+    opacity:0;
+}
+.ysf-online-invite-wrap {
+    z-index:10001;
+    position:fixed;
+    _position:absolute;
+    top:50%;
+    left:50%;
+    width:250px;
+}
+.ysf-online-invite {
+    position:relative;
+    top:-50%;
+    left:-50%;
+    cursor:pointer;
+}
+.ysf-online-invite img {
+    display:block;
+    width:250px;
+}
+.ysf-online-invite .text {
+    position:absolute;
+    top:-11px;
+    left:0;
+    right:0;
+    overflow:hidden;
+    margin:36px 20px 0 67px;
+    line-height:140%;
+    color:#526069;
+    font-size:14px;
+    font-family:"Microsoft YaHei","微软雅黑",tahoma,arial,simsun,"宋体";
+    text-align:left;
+    white-space:normal;
+    word-wrap:break-word;
+}
+.ysf-online-invite .close {
+    position:absolute;
+    top:-6px;
+    right:-6px;
+    width:32px;
+    height:32px;
+    background:url(https://qiyukf.com/sdk/res/img/invite-close.png) no-repeat;
+    cursor:pointer;
+}
+
+div.slideBox{ position:relative; width:100%; height:100%; overflow:hidden;}
+div.slideBox ul.items{ position:absolute; float:left; background:none; list-style:none; padding:0px; margin:0px;}
+div.slideBox ul.items li{ float:left; background:none; list-style:none; padding:0px; margin:0px;}
+div.slideBox ul.items li a{ float:left; line-height:normal !important; padding:0px !important; border:none/*For IE.ADD.JENA.201206300844*/;}
+div.slideBox ul.items li a img{ margin:0px !important; padding:0px !important; display:block; border:none/*For IE.ADD.JENA.201206300844*/;}
+div.slideBox div.tips{ position:absolute; bottom:0px; width:100%; height:50px; background-color:#000; overflow:hidden;}
+div.slideBox div.tips div.title{ position:absolute; left:0px; top:0px; height:100%;}
+div.slideBox div.tips div.title a{ color:#FFF; font-size:18px; line-height:50px; margin-left:10px; text-decoration:none;}
+div.slideBox div.tips div.title a:hover{ text-decoration:underline !important;}
+div.slideBox div.tips div.nums{ position:absolute; right:0px; top:0px; height:100%;}
+div.slideBox div.tips div.nums a{ display:inline-block; >float:left/*For IE.ADD.JENA.201206300844*/; width:20px; height:20px; background-color:#FFF; text-indent:-99999px; margin:15px 10px 0px 0px;}
+div.slideBox div.tips div.nums a.active{ background-color:#093;}

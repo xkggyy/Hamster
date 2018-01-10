@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>积米淘客助手</title>
+    <include file="public:head" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #int_main{height: 850px;}
+        #int_main .main_bg{width: 100%;height: 684px;background: url(__IMG2__/bg.png) no-repeat;background-size: 100% 100%;position: absolute;z-index: -1;}
+        #int_main .i_main{width: 1200px;margin: 0 auto;position: relative;top: 0;}
+        #int_main .i_main .im_left{}
+        #int_main .im_left .iml_top{width: 566px;text-align: center;}
+        #int_main .im_left .iml_top img{margin-top: 96px;}
+        #int_main .im_left .imlt_title{font-family: '微软雅黑';font-size: 38px;color: #FFF;padding: 32px 10px 40px 0;}
+        #int_main .im_left .imlt_button{font-family: '微软雅黑';font-size: 24px;width: 175px;height: 50px;text-align: center;line-height: 50px;color: #FFF;border: 1px solid #FFF;border-radius: 4px;margin-left: 174px;cursor: pointer;box-shadow: 1px 3px 8px -4px #FFF;}
+
+        #int_main .iml_bot{position: relative;}
+        #int_main .iml_bot img{position: relative;top: 162px;left: 196px;}
+        #int_main .iml_bot p{position: absolute;width: 150px;font-family: '微软雅黑';font-size: 16px;}
+        #int_main .iml_bot .imlb_p1{left: 250px;top: 112px;color: #FFF;}
+        #int_main .iml_bot .imlb_p2{left: 141px;top: 207px;color: #FFF;}
+        #int_main .iml_bot .imlb_p3{left: 96px;top: 329px;color: #4ecab3;}
+        #int_main .iml_bot .imlb_p4{left: 270px;top: 398px;color: #4ecab3;}
+        #int_main .iml_bot .imlb_p5{left: 395px;top: 339px;color: #4ecab3;}
+        #int_main .iml_bot .imlb_p6{left: 402px;top: 203px;color: #FFF;}
+
+        #int_main .imr_top{position: absolute;left: 600px;top: 0;}
+        #int_main .imr_top img{position: absolute;}
+        #int_main .imr_top .imrt_img1{left: 51px;top: 104px;}
+        #int_main .imr_top .imrt_img2{z-index: 1;left: 5px;top: 67px;}
+
+        #int_main .imr_bot{position: absolute;left: 626px;top: 650px;}
+        #int_main .imr_bot .imrb_title{color: #40bea7;font-size: 16px;}
+        #int_main .imr_bot p{color: #494949;font-size: 14px;margin: 3px 0 0 0;}
+        #int_main .imr_bot .imrb_con1{margin-top: 14px;}
+
+        #main_info{height: 700px;background: #FAFAFA;}
+        #main_info .main_info{width: 1060px;padding-top: 88px;margin: 0 auto;}
+        #main_info .main_info li{list-style: none;float: left;width: 265px;height: 280px;text-align: center;font-family: '微软雅黑';}
+        #main_info .main_info li h3{font-size: 22px;color: #25a8e0;font-weight: 700;}
+        #main_info .main_info li p{font-size: 16px;color: #1e1f20;width: 145px;margin: 0 auto;text-align: left;}
+    </style>
+</head>
+<body style="min-width: 1200px;min-height: 800px;overflow:auto;">
+<include file="public:header2" />
+<div id='int_main'>
+    <div class='main_bg'></div>
+    <!--<img src='__IMG2__/bg.png' alt='' style='position: absolute;top: 228px;left: 50%;margin-left: -700px;'>-->
+    <div class="i_main">
+        <div class='im_left'>
+            <div class='iml_top'>
+                <img src='__IMG2__/title.png' alt=''>
+                <p class='imlt_title'>史无前例 • 强大 • 极简 • 一站式</p>
+                <div class='imlt_button' onclick="window.open('http://dl.softmgr.qq.com/original/net_app/Hamster-1.0.0.12.exe', '_blank')">立即下载</div>
+            </div>
+            <div class='iml_bot'>
+                <img src='__IMG2__/polytope_bg.png' alt=''>
+                <p class='imlb_p1'>优化“佣金变化”云同步更新方案</p>
+                <p class='imlb_p2'>更安全</p>
+                <p class='imlb_p3'>全自动化操作</p>
+                <p class='imlb_p4'>一站式</p>
+                <p class='imlb_p5'>系统运行更稳定</p>
+                <p class='imlb_p6'>推广页面更个性化</p>
+            </div>
+        </div>
+        <div class='im_right'>
+            <div class='imr_top'>
+                <img class="imrt_img1" src='__IMG2__/pic1_z.png' alt=''>
+                <img class="imrt_img2" src='__IMG2__/pic2_z.png' alt=''>
+            </div>
+            <div class='imr_bot'>
+                <div class='imrb_title'>注意事项</div>
+                <p class='imrb_con1'>1、软件安全无毒，经360安全认证和腾讯管家认证，让您使用无所畏惧！</p>
+                <p class='imrb_con2'>2、全面支持Windows系列Win7/8/10（支持win server服务器）以及XP系统！</p>
+                <p class='imrb_con3'>3、软件使用过程中如遇到部分出错或者程序崩溃等，请联系管理员QQ：52175512</p>
+                <p class='imrb_con4'>4、请勿更改软件内部目录、修改文件或文件夹名称，会导致软件无法正常使用！</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="main_info">
+    <div class="main_info">
+        <ul>
+            <li>
+                <img src="__IMG2__/i_yjmf.png" alt=""/>
+                <h3>永久免费 </h3>
+                <p>积米淘客助手承诺永久免费为淘客服务</p>
+            </li>
+            <li>
+                <img src="__IMG2__/i_qqhz.png" alt=""/>
+                <h3>强强合作</h3>
+                <p>行业内唯一一家与腾讯和360合作的软件</p>
+            </li>
+            <li>
+                <img src="__IMG2__/i_dzz.png" alt=""/>
+                <h3>大公司大制作</h3>
+                <p>冰盒网络精心打造行业内最全的系统</p>
+            </li>
+            <li>
+                <img src="__IMG2__/i_3wsy.png" alt=""/>
+                <h3>3万使用</h3>
+                <p>最强大的淘宝客助手超过3万人使用</p>
+            </li>
+            <li>
+                <img src="__IMG2__/i_jmdn.png" alt=""/>
+                <h3>积米大牛</h3>
+                <p>积米淘客助手大牛日出单破4千</p>
+            </li>
+            <li>
+                <img src="__IMG2__/i_syzd.png" alt=""/>
+                <h3>收益最大</h3>
+                <p>甄选高佣金商品 让淘客利益实现最大化</p>
+            </li>
+            <li>
+                <img src="__IMG2__/i_txws.png" alt=""/>
+                <h3>售后体系完善</h3>
+                <p>强大的运作程序连接 最完善的售后体系</p>
+            </li>
+            <li>
+                <img src="__IMG2__/i_jmbb.png" alt=""/>
+                <h3>积米帮帮</h3>
+                <p>使用无忧 在线客服帮助您使用</p>
+            </li>
+        </ul>
+    </div>
+</div>
+<include file="public:footer1" />
+<include file="public:foot" />
+</body>
+</html>

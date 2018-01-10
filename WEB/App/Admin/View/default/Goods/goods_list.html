@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+    <head>
+        <include file="public:header" />
+        <link href="__CSS__/page-min.css" rel="stylesheet" type="text/css" />
+    </head>
+
+    <body>
+        <div class="container">
+            <!--{*搜索表单*}-->
+            <div class="row">
+                <div class="span24">
+                    <form id="searchForm" class="well form-inline" method="post" action="{:u('Goods/goods_list')}">
+                        <input type="text" class="control-text bui-form-field" name="auctionId" value="{$map.auctionid}" placeholder="淘宝ID" />
+                        <input type="text" class="control-text bui-form-field" name="title" value="{$map.title}" placeholder="商品标题" />
+                        <select name="cate_id" class="bui-form-field-select bui-form-field">
+                            <option value="0">--选择分类--</option>
+                            <foreach name="cateList" item="item">
+                                <option value="{$item.id}" <if condition="$map.cate_id eq $item['id']">selected="selected"</if> >{$item.name}</option>
+                            </foreach>
+                        </select>
+                        <button type="submit" class="button button-primary">搜索</button>
+                    </form>
+                </div>
+            </div>
+            <div>
+                <div class="toolbar pull-left">
+                    <a type="button" class="button button-primary" href="{:u('Goods/goods_add')}">
+                        <i class="icon-white icon-plus" data-href=""></i>添加商品
+                    </a>
+                </div>
+            </div>
+            <form id="J_Form" action="{:u('Goods/goods_pretend_del_batch')}" method="post">
+                <table cellspacing="0" class="table table-hover" cellpadding="0">
+                    <thead>
+                        <tr>
+                            <th style="width: 15px;">&nbsp;</th>
+                            <th style="width: 32px;">图</th>
+                            <th>商品标题</th>
+                            <th style="width: 60px;">采集人</th>
+                            <th style="width: 60px;">分类</th>
+                            <th style="width: 60px;">价格</th>
+                            <th style="width: 60px;">月销量</th>
+                            <th style="width: 60px;">状态</th>
+                            <th style="width: 140px;">录入时间</th>
+                            <th style="width: 200px;">操作</th>
+                        </tr>
+                    </thead>
+
+                    <foreach name="goodsList" item="item">
+                        <tr>
+                            <td><input class="x-grid-checkbox" type="checkbox" name="vm[]" title="{$item.id}" value="{$item.id}" /></td>
+                            <td><img src="{$item.picturl}" width="32px" height="32px" class="img-responsive" /></td>
+                            <td>
+                                <a href="{$item.auctionurl}" target="_blank">{$item.title}</a>
+                            </td>
+                            <td>{$item['nickname']==''?"机器人":$item['nickname']}</td>
+                            <td>{$item.cate_name}</td>
+                            <td>{$item.reserveprice}（{$item.zkprice}）</td>
+                            <td>{$item.biz30day}</td>
+
+                            <td>
+                                <if condition="$item.status eq 1 ">
+                                    <span class="label label-success">正常</span>
+                                    <elseif condition="$item.status eq 0" />
+                                    <span class="label label-important">不展示</span>
+                                    <elseif condition="$item.status eq 3"/>	
+                                    <span class="label label-warning">待审核</span>
+                                    <elseif condition="$item.status eq 2"/>	
+                                    <span class="label label-danger">审核不通过</span>
+                                </if>
+                            </td>
+                            <td>{$item.add_time|date="Y-m-d H:i:s",###}</td>
+                            <td>
+                                <a class="button button-small button-primary" href="{:u('Goods/goods_edit',array('id'=>$item[id]))}">编辑</a>
+                            </td>
+                        </tr>
+                    </foreach>
+                </table>
+                <div class="">
+                    <ul class="toolbar pull-left">
+                        <li><label class="checkbox"><input type="checkbox" id="chk_all" />全选</label></li>
+                        <li>
+                            <if condition="$gtype neq 4">
+                                <input type="hidden" name="show_type" value="1"  />
+                                <a class="delcfm button button-danger"><i class="icon-white icon-trash"></i>批量删除选中商品</a>
+                                <else />
+                                <input type="hidden" name="show_type" value="0"  />
+                                <a class="delcfm button button-danger" id="returnGoods">还原选中商品</a>
+                            </if>
+                        </li>
+                    </ul>
+                    <div class="pagination pull-right">
+                        {$page}
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <include file="public:foot" />
+        <script type="text/javascript">
+            $("#chk_all").click(function () {
+                //全选
+                if ($(this).attr("checked")) {
+                    $("input[name='vm[]']").attr("checked", true);
+                } else {
+                    $("input[name='vm[]']").attr("checked", false);
+                }
+            });
+
+            BUI.use(['bui/overlay', 'bui/form', 'bui/mask'], function (Overlay, Form) {
+                function showdel() {
+                    BUI.Message.Confirm('请核实清楚后再做批量删除操作！', function () {
+                        var DForm = new Form.HForm({
+                            srcNode: '#J_Form',
+                            submitType: 'ajax',
+                            callback: function (data) {
+                                location.reload();
+                            }
+                        }).render();
+                        DForm && DForm.ajaxSubmit();
+                    }, 'question');
+                }
+
+                function showReturn() {
+                    BUI.Message.Confirm('请核实清楚后再做还原操作！', function () {
+                        var DForm = new Form.HForm({
+                            srcNode: '#J_Form',
+                            submitType: 'ajax',
+                            callback: function (data) {
+                                location.reload();
+                            }
+                        }).render();
+                        DForm && DForm.ajaxSubmit();
+                    }, 'question');
+                }
+
+                $('.delcfm').on('click', function () {
+                    showdel();
+                });
+                $('#returnGoods').on('click', function () {
+                    showReturn();
+                });
+            });
+        </script>
+    </body>
+
+</html>

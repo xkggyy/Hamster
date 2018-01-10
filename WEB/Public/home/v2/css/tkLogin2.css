@@ -1,0 +1,263 @@
+
+
+.body_1200  {
+    min-width: 1200px;
+}
+html {
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+#box{
+    width: 1200px;
+    margin: 0 auto;
+    height: 509px;
+}
+#box #content{
+    width: 1000px;
+    position:absolute;
+    left: 0;
+    top:0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}
+#box  #content #left_1{
+    box-sizing: border-box;
+    float: left;
+    width: 212px;
+    height: 259px;
+    margin-top: 25px;
+}
+#box  #content #left_1 h1{
+    margin-top: 147px;
+    font-family: '宋体';
+    color: #ff6400;
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+#box  #content #left_1 p{
+   height: 26px;
+   line-height: 26px;
+   font-family: "微软雅黑";
+   font-size: 16px;      
+}
+#box  #content #center_1{
+    width: 447px;
+    float: left;
+    margin-top: 100px;
+}
+#box  #content #center_1 img{
+    width: 100%;
+    height:100%;
+}
+/*#box  #content .right_1{
+    display: none;
+}*/
+#box  #content #right_1{
+    position: relative;
+    width: 274px;
+    height: 321px;
+    float: left;
+    border:1px solid #7e898e;
+    margin:132px 0px 0px 53px;
+}
+#box  #content #right_1 #font_26{
+    font-family: "黑体";
+    font-size: 26px;
+    color: #ff6400;
+    text-align: center;
+    margin-top: 34px;
+}
+#box  #content #right_1 #uinArea{
+     background: #dddddd;
+       position: relative;
+       margin: 18px auto;
+       width: 230px;
+       height: 47px;
+       line-height: 49px;
+       border:1px solid #cccccd;
+       border-radius: 4px;
+}
+#box  #content #right_1 #uinArea #bg-a{
+    display:inline-block;
+    width: 55px;
+    height: 47px;
+    float: left;
+    background: url(/public/hamster/images/qq_1.png) no-repeat center;
+}
+#box  #content #right_1 #uinArea input{
+     display:inline-block;
+      background:#f8f8f8;
+      width: 175px;
+      height: 47px;
+      border:0;
+      position: absolute;
+      white-space:nowrap;
+      overflow: hidden;
+      text-overflow:ellipsis;
+      font-family: "微软雅黑";    
+}
+#box  #content #right_1 #remArea{
+    margin:0 auto;
+    width: 230px; 
+}
+#box  #content #right_1 #submit{
+    margin: 17px auto;
+    width: 232px;
+    height: 51px;
+    background: #ff6400;
+    line-height: 51px; 
+    border-radius: 4px;
+}
+#box  #content #right_1 #submit input{
+    width: 232px;
+    height: 51px;
+    border: 0;
+    background: #ff6400;
+    line-height: 51px; 
+    border-radius: 4px;
+    color: #fff;
+    font-family: "微软雅黑";
+    font-size: 16px;
+}
+#box  #content #right_1 #text_m{
+    width: 232px;
+    font-family: "微软雅黑";
+    font-size: 12px;
+     margin: 0 auto;
+}
+#box  #content #right_1 #font_15{
+    font-family: "微软雅黑";
+    width: 110px;
+    font-size: 15px;
+    color: #ff6400;
+    margin: 134px auto;
+}
+#box  #content #right_1 #rotate{
+    position: absolute;
+    top:0;
+    left: 0;
+    bottom:0;
+    right:0;
+    margin: auto;
+    z-index: 2;
+    -moz-animation:rotate 1s infinite linear;
+    -webkit-animation:rotate 1s infinite linear;
+    animation:rotate 1s infinite linear;
+}
+@keyframes myright
+{
+0%   { opacity:0;left:120px; top:0px;}
+100%  { opacity:1; left:0px; top:0px;}
+}
+@-moz-keyframes myright
+{
+0%   { opacity:0;left:120px; top:0px;}
+100%  { opacity:1; left:0px; top:0px;}
+}
+@-webkit-keyframes myright
+{
+0%   { opacity:0;left:120px; top:0px;}
+100%  { opacity:1; left:0px; top:0px;}
+}
+#right_1
+{
+animation: myright 1s;
+-moz-animation: myright 1s;	/* Firefox */
+-webkit-animation: myright 1s;	/* Safari 和 Chrome */
+}
+@keyframes mycenter
+{
+0%   { opacity:0;}
+100%  { opacity:1;}
+}
+@-moz-keyframes mycenter
+{
+0%   { opacity:0;}
+100%  { opacity:1;}
+}
+@-webkit-keyframes mycenter
+{
+0%   { opacity:0;}
+100%  { opacity:1}
+}
+#center_1
+{
+animation: mycenter 1s;
+-moz-animation: mycenter 1s;	/* Firefox */
+-webkit-animation: mycenter 1s;	/* Safari 和 Chrome */
+}
+@keyframes swing {
+  20%,40%,60%,80%,100% {
+    transform-origin: top center; }
+  20% {
+    transform: rotate(15deg); }
+  40% {
+     transform: rotate(-10deg); }
+  60% {
+     transform: rotate(5deg); }
+  80% {
+     transform: rotate(-5deg); }
+  100% {
+     transform: rotate(0deg); } }
+@-webkit-keyframes swing {
+  20%,40%,60%,80%,100% {
+    -webkit-transform-origin: top center; }
+  20% {
+    -webkit-transform: rotate(15deg); }
+  40% {
+    -webkit-transform: rotate(-10deg); }
+  60% {
+    -webkit-transform: rotate(5deg); }
+  80% {
+    -webkit-transform: rotate(-5deg); }
+  100% {
+    -webkit-transform: rotate(0deg); } }
+@-moz-keyframes swing {
+  20%,40%,60%,80%,100% {
+    -moz-transform-origin: top center; }
+  20% {
+    -moz-transform: rotate(15deg); }
+  40% {
+    -moz-transform: rotate(-10deg); }
+  60% {
+    -moz-transform: rotate(5deg); }
+  80% {
+    -moz-transform: rotate(-5deg); }
+  100% {
+    -moz-transform: rotate(0deg); } }
+#left_1
+{
+animation: swing 1s;
+-moz-animation: swing 1s;	/* Firefox */
+-webkit-animation: swing 1s;	/* Safari 和 Chrome */
+}
+
+
+
+@-moz-keyframes rotate{
+            0%{
+              -moz-transform:rotate(0deg);
+             }
+             100%{
+               -moz-transform:rotate(360deg);
+             }
+          }
+          @-webkit-keyframes rotate{
+            0%{
+              -webkit-transform:rotate(0deg);
+             }
+             100%{
+               -webkit-transform:rotate(360deg);
+             }
+          }
+          @keyframes rotate{
+            0%{
+              transform:rotate(0deg);
+             }
+             100%{
+               transform:rotate(360deg);
+             }
+          }
+          
+

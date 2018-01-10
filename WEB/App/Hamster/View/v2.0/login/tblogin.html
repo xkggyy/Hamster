@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>积米淘客助手</title>
+    <include file="public:head" />
+<!--    <link rel="stylesheet" href="__CSS2__/reset.css">
+    <link rel="stylesheet" href="__CSS2__/login.css">-->
+    <style>
+        #login{background: url("__IMG2__/login_bg.png") no-repeat;background-color: #F5F5F5;position: relative;}
+        #login .lo_close{width: 32px;height: 34px;position: fixed;top: 28px;right: 28px;z-index: 2;cursor: pointer;}
+        #login #omd_hwm{position: absolute;left: 0;top: 0;width: 100%;height: 100%;z-index: 1;}
+        #login .login_left{width: 50%;position: relative;}
+        #login .login_left .logo{position: absolute;left: 75px;top: 75px;}
+        #login .login_left .left_pic{position: absolute;left: 107px;top: 245px;width: 354px;height: 321px;background: url("__IMG2__/login_info.png") no-repeat;}
+        #login .login_left .left_pic img{position: absolute;transition: transform 2s;}
+        #login .login_left .left_pic .star_login1{left: 16px;top: 43px;animation:star_big 760ms linear 50ms infinite;}
+        #login .login_left .left_pic .star_login2{left: 295px;top: -25px;animation:star_big 800ms linear 100ms infinite;}
+        #login .login_left .left_pic .star_login3{left: 355px;top: 16px;animation:star_big 700ms linear 150ms infinite;}
+        @keyframes star_big{
+            0%   {transform: scale(1);}
+            50%  {transform: scale(1.4);}
+            100% {transform: scale(1);}
+        }
+        #login .login_left .go_ow{position: absolute;left: 315px;top: 618px;width: 130px;height: 40px;border-radius: 20px;background-color: #F6750D;color: #FFF;font-family: '冬青黑体简体中文';font-size: 20px;text-align: center;line-height: 40px;cursor: pointer;z-index: 2;}
+        #login .login_left .go_ow:hover{background-color: #DE6C15;}
+
+        #login .set_ow{width: 50%;position: absolute;right: 107px;bottom: 52px;text-align: right;color: #999;font-family: '冬青黑体简体中文';font-size: 14px;z-index: 3;}
+        #login .set_ow .nav_ul li{float: right;height: 16px;margin-right: 15px;cursor: pointer;}
+        #login .set_ow .nav_ul li:hover{color: #F50;}
+        #login .set_ow .nav_qun span{background: url("__IMG2__/icon_qq_b2.png") no-repeat;display: inline-block;width: 24px;height: 20px;position: relative;right: 10px;top: 2px;}
+
+        .login-box-warp {position: absolute;top: 186px;right: 102px;width: 468px;height: 378px;border: 1px solid #65b19a;background-color: rgba(255, 255, 255, 1);z-index: 2;}
+        .login-box-warp #uinArea { position: relative;margin: 18px auto;width: 302px;height: 102px;border: 1px solid #cccccd;border-radius: 3px;}
+        .login-box-warp #uinArea input {padding-left: 11px;box-sizing: border-box;display: inline-block;background: #fdfdfd;width: 300px;height: 50px;line-height: 50px;border: 0;border-bottom: 1px solid #cccccd;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;font-family: "微软雅黑";}
+        .login-box-warp #uinArea .test {position: relative;height: 50px;width: 200px;border: 0;}
+        .login-box-warp #uinArea .code {cursor:pointer;width: 99px;height: 42px;line-height: 42px;text-align: center;font-family: "微软雅黑";color: #6b6a6a;font-size: 14px;display: inline-block;border-left: 1px solid #cccccd;position: absolute;right: 0;top: 56px;}
+        
+        
+#init_bg {
+    width: 212px;
+    height: 212px;
+    background: url("/public/hamster/v2.0/img/feiji.png");
+    position: absolute;
+    left: 50%;
+    margin-left: -106px;
+    top: 60px;
+    animation: myfirst 1800ms linear infinite;
+}
+#initialise {
+    font-size: 18px;
+    color: #FF6400;
+    width: 130px;
+    font-family: "微软雅黑";
+    font-weight: 700;
+    position: absolute;
+    left: 50%;
+    margin-left: -65px;
+    top: 150px;
+}
+.orange{
+    border-radius: 3px;
+    text-align: center;
+    position: absolute;
+    display: inline-block;
+    top:290px;
+    left: 128px;
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    background: #FF6400;
+    color: #fff;
+    font-family: "微软雅黑";
+    font-size: 24px;
+    cursor: pointer;
+}
+@keyframes myfirst {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+    </style>
+</head>
+
+<body>
+    <div id="login">
+        <div id="omd_hwm" onmousedown="TApp.hWMove()"></div>
+        <!--退出程序-->
+        <div class="lo_close"><img src="__IMG2__/close_login.png" alt="" title="退出程序" onclick="TApp.hExitApp();"></div>
+        <!--左侧说明-->
+        <div class="login_left">
+            <div class="logo" onclick=""><img src="__IMG2__/logo.png" alt=""></div>
+            <div class="left_pic">
+                <img class="star_login1" src="__IMG2__/star_login1.png" alt="">
+                <img class="star_login2" src="__IMG2__/star_login2.png" alt="">
+                <img class="star_login3" src="__IMG2__/star_login3.png" alt="">
+            </div>
+            <div class="go_ow" onclick="TApp.hOpenUrl('http://www.j1m1.com')">进入官网</div>
+        </div>
+        
+        
+            <div class="login-box-warp waitdiv" id='inp_createtb'>
+                <div id="init_bg"></div>
+                <div id="initialise">
+                    请点击下方按钮登录阿里妈妈！
+                </div>
+                <span class="orange" onclick="tblogin()">登陆阿里妈妈</span>
+            </div>
+
+<!--            <div class="login-box-warp" style="display:none;" id='createtb'>
+                <h1 id="font_26">创建推广位</h1>
+                <form>
+                    <div id="uinArea_tg">
+                        <input type="text" id='qqcode' name="qqcode" data-rules="{required :true}" class="inputstyle" placeholder="请输入QQ号" />
+                    </div>
+                    <div id="submit">
+                        <input type="button" value="下一步" id="createbtn" />
+                    </div>
+                </form>
+                <div id="text_m">
+                    友情提示：QQ用于创建推广位，生成淘客链接和淘口令，只输一次，以后都不用输了
+                </div>
+            </div>-->
+
+        <!--右下链接-->
+        <div class="set_ow">
+            <div class="nav_ul">
+                <ul>                    
+                    <li onclick="TApp.hOpenUrl('http://www.j1m1.com/index.php/home/index/contactus.html')">关于我们</li>
+                    <li>|</li>
+                    <li onclick="TApp.hOpenUrl('http://www.j1m1.com/index.php/business/enter.html')">商家入驻</li>
+                    <li>|</li>
+                    <li onclick="TApp.hOpenUrl('http://www.j1m1.com/index.php/home/business/help.html')">帮助中心</li>
+                    <li>|</li>
+                    <li>主播帮助</li>
+                </ul>
+            </div>
+            <div class="nav_qun" style="margin-top: 30px;">
+                <p><span></span>积米淘客群：596807694&nbsp;&nbsp;&nbsp;&nbsp;积米商家群：179541253</p>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="__JS__/jq/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="__BUI__/bui-min.js"></script>
+<script type="text/javascript">
+    //setTimeout('tblogin',1000);
+    /**
+     * @param {type} name cookie 名称
+     * @param {type} value 值
+     * @param {type} exp  过期时间 单位为分钟
+     * @returns {undefined}
+     */
+    function setCookie(name, value, exp) {
+
+        if (exp != 'undefinded' && exp != null) {
+            var expDate = new Date();
+            expDate.setTime(expDate.getTime() + exp * 60 * 1000);
+            document.cookie = name + "=" + escape(value) + ";expires=" + expDate.toUTCString();
+        } else {
+            document.cookie = name + "=" + value;
+        }
+    }
+    //登录淘宝
+    function tblogin() {
+        $("#initialise").text("正在登录....");
+        var loginstatus = TApp.hShowTkLogin();
+        if (loginstatus === 1) {
+            $("#initialise").text("正在初始化,请稍后....");
+            setCookie('isTbLogin', 'true');
+            //1秒后去读取淘客信息
+            setTimeout(function() {
+                getTkInfo();
+            }, 1000)
+        }
+        if (loginstatus === 2) {
+            $("#initialise").text("请登录阿里妈妈");
+        }
+    }
+
+    //获取淘客信息
+    function getTkInfo() {
+        var InfoCode = TApp.hGetTkInfo(); //返回淘客状态
+        if (InfoCode === 2) {
+            $(".waitdiv").hide();
+            //需要初始化，需要创建推广位
+            $('#createtb').show();
+        } else if (InfoCode === 22) {
+            //需要初始化 创建推广位和渠道
+            $(".waitdiv").hide();
+            $('#createtb').show();
+        } else if (InfoCode === 1) {
+            //表示可以正常登录，不用初始化
+            this.location.href = '/index.php/hamster/index';
+        } else if (InfoCode === 0) {
+            BUI.Message.Alert('登录出现异常', 'info');
+            return;
+        } else if (InfoCode === 4) {
+            BUI.Message.Alert('操作频繁，请稍后登录', 'info');
+            return;
+        } else if (InfoCode === 5) {
+            BUI.Message.Alert('你还没有成为淘客，请去阿里妈妈申请', function() {
+                TApp.hOpenUrl('http://pub.alimama.com');
+            }, 'info');
+            return;
+        }
+    }
+
+    $('#createbtn').click(function() {
+        var qqCode = $("#qqcode").val(); //获得输入的QQ账号
+        $('#createtb').hide();
+        $("#initialise").text("积米淘客助手正在为你自动创建推广位，马上就好...");
+        $(".waitdiv").show();
+
+        var returnCode = TApp.hautoCreateTk(qqCode + ""); //创建淘客推广位和渠道 0表示创建成功
+        setTimeout(function() {
+            document.location.href = '/index.php/hamster/index';
+        }, 3000);
+    });
+    $("#login").height($(window).height());
+    $("#login").width($(window).width());
+    
+</script>
+
+</html>

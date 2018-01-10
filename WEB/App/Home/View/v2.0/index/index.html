@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>积米淘客助手全新官网</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="__IMG__/c_logo.png">
+        <link rel="stylesheet" href="__CSS__/index.css" />
+        <style>
+            #center_con .banner{height: 490px;background: #E87447;}
+            #center_con .banner .b_m{width: 1200px;margin: 0 auto;height: 100%;position: relative;}
+            #center_con .banner .tk_info{width: 370px;position: absolute;top: 70px;left: 80px;font-family: '冬青黑体简体中文';color: #FFF;}
+            #center_con .banner .tk_title{font-family: '微软雅黑';font-size: 48px;color: #FFF;}
+            #center_con .banner .tk_xz{font-size: 24px;color: #0c5054;margin: 18px 0;font-family: '冬青黑体简体中文';}
+            #center_con .banner .tk_con{font-size: 16px;font-family: '冬青黑体简体中文';color: #FFF;}
+            #center_con .banner .tk_xiazai{font-size: 28px;color: #e67345;font-family: '微软雅黑';width: 230px;height: 56px;border-radius: 28px;background: #FFF;margin: 20px 10px;cursor: pointer;text-align: center;line-height: 56px;}
+            #center_con .banner .tk_li li{float: left;}
+            #center_con .banner .tk_li li a{font-size: 14px;opacity: 0.66;color: #FFF;display: inline-block;padding: 0 10px;border-left: 1px solid #F7D0C0;cursor: pointer;}
+            #center_con .banner .tk_li li:first-child a{border: none;}
+            #center_con .banner .tk_li li a:hover{opacity: 1;}
+            #center_con .banner .tk_img img{position: absolute;cursor: pointer;}
+            #center_con .banner .b_pic1{z-index: 2;top: 80px;right: 33px;}
+            #center_con .banner .b_pic2{z-index: 3;top: 35px;right: 94px;}
+            #center_con .banner .b_pic2:hover{z-index: 1;}
+            #center_con .banner .b_pic1:hover{z-index: 4;}
+            #center_con .type .type_right img{position: absolute;left: 92px;top: 106px;}
+            #center_con .type .type_right div{position: absolute;}
+            #center_con .type .type_right div .tb_title{font-size: 18px;color: #174f52;}
+            #center_con .type .type_right div .tb_num{font-size: 24px;color: #e61134;text-align: center;}
+            
+            #tanc{position: fixed;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0,0,0,0.6);display: none;z-index: 100;}
+            #tanc .zhibotc{width: 975px;height: 650px;background: url('__IMG__/zhibo.jpg');background-size: 100% 100%;position: relative;display: none;margin: 0 auto;}
+            #tanc .zhibotc .zhibo_btn{position: absolute;top: 480px;right: 80px;width: 186px;height: 85px;z-index: 101;cursor: pointer;}
+            #tanc .zhibotc .zhibo_close{position: absolute;top: 20px;right: 20px;width: 45px;height: 45px;z-index: 102;cursor: pointer;}
+            #tanc .helptc{width: 230px;height: 110px;border-radius: 8px;background-color: #FFF;margin: 0 auto;top: 180px;position: relative;display: none;padding: 15px;}
+            #tanc .helptc .htc_con{font-size: 20px;}
+            #tanc .helptc .htc_btn{position: absolute;right: 15px;bottom: 15px;}
+            #tanc .helptc .htc_btn button{font-size: 16px;padding: 5px 12px;border: none;border-radius: 3px;cursor: pointer;color: #FFF;}
+            #tanc .helptc .htc_btn .htc_xz{background-color: #F56431;}
+            #tanc .helptc .htc_btn .htc_qx{background-color: #67C396;}
+        </style>
+    </head>
+    <body style="min-width: 1200px;overflow:auto;overflow-x:hidden">
+        <!--头部导航-->
+    <include file="public:header" />
+    <!--中间内容-->
+    <div id="center_con">
+        <!--banner-->
+        <div class="banner">
+            <div class='b_m'>
+                <div class='tk_info'>
+                    <div class='tk_title'>积米淘客助手</div>
+                    <div class='tk_xz'>超过2W淘客都在用的新一代淘客软件</div>
+                    <div class='tk_con'>QQ微信自动群发，简单易上手；海量商品任你选择，丰富细分类；美女主播耐心解疑，全程带你飞；功能强大完全免费，一心为淘客；最新上线专属APP，定制新玩法。</div>
+                    <div class='tk_xiazai' onclick="window.open('http://dl.softmgr.qq.com/original/net_app/Hamster-2.0.0.18.exe')">立即下载</div>
+                    <div class='tk_li'>
+                        <ul>
+                            <li class='ind_zhobo'><a>直播教程</a></li>
+                            <li class='ind_help'><a>帮助中心</a></li>
+                            <li class='ind_gnjs'><a>功能介绍</a></li>
+                            <li class='ind_dapp'><a href="/index.php/home/index/dapp.html">定制APP</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class='tk_img'>
+                    <img class='b_pic1' src='__IMG__/banner_pic1.jpg' alt=''>
+                    <img class='b_pic2' src='__IMG__/banner_pic2.jpg' alt=''>
+                </div>
+            </div>
+            <!--弹层-->
+            <div id="tanc">
+                <!--直播弹层-->
+                <div class="zhibotc">
+                    <img class='zhibo_close' src='__IMG__/icon_close.png' alt='' title="关闭"/>
+                    <a href='http://www.douyu.com/j1m1' target="_blank"><img class='zhibo_btn' src='__IMG__/zhibo_btn.png' alt='' title="进入直播间"/></a>
+                </div>
+                <!--帮助弹层-->
+                <div class="helptc">
+                    <p class="htc_con">详细内容请下载并安装积米淘客助手</p>
+                    <p class="htc_btn">
+                        <button class="htc_xz" onclick="window.open('http://dl.softmgr.qq.com/original/net_app/Hamster-2.0.0.18.exe')">点击下载</button>
+                        <button class="htc_qx">取消</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--关于-->
+        <div class="about" style='height:740px;'>
+            <div class="main_width1200">
+                <div class="ab_top">
+                    <h3>功能介绍</h3>
+                </div>
+                <div class="ab_bot">
+                    <div class="about_qiangda">
+                        <img src="__IMG__/about_jianyi.png" alt="">
+                        <h4>QQ微信群发</h4>
+                        <p>自动群发、稳定快速</p>
+                    </div>
+                    <div class="about_anquan">
+                        <img src="__IMG__/about_icon9.png" alt="">
+                        <h4>完全免费</h4>
+                        <p>功能强大，免费使用</p>
+                    </div>
+                    <div class="about_zhuanye">
+                        <img src="__IMG__/about_icon3.png" alt="">
+                        <h4>成品丰富</h4>
+                        <p>联盟产品库+官方产品库</p>
+                    </div>
+                    <div class="about_jianyi">
+                        <img src="__IMG__/about_icon4.png" alt="">
+                        <h4>淘口令</h4>
+                        <p>官方生成，安全可靠</p>
+                    </div>
+                    <div class="about_qiangda">
+                        <img src="__IMG__/about_icon5.png" alt="">
+                        <h4>自主选品</h4>
+                        <p>一键增加，自动下发</p>
+                    </div>
+                    <div class="about_anquan">
+                        <img src="__IMG__/about_icon6.png" alt="">
+                        <h4>直播教学</h4>
+                        <p>美女直播一对一教学</p>
+                    </div>
+                    <div class="about_zhuanye">
+                        <img src="__IMG__/about_icon7.png" alt="">
+                        <h4>简单实用</h4>
+                        <p>界面时尚，操作简单</p>
+                    </div>
+                    <div class="about_jianyi">
+                        <a href="/index.php/home/index/dapp.html"><img src="__IMG__/about_icon8.png" alt="">
+                        <h4>专属定制</h4></a>
+                        <p>积米惠购，您的专属掌上APP</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--分类-->
+        <div class="type" style='height:625px;'>
+            <div class="main_width1200" style="position: relative;">
+                <div class="type_diannao">
+                    <img src="__IMG__/type_diannao2.png" alt="">
+                </div>
+                <div class="type_right">
+                    <img src="__IMG__/icon_tubiao.png" alt="">
+                    <div class='tb_num1' style='left: 207px;top: 80px;'>
+                        <p class='tb_title'>接入淘客用户：</p>
+                        <p class='tb_num'>6827</p>
+                    </div>
+                    <div class='tb_num1' style='left: 17px;top: 185px;'>
+                        <p class='tb_title'>今日淘客收益：</p>
+                        <p class='tb_num'>539083</p>
+                    </div>
+                    <div class='tb_num1' style='left: 31px;top: 485px;'>
+                        <p class='tb_title'>淘客总订单数：</p>
+                        <p class='tb_num'>8650W+</p>
+                    </div>
+                    <div class='tb_num1' style='left: 504px;top: 147px;'>
+                        <p class='tb_title'>今日淘客订单数：</p>
+                        <p class='tb_num'>48790</p>
+                    </div>
+                    <div class='tb_num1' style='left: 477px;top: 491px;'>
+                        <p class='tb_title'>淘客总佣金收益：</p>
+                        <p class='tb_num'>3581W+</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--一技术团队-->
+        <div class="yjqf bot_th" style='height:290px;'>
+            <div class="main_width1000" style="position: relative;">
+                <div class="info">
+                    <h3 style='font-size:24px;text-align: center;margin-top: 80px;'>冰盒网络技术团队</h3>
+                    <p style='font-size:18px;color:#333;text-align: center;margin-top: 23px;line-height: 33px;'>鄂人谷团队为您提供专业的技术支持服务！<br>让快乐来得更简单、让生活更有趣、让朋友无处不在！</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--底部导航-->
+    <include file="public:foot" />
+    <script type="text/javascript" src="__JS__/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="__JS__/index.js"></script>
+    <script>
+        $(function(){
+            var w_h = $(window).height();
+            var t = (w_h-650)/2;
+            $(".zhibotc").css("top",t);
+            $(".ind_gnjs").click(function(){
+                $("body").animate({scrollTop: 600}, 400);
+            });
+            $(".ind_zhobo").click(function(){
+                $("#tanc,.zhibotc").show();
+            });
+            $(".zhibo_close").click(function(){
+                $("#tanc,.zhibotc").hide();
+            });
+            $(".ind_help").click(function(){
+                $("#tanc,.helptc").show();
+            });
+            $(".htc_qx").click(function(){
+                $("#tanc,.helptc").hide();
+            });
+        });
+    </script>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?61af978bdbf762acac7c850ddf12771f";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <div style="display: none;"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_5871341'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s22.cnzz.com/stat.php%3Fid%3D5871341' type='text/javascript'%3E%3C/script%3E"));</script></div>
+</body>
+</html>

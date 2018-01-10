@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>1899-12-30 00:00:00.000.989,D:\小仓鼠\PC\Source\launcher\unt_l.dfm=C:\Users\dlden\Documents\RAD Studio\Projects\Unit2.dfm</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.602,=D:\小仓鼠\PC\Source\Hamster\Public\mapshare.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.937,=C:\Users\dlden\Documents\RAD Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.547,D:\小仓鼠\PC\Source\launcher\launcher.dproj=C:\Users\dlden\Documents\RAD Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.362,=C:\Users\dlden\Documents\RAD Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>1899-12-30 00:00:00.000.989,D:\小仓鼠\PC\Source\launcher\unt_l.pas=C:\Users\dlden\Documents\RAD Studio\Projects\Unit2.pas</Transaction>
+  </Transactions>
+</BorlandProject>

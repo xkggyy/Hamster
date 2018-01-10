@@ -1,0 +1,42 @@
+<volist name = "dh_f_goods" id = "item" offset="0">
+    <div class="for_goods">
+        <div class="for_goods_img"><a href='{$item.auctionurl}' target="_blank"><img src="{$item.picturl}" alt=""/></a></div>
+        <div class="for_goods_btn">
+            <div class="for_goods_btn1 for_goods_spread">加入推广</div>
+            <div class="for_goods_btn1 copy_text" style="margin-left:50.2%;">复制文案</div>
+            <div class="intro_coupon" id="intro_{$item.auctionid}">
+                <span class="jiantou_left"></span>
+                <img width="50" height="50" class="thumb" src="{$item.picturl}" _scr="{$item.picturl}" id="{$item.auctionid}" alt="">
+                <br> <a href='{$item.auctionurl}' target="_blank">{$item.title}</a>
+                <br>原价【{$item.reserveprice}】 {$item["usertype"]==1?"天猫":""}券后【{$item['zkprice']-$item['couponamount']}】 现价【{$item.zkprice}】
+                <br>优惠券：<span>{$item.couponlink}</span>
+                <br>下单链接：<span>{$item.auctionurl}</span>
+            </div>
+        </div>
+        <div class="for_goods_info">
+            <div class="for_goods_con">
+                <div class="for_goods_title" title="{$item.title}">{$item.title}</div>
+                    <div class="for_goods_heng" title="已领取<?php echo (1-$item['couponleftcount']/$item['coupontotalcount'])*100 ?>%">
+                        <div style="width: <?php echo (1-$item['couponleftcount']/$item['coupontotalcount'])*100 ?>%"></div>
+                    </div>
+                <div class="for_goods_quan">
+                    <div class="for_goods_quan_h" style="border-right:1px solid #E2E2E2;width: 50%;">
+                        <p>券后价</p>
+                        <p style="color:#DB3900;">¥{$item['zkprice']-$item['couponamount']}</p>
+                    </div>
+                    <div class="for_goods_quan_t" style="width:50%">
+                        <p>{$item['eventrate']!=0?'高佣':$item['author']==0?'通用':'定向'}</p>
+                        <p style="color:#1270AE;">{$item['eventrate']!=0?$item['eventrate']:$item['tkrate']}<span style="font-weight: 100">%</span></p>
+                    </div>
+                </div>
+                <p class="for_goods_xiao" style="margin-top: 15px;">券&nbsp;<span>¥&nbsp;{$item['couponamount']|round=###,2}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+                    销量&nbsp;<span>{$item.biz30day}</span>件</p>
+            </div>
+        </div>
+    </div>
+</volist>
+<div style="clear: both"></div><!--清除浮动-->
+<input type="hidden" name="pageIndex" value="{$pageIndex}" /><!--页码-->
+<input type="hidden" name="count" value="{$count}" /><!--总条数-->
+<input type="hidden" name="all_page" value="{$all_page}" /><!--总页数-->
+

@@ -1,0 +1,67 @@
+<div class="banner" style="display:none">
+</div>
+
+<div class="block" sytle="display:none">
+
+</div>
+<div class="screenPannel">
+	<div class="more_screen">
+		<div style="" class="tab_info tab_info_fenlei">
+			<a class="tag selected" href="/" data-pjax="">全部类别</a>
+			<volist name="cate" id="item" offset="0" length="10">
+				<a class="tag " href="/?cid={$item.id}">{$item.name}</a>
+			</volist>
+		</div>
+
+		<form action="" method="get" target="_self" data-pjax="true" id="filterform">
+			<input type="hidden" name="kw" value="">
+			<input type="hidden" id="cid" name="cate" value="">
+			<input type="hidden" id="sorts" name="sorts" value="">
+			<input type="hidden" name="token" value="">
+
+			<ul class="screenConditions">
+				<li class="conditionList">
+					<a href="./" class="selected">综合排序</a>
+				</li>
+				<li class="conditionList">
+					<a class="" data-value="new">最新</a>
+				</li>
+				<li class="conditionList">
+					<a class="" data-value="sales">销量排序</a>
+				</li>
+				<li class="conditionList">
+					<a class="" data-value="ratio">佣金排序</a>
+				</li>
+				<li class="conditionList">
+					<a class="" data-value="price">价格排序</a>
+				</li>
+				<li class="conditionList">
+					<a class="" data-value="stoptime">剩余时间</a>
+				</li>
+				<li class="conditionList">
+					<input type="checkbox" name="havcou" value="1" class="chk" data-screen="" id="havcou">
+					<label for="have_coupons">有券</label>
+				</li>
+				<li class="conditionList">
+					<input type="checkbox" name="type" value="2" class="chk" id="tmall" data-screen="">
+					<label for="tmall">天猫</label>
+				</li>
+				<li class="fr" style="padding-right:0;float:right">
+					<ul>
+						<li class="conditionList">
+							价格区间：<input type="text" name="price_range[]" value="">-<input type="text" name="price_range[]" value="">
+						</li>
+						<li class="conditionList">
+							销量区间：<input type="text" name="sales_range[]" value="">-<input type="text" name="sales_range[]" value="">
+						</li>
+						<li class="conditionList" style="padding-right:0px">
+							佣金区间：<input type="text" name="ratio_range[]" value="">% - <input type="text" name="ratio_range[]" value="">%
+							<input type="submit" value="筛选" class="shaixuan">
+							<input type="button" value="全选" class="shaixuan" onclick="Choice.setall();">
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</form>
+	</div>
+</div>

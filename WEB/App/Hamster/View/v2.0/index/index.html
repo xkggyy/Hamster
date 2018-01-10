@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>首页</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <include file="public:head" />
+    <link rel="stylesheet" href="__CSS2__/swiper.min.css" />
+    <link rel="stylesheet" href="__CSS2__/newindex.css" />
+</head>
+<body style="min-width: 975px;min-height: 650px;overflow:auto;overflow:hidden;">
+    <div id="main_v3">
+        <div onmousedown="TApp.hWMove()" style="width:100%;height: 15%;position: absolute;z-index: 0"></div>
+        <!--logo AND 最大化最小化-->
+        <div class="top">
+            <!--logo-->
+            <div class="toplogo"><img src="__IMG2__/img/main/logo.png" alt="" title="" class="" /></div>
+            <!--最小化、最大化、关闭-->
+            <div class="top_cmi">
+                <!--最小化-->
+                <div onclick="TApp.hWMin();" class="topc_min t_r_least"><img src="__IMG2__/img/main/icon_zuixiao2.png" alt=""></div>
+                <!--最大化-->
+
+                <!--关闭-->
+                <div onclick="TApp.hExitApp();" class="topc_close t_r_close"><img src="__IMG2__/img/main/icon_close2.png" alt=""></div>
+            </div>
+        </div>
+        <!--菜单-->
+        <div class="swiper-container" style="width: 840px;height: 640px;padding-top: 5px;">
+            <div class="menu swiper-wrapper">
+                <!--第一屏-->
+                <div class="menu_fisrt menu_screen swiper-slide">
+                    <div style="width:840px;height: 420px;background-color: #000;margin: 0 auto;position: relative;">
+                        <div class="function qqgroup" data-url="{:U('/hamster/menu/qq')}"   data-frameid="qq" style="background-color: #049BF1;left: 0px;top: 0px;">
+                            <a href="javascript:void(0);">
+                                <img src="__IMG2__/img/main/qqgroup.png" alt="">
+                                <p>QQ群发</p>
+                            </a>
+                        </div>
+                        <div class="function wxgroup" data-url="{:U('/hamster/menu/wx')}"  data-frameid="wx" style="background-color: #8BCD33;left: 281px;top: 0px;">
+                            <a href="javascript:void(0);">
+                                <img src="__IMG2__/img/main/wxgroup.png" alt="">
+                                <p>微信群发</p>
+                            </a>
+                        </div>
+                        <div class="function rmdSr"  data-url="{:U('/hamster/index/todaty')}"  data-frameid="tj" style="background-color: #623DBE;left: 562px;top: 0px;">
+                            <a href="javascript:void(0);">
+                                <img src="__IMG2__/img/main/rmdSr.png" alt="">
+                                <p>今日推荐</p>
+                            </a>
+                        </div>
+                        <div class="function zhibo"  data-url="{:U('/hamster/menu/zhibo')}" data-frameid="zhibo" style="background-color: #C00707;left: 0px;top: 212px;">
+                            <img src="__IMG2__/img/main/zhibo.png" alt="">
+                            <p>直播间</p>
+                        </div>
+                        <div class="function help"  data-url="{:U('/hamster/user/help')}" data-frameid="help" style="background-color: #0398AC;left: 281px;top: 212px;">
+                            <img src="__IMG2__//img/main/help.png" alt="">
+                            <p>帮助中心</p>
+                        </div>
+                        <div class="function table" id="excelSelector"   style="background-color: #FF9E0E;left: 562px;top: 212px;">
+                            <img src="__IMG2__/img/main/table.png" alt="">
+                            <p>选择Excel</p>
+                        </div>
+                    </div>
+                </div>
+                <!--第二屏-->
+                <div class="menu_second menu_screen swiper-slide">
+                    <div style="width:840px;height: 420px;background-color: #000;margin: 0 auto;position: relative;">
+                        <div class="function lianmlu"  onclick="TApp.hOpenUrl('http://pub.alimama.com/promo/search/index.htm')"  style="background-color: #049BF1;left: 0px;top: 0px;">
+                            <img src="__IMG2__/img/main/lianmlu.png" alt="">
+                            <p>联盟产品库</p>
+                        </div>
+                        <div class="function pt_30 qbb"  onclick="TApp.hOpenUrl('http://pub.alimama.com/myunion.htm#!/report/site/site')"  style="background: #876fc1;left: 281px;top: 0px;">
+                            <img src="__IMG2__/img/main/record.png" alt="">
+                            <p>数据中心</p>
+                        </div>
+                        <div class="function pt_30 nzjh"  onclick="TApp.hOpenUrl('http://pub.alimama.com/promo/item/channel/index.htm?channel=nzjh')"  style="background-color: #FF206C;left: 562px;top: 0px;">
+                            <img src="__IMG2__/img/main/nzjh.png" alt="">
+                            <p>行业女装精选 好货任你挑</p>
+                        </div>
+                        <div class="function pt_30 gyhd"  onclick="TApp.hOpenUrl('http://pub.alimama.com/promo/item/channel/index.htm?channel=qqhd')"  style="background-color: #CA7BEE;left: 0px;top: 212px;">
+                            <img src="__IMG2__/img/main/gyhd.png" alt="">
+                            <p>淘客都在推的高佣金商品</p>
+                        </div>
+                        <div class="function pt_30 myrt"  onclick="TApp.hOpenUrl('http://pub.alimama.com/promo/item/channel/index.htm?channel=muying')"  style="background-color: #F09E14;left: 281px;top: 212px;">
+                            <img src="__IMG2__/img/main/myrt.png" alt="">
+                            <p>优选母婴商品 金牌店铺保证</p>
+                        </div>
+                        <div class="function pt_30 ifashion"  onclick="TApp.hOpenUrl('http://pub.alimama.com/promo/item/oe_channel/index.htm?channel=ifs')"  style="background-color: #174487;left: 562px;top: 212px;">
+                            <img src="__IMG2__/img/main/ifashion.png" alt="">
+                            <p>年轻人的潮流穿搭好货</p>
+                        </div>
+                    </div>
+                </div>
+                <!--第三屏-->
+                <div class="menu_second menu_screen swiper-slide">
+                    <div style="width:840px;height: 420px;background-color: #000;margin: 0 auto;position: relative;">
+                        <div class="function pt_30 qbb"  onclick="TApp.hOpenUrl('http://pub.alimama.com/promo/item/oe_channel/index.htm?channel=qbb')"  style="background: linear-gradient(#01E2FF, #FE3185);left: 0px;top: 0px;">
+                            <img src="__IMG2__/img/main/qbb.png" alt="">
+                            <p>淘宝母婴品牌 懂你更懂宝贝</p>
+                        </div>
+                        <div class="function pt_30 tbhc"  onclick="TApp.hOpenUrl('http://pub.alimama.com/promo/item/oe_channel/index.htm?channel=hch')"  style="background-color: #FF4500;left: 281px;top: 0px;">
+                            <img src="__IMG2__/img/main/tbhc.png" alt="">
+                            <p>天下美食大汇聚</p>
+                        </div>
+                        <div class="function pt_30 cdj"  onclick="TApp.hOpenUrl('http://pub.alimama.com/promo/item/oe_channel/index.htm?channel=cdj')"  style="background-color: #0088CC;left: 562px;top: 0px;">
+                            <img src="__IMG2__/img/main/cdj.png" alt="">
+                            <p>第一数码潮品发现地</p>
+                        </div>
+                        <div class="function pt_30 tbdiy"  onclick="TApp.hOpenUrl('http://pub.alimama.com/promo/item/oe_channel/index.htm?channel=diy')"  style="background-color: #FF4E4F;left: 0px;top: 212px;">
+                            <img src="__IMG2__/img/main/tbdiy.png" alt="">
+                            <p>DIY爱好者装备库</p>
+                        </div>
+                        <div class="function pt_30 jyj"  onclick="TApp.hOpenUrl('http://pub.alimama.com/promo/item/oe_channel/index.htm?channel=jyj')"  style="background-color: #FCDA58;left: 281px;top: 212px;">
+                            <img src="__IMG2__/img/main/jyj.png" alt="">
+                            <p>居家好物精选 权威认证</p>
+                        </div>
+                        <div class="function kdc"  onclick="TApp.hOpenUrl('http://pub.alimama.com/promo/item/oe_channel/index.htm?channel=kdc')"  style="background-color: #000D7A;left: 562px;top: 212px;">
+                            <img src="__IMG2__/img/main/kdc.png" alt="" style="position: relative;top: -10px;">
+                            <p>汇聚全球运动潮品</p>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+            <div class="swiper-pagination"></div>
+             <iframe target="_top" style="display:none"  width="100%" id="login_frame" height="1px;" frameborder="0" scrolling="no" src="/hamster/login/"></iframe> 
+            <!--                <div class="swiper-button-prev"></div>
+                            <div class="swiper-button-next"></div>-->
+        </div>
+</body>
+<include file="public:foot" />
+<script type="text/javascript" src="__JS__/swiper.jquery.min.js"></script>
+<script type="text/javascript" src="__JS__/step.js"></script>
+<script type="text/javascript" src="__JS__/jquery.cookie.js"></script>
+<script type="text/javascript">
+                            //禁用返回
+                            history.pushState(null, null, document.URL);
+                            window.addEventListener('popstate', function () {
+                                history.pushState(null, null, document.URL);
+                            });
+                            var swiper = new Swiper('.swiper-container', {
+                                pagination: '.swiper-pagination',
+                                paginationClickable: true,
+                                spaceBetween: 3,
+                                hashnav: true,
+                                hashnavWatchState: true
+                            });
+                            var count = 0;
+                            $("#excelSelector").click(function () {
+                                var _count = TApp.hOpenExcel();
+                                if (_count == -1) {
+                                    return;
+                                }
+                                if (_count > 1) {
+                                    count = _count;
+                                    if ($("#qq").length > 0) {
+                                        window.frames['qq'].getAllGoods();
+                                    }
+                                    if ($("#wx").length > 0) {
+                                        window.frames['wx'].getAllGoods();
+                                    }
+                                } else {
+                                    BUI.Message.Alert('请选择正确的excel文件', function () {}, 'info')
+                                }
+                            });
+                            $(function () {
+                                $(".menu_screen .function").click(function () {
+                                    if ($(this).attr("data-url") != null && $(this).attr("data-url") != '' && $(this).attr("data-frameid") != null && $(this).attr("data-frameid") != '') {
+                                        openIframe(this);
+                                    }
+                                });
+
+
+//                                $(".swiper-container").mousedown(function () {
+//                                    $(".menu_second").css("margin-left","0px");
+//                                }).mouseup(function(){
+//                                    setTimeout(function(){
+//                                        if($(".menu_second").is(".swiper-slide-active")){
+//                                            $(".menu_second").css("margin-left","-3px");
+//                                        }
+//                                    },400);
+//                                });
+
+
+                            });
+                            //打开子界面
+                            function openIframe(o) {
+                                var url = $(o).attr("data-url");
+                                var frameid = $(o).attr("data-frameid");
+                                if ((frameid == 'qq' || frameid == 'wx') && count == 0) {
+                                    BUI.Message.Alert('请选择要群发的Excel', function () {}, 'info');
+                                    return;
+                                }
+                                var framediv;
+                                if ($("#" + frameid).length == 0) {
+                                    var html = '<div class="iframe_other" id="{id}"><iframe name="{id}" src="{url}"  frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes" width="100%" height="100%" scrolling="auto" id="iframe_aa"></iframe></div>';
+                                    html = html.replace(new RegExp(/{id}/g), frameid).replace('{url}', url);
+                                    framediv = $(html).appendTo('body');
+                                } else {
+                                    framediv = $("#" + frameid);
+                                }
+                                framediv.animate({
+                                    left: 0, opacity: 'show'
+                                }, 500)
+
+                            }
+                            //关闭子界面
+                            function hiddenIframe(frameDivId) {
+                                $('#' + frameDivId).animate({
+                                    left: 975, opacity: 'hide'
+                                });
+                            }
+
+
+                            function QQGroup(type, name1, name2) {
+                                if ($("#qq").length > 0) {
+                                    window.frames['qq'].refreshQQGroup(type, name1, name2);
+                                }
+                            }
+
+                            function  qqcomplate() {
+                                window.frames['qq'].qqcomplate();
+                            }
+                            function  wxcomplate() {
+                                window.frames['wx'].wxcomplate();
+                            }
+                            function loadfail() {
+                                BUI.Message.Alert('网络环境差,请检查网络是否正常。', function () {}, 'info');
+                            }
+</script>
+</html>

@@ -1,0 +1,21 @@
+*{margin: 0;padding: 0;}
+a{text-decoration: none;color: #000;}
+li{list-style: none;}
+
+.bg_circle{position: absolute;z-index: -1;}
+.bg_circle div{border-radius: 50%;border: 1px solid #C2F6C7;position: absolute;}
+.bg_circle .bg_circle_1{width: 600px;height: 600px;left: 45px;top: 38px;}
+.bg_circle .bg_circle_2{width: 500px;height: 500px;left: -24px;top: 202px;}
+/*头部样式*/
+#top{height: 90px;background: #FFF;}
+#top .t_main{width: 1000px;height: 100%;margin: 0 auto;position: relative;}
+#top .t_main .t_logo img{margin-top: 14px;}
+#top .t_nav{margin-left: 164px;position: absolute;left: 164px;top: 50px;}
+#top .t_nav li{width: 96px;height: 40px;text-align: center;line-height: 40px;border-radius: 4px 4px 1px 1px;float: left;font-size: 20px;cursor: pointer;}
+#top .t_nav li a{width: 100%;height: 100%;display: block;font-family: 冬青黑体简体中文;color: #190600;}
+.li_xuan{background: #3DCF90;}
+.li_xuan a{color: #FFF;}
+#top .t_login{position: absolute;top: 45px;right: 0;}
+#top .t_login span{display: inline-block;margin-left: 15px;cursor: pointer;}
+#top .t_login .t_login_wb{width: 34px;height: 34px;background: url("../../img/v3/banner_icon_wb.png")}
+#top .t_login .t_login_wx{width: 33px;height: 33px;background: url("../../img/v3/banner_icon_wx.png")}

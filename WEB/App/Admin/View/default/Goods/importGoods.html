@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <include file="public:header" />
+        <link href="__CSS__/page-min.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div class="container" >
+            <div class="row">
+                <form action="" class="form-horizontal" method="post" id="category_add">
+                    
+                    <div class="control-group">
+                        <label class="control-label"><s>*</s>选择文件</label>
+                        <div class="controls">
+                            <div id="J_Uploader"></div>
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+        <include file="public:foot" />
+    </body>
+    <script type="text/javascript">
+         BUI.use('bui/uploader',function (Uploader) {
+                
+            /**
+            * 返回数据的格式
+            *
+            *  默认是 {url : 'url'},否则认为上传失败
+            *  可以通过isSuccess 更改判定成功失败的结构
+            */
+            var uploader = new Uploader.Uploader({
+                //指定使用主题
+                    render: '#J_Uploader',
+                    url: '/index.php/admin/Goods/import',
+                    rules: {
+                    //文的类型
+                    ext: ['.xls','文件类型只能为{0}'],
+                    //上传的最大个数
+                    max: [1, '文件的最大个数不能超过{0}个'],
+                    //文件大小的最小值,这个单位是kb
+                    minSize: [10, '文件的大小不能小于{0}KB'],
+                    //文件大小的最大值,单位也是kb
+                    maxSize: [1024*150, '文件大小不能大于1M']
+                }
+            }).render();
+            uploader.set("name","import");
+            uploader.on('success', function(ev){
+                BUI.Message.Alert('上传成功','success');
+            });
+        
+            //上传成功时会触发
+            uploader.on('error', function(ev){
+                BUI.Message.Alert('上传失败','error');
+            });
+        });
+    </script>
+</html>

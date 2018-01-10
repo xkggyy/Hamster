@@ -1,0 +1,67 @@
+<style>
+    a {text-decoration: none;}
+    a:hover {text-decoration: none;}
+    a:link {text-decoration: none;}
+    #top>div>div{width: 1200px;margin:0 auto;}
+    #top .tm_welcome{height: 30px;background: #000;color: #FFF;font-size: 12px;font-family: '微软雅黑';text-align: right;line-height:30px;}
+    #top .tm_cen{height: 126px;}
+    #top .tm_cen>div{padding: 0 50px;}
+    #top .tm_cen .logo{margin-top: 27px;float: left;}
+
+    #top .tmc_search{float: left;margin-left: 93px;margin-top: 42px;}
+    #top .tmc_search input{width: 490px;height: 42px;border: 1px solid #40BEA7;border-radius: 0px;font-size: 14px;font-family: "微软雅黑";padding-left: 22px;}
+    #top .tmc_search span{width: 42px;height: 42px;display: inline-block;background: #494949;line-height: 42px;text-align: center;margin-left: -46px; position: relative;top: 1px;cursor: pointer;}
+
+    #top .tmc_right{float: right;}
+    #top .tmc_right ul{}
+    #top .tmc_right li{float: left;width: 50px;text-align: center;margin-left: 20px;margin-top: 30px;font-family: "微软雅黑";font-size: 12px;color: #838282;}
+    #top .tmc_right li span{margin: 0 4px;display: inline-block;width: 40px;height: 40px;border-radius: 50%;}
+    #top .tmc_right li .qual{background: url(__IMG2__/ensure.png) center no-repeat;}
+    #top .tmc_right li .test{background: url(__IMG2__/check.png) center no-repeat;}
+    #top .tmc_right li .cheap{background: url(__IMG2__/lowprice.png) center no-repeat;}
+
+    #top .tm_nav{height: 62px;background: #40BEA7;}
+    #top .tm_nav li{list-style: none;float: left;height: 62px;padding: 0 22px;line-height: 62px;cursor: pointer;color: #FFF;font-family: '微软雅黑';font-size: 14px;}
+    #top .tm_nav li a{display: block;width: 100%;height: 100%;}
+    #top .tm_nav li:hover{background: #2FA791;}
+    #top .tm_nav .nav_xz{background: #2FA791;}
+</style>
+<!--头部-->
+<div id="top">
+    <div class="tm_welcome"><div>积米淘客助手欢迎您，<span></span></div></div>
+    <div class="tm_cen">
+        <div>
+            <img class="logo" src="__IMG2__/logo.png" alt="">
+            <form class="tmc_search">
+                <input type="text" name="" value="" placeholder="请输入搜索内容"/>
+                <span><img src="__IMG2__/search_icon.png" alt=""></span>
+            </form>
+            <div class="tmc_right">
+                <ul>
+                    <li><span class="qual"></span><p>品质保障</p></li>
+                    <li><span class="test"></span><p>人工质检</p></li>
+                    <li><span class="cheap"></span><p>最高佣金</p></li>
+                </ul>
+            </div>
+            <div>
+            </div>
+        </div>
+    </div>
+    <div class="tm_nav">
+        <div>
+            <ul>
+                <a href="http://www.j1m1.com"><li class="{:CONTROLLER_NAME=='Index' && ACTION_NAME=='index'?'nav_xz':''}">首页</li></a>
+                <a href="/index.php/home/news/coupon"><li class="{:ACTION_NAME=='coupon'?'nav_xz':''}">优惠券直播</li></a>
+                <a href="/index.php/home/news"><li class="{:CONTROLLER_NAME=='News'&& ACTION_NAME=='index'?'nav_xz':''}">实时榜单</li></a>
+                
+                <a href="/index.php/home/index/introduce.html"><li class="{:ACTION_NAME=='introduce'?'nav_xz':''}">积米淘客助手</li></a>
+                <!--<a href="/index.php/home/index/qqsvc.html"><li class="{:ACTION_NAME=='qqsvc'?'nav_xz':''}">QQ群发</li></a>
+                <a href="/index.php/home/index/wesvc.html"><li class="{:ACTION_NAME=='wesvc'?'nav_xz':''}">微信群发</li></a>-->
+                <a href="/index.php/home/index/contactus.html"><li class="{:ACTION_NAME=='contactus'?'nav_xz':''}">联系我们</li></a>
+            </ul>
+            <p style="float: right;font-size: 16px;color: #FFF;margin-top: 20px;margin-right: 50px;cursor:pointer; ">官方二群：<a style="color: #FFF;" href='http://shang.qq.com/wpa/qunwpa?idkey=8b754d4cd88e9290dd1a8c794571eea748b4555788c97cb5a367701cc4b97868' target='_blank'>596807694</a></p>
+            <p style="float: right;font-size: 16px;color: #FFF;margin-top: 20px;margin-right: 50px;cursor:pointer; ">官方一群：<a style="color:#FFF" href='http://qm.qq.com/cgi-bin/qm/qr?k=bqtWCWdOWt0FxhZgHHJTJnZgRMgzYUg-' target="_blank"> 511107123</a></p>
+            
+        </div>
+    </div>
+</div>

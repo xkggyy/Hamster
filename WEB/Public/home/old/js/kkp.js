@@ -1,0 +1,1 @@
+function kPlay(s){var dapCtrl = null;try {dapCtrl= new ActiveXObject("DapCtrl.DapCtrl");dapCtrl.Put("SXMP4ARG", s);	}catch(e) {confirm("请先安装迅雷看看播放器或使用兼容模式访问本站,然后刷新本页面！");}}

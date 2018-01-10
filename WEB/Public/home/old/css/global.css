@@ -1,0 +1,238 @@
+body {
+    font: 14px / 1.5 "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+    color: #333;
+    background-color: #fff;
+    padding-top: 62px;
+    min-width: 1024px;
+}
+a{
+    color:#777;
+}
+.site-topbar {
+    position: relative;
+    z-index: 30;
+    height: 40px;
+    font-size: 12px;
+    color: #b0b0b0;
+    background: #333;
+}
+.site-topbar .topbar-nav {
+    float: left;
+    height: 40px;
+    line-height: 40px;
+    overflow: hidden;
+    _zoom: 1;
+}
+.site-topbar a {
+    color: #b0b0b0;
+}
+.site-topbar .sep {
+    margin: 0 .5em;
+    color: #424242;
+}
+
+.site-topbar .topbar-cart, .site-topbar .topbar-info {
+    position: relative;
+    float: right;
+    _display: inline;
+    line-height: 40px;
+}
+.site-topbar .topbar-cart {
+    width: 120px;
+    margin-left: 15px;
+}
+.site-header {
+    position: relative;
+    z-index: 20;
+    height: 100px;
+}
+.site-header .header-logo {
+    float: left;
+    width: 62px;
+    margin-top: 22px;
+}
+.logo {
+    position: relative;
+    display: block;
+    width: 32px;
+    height: 32px;
+    overflow: hidden;
+    margin: 10px;
+    _zoom: 1;
+    background-color: #ff6700;
+    background: url(http://www.jimihuan.com/Public/home/images/201603/logo_55.png) no-repeat 50% 50%;
+    opacity: 1;
+    filter: alpha(opacity=100)\9;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+.ir {
+    display: block;
+    text-align: left;
+    text-indent: -9999em;
+    overflow: hidden;
+    _zoom: 1;
+}
+
+.site-header .header-nav {
+    float: left;
+    /*width: 850px;*/
+}
+.site-header .nav-list {
+    position: relative;
+    z-index: 10;
+    float: left;
+    /*width: 820px;*/
+    height: 88px;
+    margin: 0;
+    padding: 12px 0 0 30px;
+    list-style-type: none;
+    font-size: 16px;
+}
+ul, menu, dir {
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px;
+}
+.site-header .nav-item-active {
+    position: relative;
+}
+.site-header .nav-item {
+    float: left;
+}
+.site-header .nav-item .link {
+    display: block;
+    padding: 26px 18px 38px;
+    color: #333;
+}
+.site-header .nav-item-active .link {
+    color: #ff6700;
+}
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+.site-header .header-search {
+    float: right;
+    width: 166px;
+    margin-top: 25px;
+}
+
+.x-layout-column, .x-layout-item-column{
+    float: left;
+}
+.floor-body{
+    width: 285px;
+    float: left;
+}
+.floor-shangpin .item {
+    border: 1px solid #eee;
+    background: #fff;
+    float: left;
+    padding: 18px 17px 15px 18px;
+    width: 280px;
+    margin-bottom: 20px;
+    transition: all .3s;
+    position: relative;
+    font-size: 12px;
+    color:#333;
+}
+.floor-title {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    line-height: 22px;
+}
+.floor-title h3 {
+    float: left;
+    font-size: 16px;
+    font-weight: 700;
+    font-family: tahoma,arial,'Hiragino Sans GB','\5fae\8f6f\96c5\9ed1',sans-serif!important;
+}
+.floor-title h3 span {
+    font-weight: 400;
+    font-size: 14px;
+    margin-left: 10px;
+    font-style: italic;
+    color: #a2a2a2;
+}
+.floor-shangpin .item .img {
+    width: 240px;
+    height: 240px;
+    overflow: hidden;
+    position: relative;
+}
+.floor-shangpin .item .img img {
+    width: 240px;
+    height: 240px;
+}
+.floor-shangpin .item .img .price {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    line-height: 22px;
+    color: #fff;
+    padding: 0 5px;
+    background: #c0bcbb;
+    background: rgba(0,0,0,.3);
+    z-index: 3;
+}
+.floor-shangpin .item .title {
+    margin-top: 20px;
+    margin-bottom: 5px;
+    line-height: 17px;
+    height: 34px;
+    overflow: hidden;
+}
+.floor-shangpin .item:hover {
+    border-color: #f03a25;
+    box-shadow: 0 0 3px 2px rgba(231,231,231,.5);
+    position: relative;
+    z-index: 10;
+}
+.floor-shangpin a:hover {
+    color: #ff5a00;
+}
+.site-info {
+    padding: 30px 0;
+    font-size: 12px;
+    background: #fafafa;
+}
+.site-info .logo {
+    float: left;
+    width: 36px;
+    height: 36px;
+    margin-right: 10px;
+    background: url(http://www.jimihuan.com/Public/home/images/201603/logo-footer.png) no-repeat 50% 50%;
+}
+.site-info .slogan {
+    clear: both;
+    margin: 30px auto 0;
+    width: 267px;
+    height: 19px;
+    background: url(http://www.jimihuan.com/Public/home/images/201603/slogan2016.png) no-repeat center 0;
+}
+.site-info .info-text {
+    float: left;
+    color: #b0b0b0;
+}
+.site-info .info-text p {
+    margin: 0;
+    line-height: 18px;
+}
+.site-info .info-links {
+    float: right;
+    _display: inline;
+    height: 28px;
+    margin: 4px 0 0;
+}
+.site-info .info-text .sites a {
+    color: #757575;
+}
+.site-info .sep {
+    margin: 0 .25em;
+    font-family: sans-serif;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>首页</title>
+    <include file="public:head" />
+    <link rel="stylesheet" href="__CSS2__/index.css" />
+    <script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=1bf0503b093b0"></script>
+    <style>
+        #ali_main iframe{border: none;}
+    </style>
+</head>
+<body style="min-width: 1200px;min-height: 800px;overflow:auto;overflow:hidden;">
+    <div class="qclcontent" style="display:none"></div>
+    <div id="main">
+        <include file="public:nav" />
+        <div id="ali_main">
+            <iframe src="http://pub.alimama.com/promo/search/index.htm?spm=a219t.7900221/1.1998910419.de727cf05.XGyzLp&toPage=1&queryType=2" name="alimama" id="if_alimama" width="100%" height="100%" scrolling="auto"></iframe>
+        </div>
+    </div>
+</body>
+<include file="public:foot" />
+<script type="text/javascript" src="__JS__/jq/jquery-ui.js" ></script>
+<script>
+    $(function () {
+        //设置iframe的高
+        setIframeW();
+        window.onresize = setIframeW;
+        changeStyle();
+
+    });
+    //设置iframe的高
+    function setIframeW() {
+        var win_H = $(window).height();
+        var iframe_H = win_H - 70;
+        $("#ali_main").height(iframe_H);
+    }
+    function changeStyle() {
+        var x = document.getElementById("if_alimama");
+        var y = (x.contentWindow || x.contentDocument);
+        y.document.getElementsByTagName("html")[0].style.overflowX = "hidden";
+        var z = y.document.getElementById("J_mama_menu").innerHTML;
+    }
+</script>
+
+</html>

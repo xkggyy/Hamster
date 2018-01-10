@@ -1,0 +1,2 @@
+<?php die('forbidden'); ?>
+{"appid":"101386691","appkey":"4a4c60ae0d8938eceb16f203c2e9686a","callback":"http://www.j1m1.com/index.php","scope":"get_user_info","errorReport":true,"storageType":"file","host":"localhost","user":"root","password":"root","database":"test"}

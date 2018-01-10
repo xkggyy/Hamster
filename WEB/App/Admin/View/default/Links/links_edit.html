@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <include file="public:header" />
+        <link href="__CSS__/page-min.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div class="container" >
+            <div class="row">
+                <form action="{:u('Category/category_update')}" class="form-horizontal" method="post" id="category_update">
+                    <hr/>
+                    <div class="control-group">
+                        <label class="control-label"><s>*</s>一级分类名称：</label>
+                        <div class="controls">
+                            <input type="hidden" class="input-normal taoNick" name="id" value="{$cate.id}"/>
+                            <input type="text" class="input-normal taoNick" name="name" value="{$cate.name}"/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label"><s>*</s>分类排序：</label>
+                        <div class="controls">
+                            <input type="text" class="span2 taoPrice" name="ordid" value="{$cate.ordid}"/> （越大越靠后）
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label"><s>*</s>是否展示：</label>
+                        <div class="controls">
+                            <label class="radio " for=""><input class="status_1" type="radio" name="status" value="1" <if condition="$cate.status eq 1"> checked="true" </if> >展示</label>
+                            <label class="radio " for=""><input class="status_2" type="radio" name="status" value="2" <if condition="$cate.status eq 2"> checked="true" </if>>不展示</label>
+                        </div>
+                    </div>
+                    <hr>
+                        <div class="form-actions span13 offset3 ">
+                            <button type="button" id="submit" class="button button-primary">保存分类</button>
+                        </div>
+                </form>
+            </div>
+        </div>
+
+        <include file="public:foot" />
+        <script type="text/javascript">
+            $(function () {
+                $("#submit").click(function () {
+                    $.ajax({
+                        cache: false,
+                        type: "POST",
+                        url: "{:U('Category/category_update')}",
+                        data: $('#category_update').serialize(), //要发送的是ajaxFrm表单中的数据
+                        async: false,
+                        success: function (data) {
+                            if (data.status == 1) {
+                                BUI.use('bui/overlay', function (overlay) {
+                                    BUI.Message.Alert(data.content, 'success');
+                                });
+                                setTimeout("location.reload()", 1000); //刷新
+                            } else {
+                                BUI.use('bui/overlay', function (overlay) {
+                                    BUI.Message.Alert(data.content, 'error');
+                                });
+                            }
+                        },
+                        error: function (data) {
+                            BUI.use('bui/overlay', function (overlay) {
+                                BUI.Message.Alert('请求出错，请重新提交！', 'error');
+                            });
+                        }
+                    });
+                });
+            });
+        </script>
+    </body>
+</html>

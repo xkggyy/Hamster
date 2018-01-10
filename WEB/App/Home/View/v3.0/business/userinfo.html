@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>积米淘-商家中心</title>
+    <link rel="shortcut icon" href="__IMG2__/logo16.png">
+    <link rel="stylesheet" href="__CSS2__/indexS.css">
+    <link rel="stylesheet" href="__BUI__/css/bs3/bui-min.css">
+    <link rel="stylesheet" href="__BUI__/css/bs3/dpl-min.css">
+</head>
+<body style="overflow-y:scroll;min-width: 1200px;">
+<include file="business:header" />
+<div id="bocen">
+    <div class="main">
+        <div class="left" style="float: left;">
+            <div class="left_title"><span></span><span class="left_user">个人中心</span></div>
+            <ul>
+                <li class="le_nav"><a href=""><span>基本资料</span><span>></span></a></li>
+                <li><a href=""><span>资金管理</span><span>></span></a></li>
+            </ul>
+        </div>
+        <!--基本资料-->
+        <div class="user_info" style="float: left;margin-left: 25px;width: 660px;">
+            <form action="" class="form-horizontal form-horizontal-simple">
+                <div class="control-group">
+                    <label class="control-label">昵称</label>
+                    <div class="controls">
+                        <span class="control-text">{$user.nickname}</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">手机号</label>
+                    <div class="controls">
+                        <span class="control-text">{$user.tel}</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">ID</label>
+                    <div class="controls">
+                        <span class="control-text">{$user.id}</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">注册时间</label>
+                    <div class="controls">
+                        <span class="control-text">{:date('Y-m-d H:i:s',$user['regdate'])}</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">备注</label>
+                    <div class="controls">
+                        <span class="control-text"></span>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div style="clear: both"></div><!--清除浮动-->
+    </div>
+</div>
+ <div id="content" class="hide">
+      <form id="form" class="form-horizontal">
+        <div class="row">
+          <div class="control-group span12">
+            <label class="control-label">手机号码：</label>
+            <div class="controls span8">
+              <input type="text" data-tip="{text : '手机号码'}" id="tel" class="input-normal control-text" data-messages="{regexp:'不是有效的手机号码'}" data-rules="{regexp:/^1[34578]\d{9}$/}">
+            </div>
+          </div>
+          <div class="control-group span12">
+            <label class="control-label">验证码：</label>
+            <div class="controls">
+              <input type="text" data-tip="{text : '输入验证码'}" id="checkCode" class="input-normal control-text" data-rules="{required :true,length:6}" data-rules="{required : true}">
+              <button class="button button-primary" id="sendsms">获取验证码</button>
+            </div>
+          </div>
+        </div>
+      </form>
+ </div>
+</body>
+<script type="text/javascript" src="__JS__/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="__BUI__/bui-min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var main_H = $(".main").height();
+        $(".left").height(main_H);
+    });
+    <if condition="$isreg" >
+     BUI.use(['bui/overlay','bui/form'],function(Overlay,Form){
+         var form = new Form.HForm({
+                srcNode : '#form'
+         }).render();
+         var dialog = new Overlay.Dialog({
+            title:'绑定手机号',
+            width:500,
+            height:200,
+            //配置DOM容器的编号
+            contentId:'content',
+            closeable:false,
+            buttons:[{
+                text:'注册',
+                elCls:'button button-primary',
+                handler:function(){
+                    if(!form.isValid()) {
+                        return;
+                    }
+                    $.ajax({
+                        url: '/index.php/home/business/regMem',
+                        data: {
+                            tel: $("#tel").val(),
+                            Check: $("#checkCode").val()
+                        },
+                        type: 'post',
+                        dataType: 'json',
+                        beforeSend: function() {
+                            // mask.show();
+                        },
+                        complete: function() {
+                            // mask.hide();
+                        },
+                        success: function(data) {
+                            if(data.success) {
+                                window.location.href='/index.php/home/business/userinfo';
+                            } else {
+                                BUI.Message.Alert(data.message, 'error');
+                            }
+                        }
+                    });
+                }
+            }]
+          });
+        dialog.show();
+        function setEnable(time) {
+		    var	inv= self.setInterval(function() {
+
+				if(time <= 0) {
+					$("#sendsms").removeAttr("disabled");
+					$("#sendsms").removeClass("disabled");
+					$("#sendsms").text("发送验证码");
+					window.clearInterval(inv);
+					return;
+				}
+				$("#sendsms").text(time + "秒重新发送");
+				time--;
+			}, 1000)
+		}
+        $("#sendsms").click(function(){
+            if($("#sendsms").hasClass("disabled")) {
+				return;
+			}
+			if(!form.getChild("tel", true).isValid()) {
+				form.focusError();
+				return;
+			}
+            $.ajax({
+                url: '/index.php/hamster/user/sendSms',
+				data: {
+					phone: $("#tel").val()
+				},
+				type: 'post',
+				dataType: 'json',
+				beforeSend: function() {
+					//mask.show();
+				},
+				complete: function() {
+					//mask.hide();
+				},
+				success: function(d) {
+					if(d.success) {
+						$("#sendsms").addClass("disabled");
+						$("#sendsms").attr("disabled", "disabled");
+						setEnable(60)
+					} else {
+						BUI.Message.Alert(d.message);
+					}
+				},
+				error: function(r, s, e) {
+
+				}
+            })
+        });
+     });
+     </if>
+</script>
+</html>

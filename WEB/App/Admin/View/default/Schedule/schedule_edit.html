@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <include file="public:header" />
+        <link href="__CSS__/page-min.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div class="container" >
+            <div class="row">
+                <form action="{:u('Schedule/schedule_update')}" class="form-horizontal" method="post" id="schedule_update">
+                    <input type="hidden" name="id" value="{$schedule.id}"/>
+                    <div class="control-group" >
+                        <label class="control-label" ><s>*</s>所属板块：</label>
+                        <div class="controls">
+                            <select name="type" class="input-normal bui-form-field-select bui-form-field bui-form-field-select-hover bui-form-field-hover bui-form-field-error" aria-disabled="false" aria-pressed="false">
+                                <option value="1" <if condition="$schedule['type'] eq 1"> selected="selected" </if>>精品</option>
+                                <option value="2" <if condition="$schedule['type'] eq 2"> selected="selected" </if>>推荐</option>
+                                <option value="3" <if condition="$schedule['type'] eq 3"> selected="selected" </if>>热销</option>
+                                <!--<option value="4" <if condition="$schedule['type'] eq 4"> selected="selected" </if>>默认4</option>-->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label"><s>*</s>开始时间：</label>
+                        <div class="controls">
+                            <input type="text" class="input-large calendar bui-form-field-date-hover bui-form-field-hover calendar-time start_time" name="start_time" value="{$schedule.start_time|date='Y-m-d H:i:s',###}" autocomplete="off"/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label"><s>*</s>结束时间：</label>
+                        <div class="controls">
+                            <input id="calendar" type="text" class="input-large calendar bui-form-field-date-hover bui-form-field-hover calendar-time end_time" name="end_time" value="{$schedule.end_time|date='Y-m-d H:i:s',###}" autocomplete="off"/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label"><s>*</s>日程名称：</label>
+                        <div class="controls">
+                            <input type="text" class="input-large" name="remark" value="{$schedule.remark}"/>（<s>*</s>仅用于备注）
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label"><s>*</s>排序：</label>
+                        <div class="controls">
+                            <input type="text" class="input" name="ordid" value="{$schedule.ordid}"/>（1~255）
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label"><s>*</s>是否启用：</label>
+                        <div class="controls">
+                            <label class="radio " for=""><input class="status_1" type="radio" name="status" <if condition="$schedule.status eq 1">checked="true"</if> value="1" />是</label>
+                            <label class="radio " for=""><input class="status_2" type="radio" name="status" <if condition="$schedule.status eq 2">checked="true"</if>  value="2" />否</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <include file="public:foot" />
+
+        <script type="text/javascript">
+            var start_time, end_time;
+            //开始时间
+            BUI.use('bui/calendar', function (Calendar){
+                var datepicker = new Calendar.DatePicker({
+                    trigger: '.start_time',
+                    showTime: true,
+                    lockTime: {
+                        minute: '00',
+                        second: '00'
+                    },
+                    editable: true,
+                    autoRender: true
+                });
+
+                datepicker.on('selectedchange', function (ev) {
+                    start_time = ev;
+                    if (end_time) {
+                        generate_remark();
+                    }
+                });
+            });
+            //结束时间
+            BUI.use('bui/calendar', function (Calendar) {
+                var datepicker = new Calendar.DatePicker({
+                    trigger: '.end_time',
+                    showTime: true,
+                    lockTime: {
+                        minute: '00',
+                        second: '00'
+                    },
+                    editable: true,
+                    autoRender: true
+                });
+
+
+                datepicker.on('selectedchange', function (ev) {
+                    end_time = ev;
+                    generate_remark();
+                });
+            });
+            //板块选中
+            $("select[name='type']").change(function () {
+                generate_remark();
+            });
+
+            //生成日程名称
+            function generate_remark() {
+                var start = start_time.value.getMonth() + 1 + '.' + start_time.value.getDate();
+                var end = end_time.value.getMonth() + 1 + '.' + end_time.value.getDate();
+                var type = $("select[name='type']").find("option:selected").text();
+                $("input[name='remark']").val('【' + type + '】' + start + ' - ' + end);
+            }
+
+           
+        </script>
+
+    </body>
+</html>

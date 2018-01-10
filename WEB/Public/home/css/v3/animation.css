@@ -1,0 +1,59 @@
+
+
+/*简介动画*/
+.sec1 .cs_info_dd{animation: sp_title 1500ms ease-in both;}
+.sec1 .cs_ipad{animation: sp_img 1500ms linear both;}
+@keyframes sp_title {
+    0%{transform: scale(2);opacity: 0;}
+    100%{transform: scale(1);opacity: 1;}
+}
+@keyframes sp_img {
+    0%{transform: scale(1);}
+    /*25%{transform: scale(1.04);}*/
+    /*50%{transform: scale(1);}*/
+    /*75%{transform: scale(1.02);}*/
+    50%{transform: scale(1.02);}
+    100%{transform: scale(1);}
+}
+/*优惠券专属页面动画*/
+/*#exclusive .bg_circle_1,#exclusive .bg_circle_2{animation: el_circle 600ms 1200ms linear both;}*/
+.sec2 .ce_pic2{animation: el_img 800ms ease-in both;}
+.sec2 .ce_pic1{animation: el_img 800ms 500ms ease-in both;}
+.sec2 .ce_info_logo img{animation: el_logo 1200ms linear 1 both;}
+@keyframes el_circle {
+    0%{transform: scale(2);opacity: 0;}
+    100%{transform: scale(1);opacity: 1;}
+}
+@keyframes el_img {
+    0%{transform: scale(2);opacity: 0;}
+    100%{transform: scale(1);opacity: 1;}
+}
+@keyframes el_logo {
+    0%{transform: translateX(120px) rotate(180deg);}
+    100%{transform: translateX(0) rotate(0deg);}
+}
+/*及简式操作*/
+.sec3 .co_info_logo img{animation: el_logo 1200ms linear both;}
+.sec3 .co_pic img{animation: oa_img 1200ms linear both;}
+@keyframes oa_img {
+    0%{transform: translateX(150px);opacity: 0;}
+    100%{transform: translateX(0);opacity: 1;}
+}
+/*超强大运作程序*/
+.sec4 .cp_pic1{animation: pr_img 800ms linear 1 both;}
+.sec4 .qd_icon_ldd{animation: pr_img_icon 300ms linear 1 both;}
+.sec4 .qd_icon_gyj{animation: pr_img_icon 300ms 200ms linear 1 both;}
+.sec4 .qd_icon_yzs{animation: pr_img_icon 300ms 500ms linear 1 both;}
+.sec4 .qd_icon_zyh{animation: pr_img_icon 300ms 800ms linear 1 both;}
+.sec4 .qd_icon_wd{animation: pr_img_icon 300ms 1100ms linear 1 both;}
+.sec4 .qd_icon_qn{animation: pr_img_icon 300ms 1400ms linear 1 both;}
+.sec4 .qd_icon_gx{animation: pr_img_icon 300ms 1700ms linear 1 both;}
+.sec4 .cp_info_logo img{animation: el_logo 1200ms linear 1 both;}
+@keyframes pr_img {
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}
+@keyframes pr_img_icon {
+    0%{transform: scale(2);opacity: 0;}
+    100%{transform: scale(1);opacity: 1;}
+}

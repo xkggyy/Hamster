@@ -1,0 +1,45 @@
+<style>
+    /*#top_nav #qun:hover{text-decoration:underline;}*/
+    #top_nav .qun{position: relative;top: -40px;}
+    #top_nav .qun ul{float: right;}
+    #top_nav .qun li{float: left;color: #E87447;font-size: 14px;margin-left: 10px;cursor: pointer;height: 25px;}
+    #top_nav .qun span{display: inline-block;position: relative;top: 5px;right: 2px;}
+    #top_nav .qun .wx span{width: 22px;height: 18px;background: url("__IMG__/icon_weixin.png");}
+    #top_nav .qun .qq span{width: 17px;height: 18px;background: url("__IMG__/icon_qun.png");}
+    #top_nav .qun .ewm{position: absolute;z-index: 5;width: 120px;height: 120px;float: right;top: 25px;display: none;right: 90px;}
+    #top_nav .qun .qh{width: 100px;height: 30px;float: right;position: relative;top: 25px;background: silver;text-align: center;line-height: 30px;left: 210px;display: none;z-index: 5;}
+    #top_nav .qun .qh a{}
+    #top_nav .qun .qh a:hover{text-decoration:underline;}
+    #kefu_fud{position: fixed;right: 50px;bottom: 50px;z-index: 10;}
+    #kefu_fud div{width: 88px; height: 24px;border-radius: 12px;position: absolute;top: 147px;left: 26px;cursor: pointer;}
+</style>
+<div id="top_nav">
+    <div class="top_main">
+        <div class="logo">
+            <img src="__IMG__/logo.png" alt="" style="margin-top: 15px;"/>
+        </div>
+        <div class="nav">
+            <ul> 
+                <a href="http://www.j1m1.com"><li class="{:CONTROLLER_NAME=='Index' && ACTION_NAME=='index'?'li_xz':''}">首页</li></a>
+                <a href="/index.php/home/index/dapp.html"><li class="{:ACTION_NAME=='dapp'?'li_xz':''}">定制APP</li></a>
+                <a href="/index.php/home/index/trends.html"><li class="{:ACTION_NAME=='trends'?'li_xz':''}">积米动态</li></a>
+                <a href="/index.php/home/index/seller.html"><li class="{:ACTION_NAME=='seller'?'li_xz':''}">招商合作</li></a>
+                <a href="/index.php/home/index/helpVideo.html"><li class="{:ACTION_NAME=='helpVideo'?'li_xz':''}">帮助中心</li></a>
+                <a href="/index.php/home/index/contactus.html"><li class="{:ACTION_NAME=='contactus'?'li_xz':''}">关于我们</li></a>
+            </ul>
+        </div>
+        <div class="qun">
+            <ul>
+                <li class="wx"><span></span>官方微信</li>
+                <li>|</li>
+                <li class="qq"><span></span>官方交流群</li>
+            </ul>
+            <div class="ewm"><img src="__IMG__/getqrcode.jpg" alt="" style="width:100%;height: 100%;"></div>
+            <div class="qh"><a id='qun' style="color:#1A7FE3;" target="_blank" href="//shang.qq.com/wpa/qunwpa?idkey=2dc2a2230593db0ecaa5923839f295aa6e9fdaf573975106bdbb4ba520925303" title="点击加群">528522273</a></div>
+        </div>
+    </div>
+    <div id='kefu_fud'>
+        <img src='__IMG__/kefu_xuanfu.png' alt=''>
+        <div onclick="window.open('http://wpa.qq.com/msgrd?v=3&uin=2021666870&site=qq&menu=yes')"></div>
+    </div>
+</div>

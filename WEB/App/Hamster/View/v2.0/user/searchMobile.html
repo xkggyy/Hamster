@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>手机端电话查询</title>
+        <meta charset="UTF-8">
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+        <meta name="viewport" content="width=device-width,target-densitydpi=high-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .title{
+                align-items: center;
+                width: 100%;
+                height: 1.2rem;
+                font-size:1.2rem;
+                color: #1d1d1d;
+                text-align: center;
+                margin-top: 1.5rem;
+            }
+            label{
+                font-size: 1.2rem;
+                color: #1d1d1d;
+                margin-right: 0.5rem;
+            }
+            .input-frame{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 2rem;
+                margin-top: 1.5rem;
+            }
+            .no{
+                font-size: 1rem;
+                color: #1d1d1d;
+                visibility: hidden;
+                margin-top: 1rem;
+                text-align: center;
+            }
+            .mytable{
+                border: 1px solid #999;
+                border-collapse: collapse;
+                width: 90%;
+                margin: 2rem auto;
+                visibility: hidden;
+            }
+            .mytable th
+            {
+                height: 2rem; 
+                line-height: 2rem;
+                text-align: center;
+                border-bottom: 1px solid #999;
+                font-size: 0.5rem;
+            }
+            .mytable td
+            {
+                height: 2rem;
+                line-height: 2rem;
+                text-align: center;
+                border-bottom: 1px solid #999;
+                padding: 0;
+                margin: 0;
+                font-size: 0.5rem;
+            }
+            .mytable tr:hover
+            {
+                background-color: #f8f8f8;
+            }
+            .mytable tr:nth-child(2n)
+            {
+                background-color: #f8f8f8;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="title">电话号码查询</div>
+        
+        <div class="input-frame">
+            <label>电话:</label>
+            <input type="tel" id="number" maxlength="11" style="height:1.3rem"/>
+            <input type="button" id="query-mobile" value="查询" style="font-size: 1rem;color: #1d1d1d;margin-left: 0.5rem;" onclick="mobileQuery()" />
+        </div>
+
+        <div id="no-tel" class="no">没有数据</div>
+
+        <table id="table" border ="1px" class="mytable">
+            <thead>
+                <tr>
+                    <th>目录</th>
+                    <th>内容</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>姓名</td>
+                    <td id="nickname" >22</td>
+                </tr>
+                <tr>
+                    <td>电话</td>
+                    <td id="tel">22</td>
+                </tr>
+                <tr>
+                    <td>qqID</td>
+                    <td id="qq">22</td>
+                </tr>
+                <tr>
+                    <td>性别</td>
+                    <td id="gender">22</td>
+                </tr>
+                <tr>
+                    <td>城市</td>
+                    <td id="city">22</td>
+                </tr>
+                <tr>
+                    <td>积分</td>
+                    <td id="score">22</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+    <script type="text/javascript" src="/public/hamster/js/jq/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript">
+                var telNumber;
+                var num = document.getElementById('number');
+                var str = document.getElementById('no-tel');
+                
+                var form = document.getElementById('table');
+               
+                var nickname = document.getElementById('nickname');
+                var tel = document.getElementById('tel');
+                var qq = document.getElementById('qq');
+                var gender = document.getElementById('gender');
+                var city = document.getElementById('city');
+                var score = document.getElementById('score');
+
+                function cleanData(s) {
+                    s.value = "";
+                }
+
+                function checkNumber() {
+                    telNumber = $('#number').val();
+                    if (telNumber !== "") {
+                        if (!(/^1[3|4|5|7|8]\d{9}$/.test(telNumber))) {
+                            showMessage("手机号码无效，请重填");
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    } else {
+                        showMessage("手机号码不能为空，请重填");
+                        return false;
+                    }
+                }
+                function mobileQuery() {
+                    var b = checkNumber();
+                    if (b === true) {
+                        var data = {tel: telNumber};
+                        $.ajax({
+                            url: "/index.php/hamster/user/getuserbytel",
+                            type: "post",
+                            data: data,
+                            dataType: 'json',
+                            success: function (result) {
+                                if (result.message === "没有找到数据") {
+                                    showMessage("该用户不是我们的平台用户");
+                                } else {
+                                    form.style.visibility = "visible";
+                                    nickname.innerText = result.nickname;
+                                    tel.innerHTML = result.tel;
+                                    qq.innerHTML = result.qq_openid;
+                                    gender.innerHTML = result.gender;
+                                    city.innerHTML = result.city;
+                                    score.innerHTML = result.score;
+                                    $("#number").focus(function () {
+                                        nickname.value = "";
+                                        tel.value = "";
+                                        qq.value = "";
+                                        gender.value = "";
+                                        city.value = "";
+                                        score.value = "";
+                                        cleanData(num);
+                                        form.style.visibility = "hidden";
+                                    })
+//                                    showMessage("该用户是我们的平台用户");
+//                                    console.log("联网成功");
+                                }
+                            },
+                            error: function () {
+                                showMessage("网络有问题哦!");
+                            }
+                        })
+
+                    } else {
+                    }
+                }
+
+                function showMessage(s) {
+                    str.innerHTML = s;
+                    str.style.visibility = "visible";
+                    $("#number").focus(function () {
+                        cleanData(str);
+                        cleanData(num);
+                        str.style.visibility = "hidden";
+                    })
+                }
+
+                $(function () {
+                    $.onkeydown = function (event) {
+                        var e = event || window.event || arguments.callee.caller.arguments[0];
+                        if (e && e.keyCode === 13) {
+                            event.preventDefault();
+                            //回车执行查询  
+                            $("#number").blur();
+                            mobileQuery();
+                        }
+                    }
+                });
+
+    </script>
+</html>

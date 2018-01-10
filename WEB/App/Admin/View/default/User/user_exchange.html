@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+    <head>
+        <include file="public:header" />
+
+        <link href="__CSS__/page-min.css" rel="stylesheet" type="text/css" />
+    </head>
+
+    <body>
+        <div class="container">
+            <form class="pl_del">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th style="width: 10px;">&nbsp;</th>
+                            <th style="width: 40px;">用户id</th>
+                            <th style="width: 40px;">兑换的商品id</th>
+                            <th style="width: 60px;">兑换所需米粒</th>
+                            <th style="width: 60px;">是否发货</th>
+                            <th style="width: 120px;">备注</th>
+                            <th style="width: 60px;">操作</th>
+                        </tr>
+                    </thead>
+
+                    <volist name="mlist" id="item">
+                        <tr>
+                            <td></td>
+                            <td>{$item.userid}</td>
+                            <td>{$item.itemid}</td>
+                            <td>{$item.ricenum}</td>
+                            <td>
+                                <if condition="$item['exstatus'] eq 0">
+                                    <label class="label label-inverse">待发货</label>
+                                    <else />
+                                    <label class="label label-success">已发货</label>
+                                </if>
+                            </td>
+                            <td>{$item.remark}</td>
+                            <td>
+                                <button type="button" class="button button-small button-primary edit_exchange" data-id="{$item['id']}" href="#">编辑</button>
+                            </td>
+                        </tr>
+                    </volist>
+                </table>
+                <div class="pagination pull-right">{$page}</div>
+            </form>
+        </div>
+
+        <include file="public:foot" />
+        <script type="text/javascript">
+            BUI.use(['bui/overlay', 'bui/form', 'bui/mask'], function (Overlay, Form) {
+                // 显示编辑对话框
+                $('.edit_exchange').on('click', function () {
+                    var uid = $(this).attr('data-id');
+                    var form, dialog = new Overlay.Dialog({
+                        title: '修改兑换信息',
+                        width: 600,
+                        height: 400,
+                        closeAction: 'destroy', //每次关闭dialog释放
+                        loader: {
+                            url: "{:u('User/user_exchange_edit')}",
+                            autoLoad: false, //不自动加载
+                            lazyLoad: false,
+                            callback: function () {
+                                var node = dialog.get('el').find('form');//查找内部的表单元素
+                                form = new Form.HForm({
+                                    srcNode: node,
+                                    autoRender: true,
+                                    submitType: 'ajax',
+                                    callback: function (data) {
+                                        dialog.close();
+                                        if (data.status == 2) {
+                                            BUI.Message.Alert(data.content, 'error');
+                                        } else {
+                                            location.reload(true);
+                                        }
+                                    }
+                                }).render();
+                            }
+                        },
+                        mask: true,
+                        success: function () {
+                            //可以直接action 提交
+                            form && form.ajaxSubmit(); //也可以form.ajaxSubmit(params);
+                        }
+                    });
+                    form && form.destroy(); //移除掉之前的表单
+                    dialog.show();
+                    var params = {id: uid}; //加载表单的参数
+                    dialog.get('loader').load(params);
+                });
+            });
+        </script>
+    </body>
+
+</html>

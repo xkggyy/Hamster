@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <include file="public:header" />
+        <link href="__CSS__/page-min.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="panel">
+                <div class="panel-header">
+                    <h3>日程信息：</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>日程名称</th>
+                                <th>所属板块</th>
+                                <th>开始时间</th>
+                                <th>结束时间</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{$activity.id}</td>
+                                <td>{$activity.remark}</td>
+                                <td>
+                                    <if condition="$activity['type'] eq 1">
+                                        默认1
+                                        <elseif condition="$activity['type'] eq 2" />
+                                        默认2
+                                        <elseif condition="$activity['type'] eq 3" />
+                                        默认3
+                                        <elseif condition="$activity['type'] eq 4" />
+                                        默认4
+                                        <else />
+                                        默认货架
+                                    </if>
+                                </td>
+                                <td>{$activity.start_time|date='Y-m-d H:i:s',###}</td>
+                                <td>{$activity.end_time|date='Y-m-d H:i:s',###}</td>
+                                <td>
+                                    <if condition="$activity['status'] eq 1 && $now gt $activity['end_time']">
+                                        <span class="label label-inverse" >已失效</span>
+                                        <elseif condition="$activity['status'] eq 1 && $now lt $activity['start_time']"/>
+                                        <span class="label label-warning" >未开始</span>
+                                        <elseif condition="$activity['status'] eq 1"/>
+                                        <span class="label label-success" >展示中</span>
+                                        <else />
+                                        <span class="label label-important">不展示</span>
+                                    </if>
+                                </td>
+                                <td>
+                                    <a type="button" class="button button button-primary "
+                                       href="{:u('Schedule/schedule_item_add',array('id'=>$activity['id']))}">
+                                        为日程添加商品
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="tips tips-small tips-info">
+                <span class="x-icon x-icon-small x-icon-info"><i class="icon icon-white icon-info"></i></span>
+                <div class="tips-content"><h1>下面列出的是该日程已经添加的商品！</h1></div>
+            </div>
+
+
+            <form class="pl_del" action="{:u('Schedule/schedule_item_del_batch')}" method="post">
+                <input type="hidden" value="{$activity.id}" name="timeid" />
+                <table class="table table-hover" >
+                    <thead>
+                        <tr>
+                            <th style="width: 40px;"></th>
+                            <th  style="width: 50px;">排序id</th>
+                            <th style="width: 56px;">宝贝主图</th>
+                            <th>商品标题</th>
+                            <th style="width: 120px;">分类</th>
+                            <th style="width: 120px;">价格</th>
+                            <th style="width: 60px;">状态</th>
+                            <th style="width: 140px;">录入时间</th>
+                            <th style="width: 200px;">操作</th>
+                        </tr>
+                    </thead>
+
+                    <foreach name="goodsList" item="item">
+                        <tr>
+                            <td><input class="x-grid-checkbox" type="checkbox" name="vm[]" value="{$item.il_id}" /></td>
+                            <td>{$item.il_ordid}</td>
+                            <td><img src="{$item.picturl}" class="img-responsive"/></td>
+                            <td><a href="{$item.auctionurl}" target="_blank">{$item.title}</a></td>
+                            <td>{$item.cate_name}</td>
+                            <td>{$item.reserveprice}</td>
+                            <td>
+                                <if condition="$item.status eq 1">
+                                    <span class="label label-success" >正常</span>
+                                    <else />
+                                    <span class="label label-important">不展示</span>
+                                </if>
+                            </td>
+                            <td>{$item.add_time|date='Y-m-d H:i:s',###}</td>
+                            <td>
+                                <a class="button button-small button-primary btnOrder" ordid="{$item.il_ordid}" il_id="{$item.il_id}" href="javascript:void (0);">排序</a>
+                                <a class="button button-small button-danger" onclick="delcfm();" href="{:U('Schedule/schedule_item_del',array('il_id'=>$item['il_id'],'id'=>$activity['id']))}">移除</a>
+                            </td>
+                        </tr>
+                    </foreach>
+                </table>
+                <div class="">
+                    <ul class="toolbar pull-left">
+                        <li><label class="checkbox"><input type="checkbox" id="chk_all" />全选</label></li>
+                        <li><button type="submit" onclick="delcfm();" class="button button-danger"><i class="icon-white icon-trash"></i>批量移除选中商品</button></li>
+                        <li>*(仅从该日程中移除，但不可恢复！)</li>
+                    </ul>
+                    <div class="pagination pull-right">
+                        {$page}
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <include file="public:foot" />
+        <div id="content" class="hidden" style="display: none;">
+            <form id="form" class="form-horizontal" action="{:U('Schedule/schedule_item_order')}" method="post" onkeydown="if (event.keyCode == 13) return false;">
+                <div class="row">
+                    <div class="control-group span12">
+                        <label class="control-label">输入新的排序值：</label>
+                        <div class="controls">
+                            <input type="text" class="input-normal control-text" name="ordid" value="255" data-rules="{required : true}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="control-group span12">
+                        <div class="controls">
+                            <span class="span6">*（1~255，越大越靠后！）</span>
+                            <input type="hidden" name="il_id" value="">
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <script type="text/javascript">
+            var order_info;
+
+            BUI.use(['bui/overlay', 'bui/form'], function (Overlay, Form) {
+                var form = new Form.HForm({
+                    srcNode: '#form'
+                }).render();
+                //生成弹窗
+                var dialog = new Overlay.Dialog({
+                    title: '&nbsp;&nbsp;改变排序：',
+                    width: 400,
+                    height: 150,
+                    //配置DOM容器的编号
+                    contentId: 'content',
+                    success: function () {
+                        changeOrder();
+                        this.close();
+                    }
+                });
+                //点击排序
+                $('.btnOrder').on('click', function () {
+                    order_info = this;
+                    var ordid = $(order_info).attr('ordid');
+                    $("input[name='ordid']").val(ordid);
+                    var il_id = $(order_info).attr('il_id');
+                    $("input[name='il_id']").val(il_id);
+                    dialog.show();
+                });
+            });
+
+            //ajax改变排序
+            function changeOrder() {
+                $.ajax({
+                    cache: false,
+                    type: "POST",
+                    url: "{:U('Schedule/schedule_item_order')}",
+                    data: $('#form').serialize(), //要发送的是ajaxFrm表单中的数据
+                    async: false,
+                    success: function (data) {
+                        if (data.status == 1) {
+                            BUI.use('bui/overlay', function (overlay) {
+                                BUI.Message.Alert(data.content, 'success');
+                            });
+                            setTimeout("location.reload()", 1000); //刷新页面
+                        } else {
+                            BUI.use('bui/overlay', function (overlay) {
+                                BUI.Message.Alert(data.content, 'error');
+                            });
+                        }
+                    },
+                    error: function (data) {
+                        BUI.use('bui/overlay', function (overlay) {
+                            BUI.Message.Alert('请求出错，请重新提交！', 'error');
+                        });
+                    }
+                });
+            }
+
+            $("#chk_all").click(function () {
+                //全选
+                if ($(this).attr("checked")) {
+                    $("input[name='vm[]']").attr("checked", true);
+                } else {
+                    $("input[name='vm[]']").attr("checked", false);
+                }
+            });
+
+            function delcfm() {
+                if (!confirm("确认要移除商品吗？")) {
+                    window.event.returnValue = false;
+                }
+            }
+        </script>
+    </body>
+</html>

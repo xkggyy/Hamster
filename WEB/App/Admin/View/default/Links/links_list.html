@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <include file="public:header" />
+
+        <link href="__CSS__/page-min.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="search-grid-container">
+                <div id="grid">
+                    <div class="bui-grid bui-simple-list bui-grid-width bui-grid-border bui-grid-strip" style="width: 1410px;" aria-disabled="false">
+                        <form class="pl_del" action="{:u('Links/links_del_batch')}" method="post">
+                            <div class="bui-grid-tbar" style="">
+                                <div class="bui-bar" role="toolbar" id="bar5" aria-disabled="false">
+                                    <ul class="bui-bar bui-grid-button-bar" role="toolbar" id="bar7" aria-disabled="false">
+                                        <li class="bui-bar-item-button bui-bar-item bui-inline-block" aria-disabled="false" id="bar-item-button3">
+                                            <input type="submit" class="button button-small button-danger" value="删除选中"/>
+                                        </li>
+                                        <li class="bui-bar-item-button bui-bar-item bui-inline-block" aria-disabled="false" id="bar-item-button1">
+                                            <a type="button" class="button button-small button-primary" href="{:u('Links/links_add')}">
+                                                <i class="icon-plus" data-href="{:u('Links/links_add')}"></i>添加广告
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="bui-grid-header-container">
+                                <div class="bui-grid-header" aria-disabled="false" style="width: 1408px;">
+                                    <table cellspacing="0" class="bui-grid-table" cellpadding="0">
+                                        <thead>
+                                            <tr>
+                                                <th class="bui-grid-hd" aria-disabled="false" style="width: 40px;">
+                                                    <div class="bui-grid-hd-inner">
+                                                        <div class="bui-grid-checkBox-container">
+                                                            <input class="sels" type="checkbox" name="" value="" />
+                                                        </div>
+                                                    </div>
+                                                </th>
+                                                <th class="bui-grid-hd" aria-disabled="false" style="width: 50px;">
+                                                    <div class="bui-grid-hd-inner"><span class="bui-grid-hd-title">排序id</span><span class="bui-grid-sort-icon">&nbsp;</span></div>
+                                                </th>
+                                                <th class="bui-grid-hd" aria-disabled="false" style="width: 50px;">
+                                                    <div class="bui-grid-hd-inner"><span class="bui-grid-hd-title">广告id</span><span class="bui-grid-sort-icon">&nbsp;</span></div>
+                                                </th>
+                                                <th class="bui-grid-hd" aria-disabled="false" style="width: 140px;">
+                                                    <div class="bui-grid-hd-inner"><span class="bui-grid-hd-title">广告备注</span><span class="bui-grid-sort-icon">&nbsp;</span></div>
+                                                </th>
+                                                <th class="bui-grid-hd" aria-disabled="false" style="width: 60px;">
+                                                    <div class="bui-grid-hd-inner"><span class="bui-grid-hd-title">广告图片</span><span class="bui-grid-sort-icon">&nbsp;</span></div>
+                                                </th>
+                                                <th class="bui-grid-hd" aria-disabled="false" style="width: 140px;">
+                                                    <div class="bui-grid-hd-inner"><span class="bui-grid-hd-title">广告文字/链接</span><span class="bui-grid-sort-icon">&nbsp;</span></div>
+                                                </th>
+                                                <th class="bui-grid-hd" aria-disabled="false" style="width: 140px;">
+                                                    <div class="bui-grid-hd-inner"><span class="bui-grid-hd-title">广告类型</span><span class="bui-grid-sort-icon">&nbsp;</span></div>
+                                                </th>
+                                                <th class="bui-grid-hd" aria-disabled="false" style="width: 140px;">
+                                                    <div class="bui-grid-hd-inner"><span class="bui-grid-hd-title">最后更新时间</span><span class="bui-grid-sort-icon">&nbsp;</span></div>
+                                                </th>
+                                                <th class="bui-grid-hd" aria-disabled="false" style="width: 60px;">
+                                                    <div class="bui-grid-hd-inner"><span class="bui-grid-hd-title">状态</span><span class="bui-grid-sort-icon">&nbsp;</span></div>
+                                                </th>
+                                                <th class="bui-grid-hd" aria-disabled="false" style="width: 200px;">
+                                                    <div class="bui-grid-hd-inner"><span class="bui-grid-hd-title">操作</span><span class="bui-grid-sort-icon">&nbsp;</span></div>
+                                                </th>
+                                                <th class="bui-grid-hd-empty bui-grid-hd bui-grid-hd-empty-hover bui-grid-hd" aria-disabled="false" aria-pressed="false">
+                                                    <div class="bui-grid-hd-inner"></div>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="bui-grid-body" style="width: 1408px;">
+                                <table cellspacing="0" cellpadding="0" class="bui-grid-table" style="width: 1408px;">
+                                    <tbody>
+                                        <tr class="bui-grid-header-row">
+                                            <td class=" grid-td-grid-hd1" width="40" style="height:0"></td>
+                                            <td class=" grid-td-col1" width="50" style="height:0"></td>
+                                            <td class=" grid-td-col1" width="50" style="height:0"></td>
+                                            <td class=" grid-td-col1" width="140" style="height:0"></td>
+                                            <td class=" grid-td-col1" width="60" style="height:0"></td>
+                                            <td class=" grid-td-col3" width="140" style="height:0"></td>
+                                            <td class=" grid-td-col6" width="140" style="height:0"></td>
+                                            <td class=" grid-td-col6" width="140" style="height:0"></td>
+                                            <td class=" grid-td-col6" width="60" style="height:0"></td>
+                                            <td class=" grid-td-col7" width="200" style="height:0"></td>
+                                            <td class="bui-grid-cell bui-grid-cell-empty">&nbsp;</td>
+                                        </tr>
+                                        <foreach name="linksList" item="item">
+                                            <tr class="bui-grid-row bui-grid-row-odd">
+                                                <td class="bui-grid-cell grid-td-grid-hd1" data-column-id="grid-hd1" data-column-field="">
+                                                    <div class="bui-grid-cell-inner">
+                                                        <div class="bui-grid-checkBox-container">
+                                                            <input class="x-grid-checkbox" type="checkbox" name="vm[]" value="{$item.id}" />
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="  bui-grid-cell grid-td-col1" data-column-id="col1" data-column-field="id">
+                                                    <div class="bui-grid-cell-inner">
+                                                        <span class="bui-grid-cell-text " title="">
+                                                            <span class="bui-grid-cell-text">{$item.ordid}</span>
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td class="  bui-grid-cell grid-td-col1" data-column-id="col1" data-column-field="id">
+                                                    <div class="bui-grid-cell-inner">
+                                                        <span class="bui-grid-cell-text " title="">
+                                                            <span class="bui-grid-cell-text">{$item.id}</span>
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td class="  bui-grid-cell grid-td-col4" data-column-id="col4" data-column-field="birthday">
+                                                    <div class="bui-grid-cell-inner">
+                                                        <span class="bui-grid-cell-text" title="">
+                                                            {$item.remark}
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td class="  bui-grid-cell grid-td-col2" data-column-id="col2" data-column-field="name">
+                                                    <div class="bui-grid-cell-inner">
+                                                        <span class="bui-grid-cell-text " title="">
+                                                            <if condition="$item['img'] eq '#'">
+                                                                无图
+                                                                <else />
+                                                                <img src="{$item.img}" style="width: 45px; height: 45px;">
+                                                            </if>
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td class="  bui-grid-cell grid-td-col3" data-column-id="col3" data-column-field="address">
+                                                    <div class="bui-grid-cell-inner">
+                                                        <span class="page-action grid-command" title="<if condition="$item.title eq '#'">未填写<else />{$item.title}</if>">
+                                                            <a href="{$item.href}" target="_blank"><if condition="$item.title eq '#'">未填写<else />{$item.title}</if></a>
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td class="  bui-grid-cell grid-td-col4" data-column-id="col4" data-column-field="birthday">
+                                                    <div class="bui-grid-cell-inner">
+                                                        <span class="bui-grid-cell-text" title="">
+                                                            <if condition="$item['type'] eq 1">
+                                                                横幅广告
+                                                                <elseif condition="$item['type'] eq 2" />
+                                                                导航超链
+                                                                <else />
+                                                                其他
+                                                            </if>
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td class="  bui-grid-cell grid-td-col4" data-column-id="col4" data-column-field="birthday">
+                                                    <div class="bui-grid-cell-inner"><span class="bui-grid-cell-text " title="{$item.add_time}">{$item.add_time}</span></div>
+                                                </td>
+                                                <td class="  bui-grid-cell grid-td-col5" data-column-id="col5" data-column-field="sex">
+                                                    <div class="bui-grid-cell-inner">
+                                                        <span class="bui-grid-cell-text" title="" style="text-align: center">
+                                                            <if condition="$item['status'] eq 1">
+                                                                <span class="label label-success" >展示</span>
+                                                                <else />
+                                                                <span class="label label-important">不展示</span>
+                                                            </if>
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td class="  bui-grid-cell grid-td-col7" data-column-id="col7" data-column-field="">
+                                                    <div class="bui-grid-cell-inner">
+                                                        <span class="bui-grid-cell-text " title="">
+                                                            <a class="grid-command btn-edit" title="" href="/manage/linksManage.php?act=edit&id={$item.id}#main_body">编辑</a>
+                                                            <a class="grid-command btn-del" title="" href="/manage/linksManage.php?act=del_c&id={$item.id}#main_body">删除</a>
+                                                        </span>
+                                                    </div>
+                                                </td>
+                                                <td class="bui-grid-cell bui-grid-cell-empty">&nbsp;</td>
+                                            </tr>
+                                        </foreach>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </form>
+                        <div style="" class="bui-grid-bbar">
+                            <div class="bui-bar" role="toolbar" id="bar2" aria-disabled="false">
+                                <ul class="bui-pagingbar bui-bar" role="toolbar" id="bar3" aria-disabled="false">
+                                    {$page}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <include file="public:foot" />
+        <!--全选js-->
+        <script type="text/javascript">
+            $("#chk_all").click(function () {
+                //全选
+                if ($(this).attr("checked")) {
+                    $("input[name='vm[]']").attr("checked", true);
+                } else {
+                    $("input[name='vm[]']").attr("checked", false);
+                }
+            });
+        </script>
+    </body>
+</html>

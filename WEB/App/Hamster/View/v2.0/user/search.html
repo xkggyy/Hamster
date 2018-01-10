@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>电话查询</title>
+        <meta charset="UTF-8">
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+
+            .query{
+                align-items: center;
+                width: 100%;
+                height: 10rem;
+                font-size:2rem;
+                color: #1d1d1d;
+                text-align: center;
+                margin-top: 5rem;
+
+            }
+            .input_position{
+                align-items: center;
+                text-align: center;
+                height: 2rem;
+                font-size: 1.5rem;
+                color: #1d1d1d;
+            }
+
+            .noData{
+                font-size: 2rem;
+                color: #1d1d1d;
+                visibility: hidden;
+                margin-top: 3rem;
+                text-align: center;
+            }
+            .myTable{
+                border: 1px solid #999;
+                border-collapse: collapse;
+                width: 70%;
+                margin: 3rem auto;
+                visibility: hidden;
+            }
+            .myTable th
+            {
+                height: 3.5rem; 
+                line-height: 3.5rem;
+                text-align: center;
+                border-bottom: 1px solid #999;
+                font-size: 1.5rem;
+            }
+
+            .myTable td
+            {
+                height: 3.5rem;
+                line-height: 3.5rem;
+                text-align: center;
+                border-bottom: 1px solid #999;
+                padding: 0;
+                margin: 0;
+                font-size: 1.5rem;
+            }
+            .myTable tr:hover
+            {
+                background-color: #f8f8f8;
+            }
+            .myTable tr:nth-child(2n)
+            {
+                background-color: #f8f8f8;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div class="query">用户电话查询</div>
+        <form class="input_position">
+            电话: <input type="tel" id="tel_number" maxlength="11" class="input_position"/>
+            <input type="button" id="query" value="查询" style="font-size: 1.5rem;color: #1d1d1d;" onclick="queryTel()" />
+        </form>
+
+        <div id="noMessage" class="noData">没有数据</div>
+
+        <table id="table" border ="1px" class="myTable">
+            <thead>
+                <tr>
+                    <th>目录</th>
+                    <th>内容</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>姓名</td>
+                    <td id="nickname">22</td>
+                </tr>
+                <tr>
+                    <td>电话</td>
+                    <td id="tel">22</td>
+                </tr>
+                <tr>
+                    <td>qqID</td>
+                    <td id="qq">22</td>
+                </tr>
+                <tr>
+                    <td>性别</td>
+                    <td id="gender">22</td>
+                </tr>
+                <tr>
+                    <td>城市</td>
+                    <td id="city">22</td>
+                </tr>
+                <tr>
+                    <td>积分</td>
+                    <td id="score">22</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </body>
+    <script type="text/javascript" src="/public/hamster/js/jq/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript">
+
+                var phone;
+                var telNumber = document.getElementById('tel_number');
+                var str = document.getElementById('noMessage');
+
+                var form = document.getElementById('table');
+
+                var nickname = document.getElementById('nickname');
+                var tel = document.getElementById('tel');
+                var qq = document.getElementById('qq');
+                var gender = document.getElementById('gender');
+                var city = document.getElementById('city');
+                var score = document.getElementById('score');
+
+                function clean(s) {
+                    s.value = "";
+                }
+
+                function checkPhone() {
+                    phone = document.getElementById('tel_number').value;
+                    if (phone !== "") {
+                        if ((/^1[3|4|5|7|8]\d{9}$/.test(phone))) {
+                            return true;
+                        } else {
+                            alert("手机号码無效，请重新填写");
+                            clean(telNumber);
+                            return false;
+                        }
+
+                    } else {
+                        alert("手机号码不能為空，请重新填写");
+                        return false;
+                    }
+                }
+
+                function queryTel() {
+                    var a = checkPhone();
+                    if (a === true) {
+                        var data = {tel: phone};
+                        var aj = $.ajax({
+                            url: "/index.php/hamster/user/getuserbytel",
+                            type: "post",
+                            data: data,
+                            dataType: 'json',
+                            success: function (result) {
+                                if (result.message === "没有找到数据") {
+                                    showMessage("没有找到数据");
+                                } else {
+                                    form.style.visibility = "visible";
+                                    nickname.innerHTML = result.nickname;
+                                    tel.innerHTML = result.tel;
+                                    qq.innerHTML = result.qq_openid;
+                                    gender.innerHTML = result.gender;
+                                    city.innerHTML = result.city;
+                                    score.innerHTML = result.score;
+                                    $("#tel_number").focus(function () {
+                                        name.value = "";
+                                        tel.value = "";
+                                        qq.value = "";
+                                        gender.value = "";
+                                        city.value = "";
+                                        score.value = "";
+                                        clean(telNumber);
+                                        form.style.visibility = "hidden";
+                                    })
+                                }
+                            },
+                            error: function () {
+                                alert("网络出错了");
+                            }
+                        })
+
+                    } else {
+                    }
+                }
+
+                $(function () {
+                    document.onkeydown = function (event) {
+                        var e = event || window.event || arguments.callee.caller.arguments[0];
+                        if (e && e.keyCode === 13) {
+                            event.preventDefault();
+                            //回车执行查询  
+                            $("#tel_number").blur();
+                            queryTel();
+                        }
+                    }
+                });
+
+                function showMessage(s) {
+                    str.innerHTML = s;
+                    str.style.visibility = "visible";
+                    $("#tel_number").focus(function () {
+                        clean(str);
+                        clean(telNumber);
+                        str.style.visibility = "hidden";
+                    })
+                }
+
+    </script>
+
+</html>

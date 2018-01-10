@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<head>
+    <include file="public:header" />
+
+    <link href="__CSS__/page-min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="container">
+        <!--{*搜索表单*}-->
+        <div class="row">
+            <div class="span24">
+                <!--<form id="searchForm" class="well form-inline" method="POST" action="{:u('members/members_list')}">
+                    <input type="text" class="control-text bui-form-field" name="account" value="{$map.account}" placeholder="用户ID" />
+                    <input type="text" class="control-text bui-form-field" name="nickname" value="{$map.nickname}" placeholder="昵称" />
+                    <button type="submit" class="button button-primary">搜索</button>
+                </form>-->
+            </div>
+        </div>
+
+        <form class="pl_del" action="" method="post">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th style="width: 40px;">&nbsp;</th>
+                        <th style="width: 80px;">模块名称</th>
+                        <th style="width: 120px;">模块url</th>
+                        <th style="width: 30px;">类型</th>
+                        <th style="width: 30px;">状态</th>
+                        <th style="width:150px;">附加条件</th>
+                        <th style="width: 30px;">操作</th>
+                    </tr>
+                </thead>
+                <volist name='list' id='item'>
+                    <tr>
+                        <td><input class="x-grid-checkbox" type="checkbox" name="rid[]" title="{$item.id}" value="{$item.id}" /></td>
+                        <td>{$item.title}</td>
+                        <td>{$item.name}</td>
+                        <td>{$item['type']==1?'url':'菜单'}</td>
+
+                        <td>
+                            <if condition="$item['status'] eq 0">
+                                <label class="label label-inverse">关闭</label>
+                                <else />
+                                <label class="label label-success">正常</label>
+                            </if>
+                        </td>
+                        <td>{$item.condition}</td>
+                        <td>
+                            <button type="button" class="edit_rule button button-small button-primary" data-id="{$item.id}">编辑</button>
+                            <button type="button" class=" button button-small button-danger delete_rules" data-id="{$item.id}">删除</button>
+                        </td>
+                    </tr>
+                </volist>
+        </form>
+        <div class="">
+            <ul class="toolbar pull-left">
+                <li><button type="button" id='addrule' class="button button-primary">添加模块</button></li>
+
+            </ul>
+        </div>
+    </div>
+
+
+</body>
+<include file="public:foot" />
+<script type='text/javascript'>
+    var dialog;
+    var form;
+    BUI.use(['bui/overlay', 'bui/form'], function(Overlay, Form) {
+
+        dialog = new Overlay.Dialog({
+            title: '权限',
+            width: 500,
+            height: 320,
+            //配置DOM容器的编号
+            loader: {
+                url: '{:u("oauth/rule_add")}',
+                type: 'GET',
+                autoLoad: false,
+                lazyLoad: false,
+                mask: false,
+                callback: function() {
+                    var node = dialog.get('el').find('form'); //查找内部的表单元素
+                    form = new Form.HForm({
+                        srcNode: node,
+                        autoRender: true,
+                        submitType: 'ajax',
+                        callback: function(data) {
+                            dialog.close();
+                            location.reload();
+                        }
+                    }).render();
+                }
+            },
+            success: function() {
+                form.submit({
+                    url: '{:u("oauth/dorule_add")}',
+                    success: function(d) {
+                        if (d.success) {
+                            BUI.Message.Alert(d.message + '成功', 'success')
+                        } else {
+                            BUI.Message.Alert(d.message + '失败', 'error')
+                        }
+                    }
+                });
+            }
+        });
+    });
+    $("#addrule").click(function() {
+        dialog.show();
+        dialog.get('loader').load({});
+    });
+    $(".edit_rule").click(function() {
+        dialog.show();
+        dialog.get('loader').load({
+            id: $(this).attr('data-id')
+        });
+    });
+    $(".delete_rules").click(function() {
+        $this = $(this);
+        BUI.Message.Show({
+            msg: '确定要删除该模块吗?',
+            icon: 'question',
+            buttons: [{
+                text: '删除',
+                elCls: 'button button-primary',
+                handler: function() {
+                    $.ajax({
+                        url: '{:u("oauth/rules_delete")}',
+                        type: 'post',
+                        dataType: 'json',
+                        data: {
+                            id: $this.attr("data-id")
+                        },
+                        success: function(d) {
+                            if (d) {
+                                BUI.Message.Alert('已删除', 'success');
+                                $this.parent().parent().remove();
+                            } else {
+                                BUI.Message.Alert('删除失败', 'info');
+                            }
+                        }
+                    })
+                }
+            }, {
+                text: '取消',
+                elCls: 'button',
+                handler: function() {
+                    this.close();
+                }
+            }]
+        })
+    });
+</script>
+
+
+</html>

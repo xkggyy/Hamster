@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+    <head>
+        <include file="public:header" />
+
+        <link href="__CSS__/page-min.css" rel="stylesheet" type="text/css" />
+    </head>
+
+    <body>
+        <div class="container">
+            <form class="pl_del">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th style="width: 10px;">&nbsp;</th>
+                            <th style="width: 40px;">中奖用户id</th>
+                            <th style="width: 40px;">奖品id</th>
+                            <th style="width: 60px;">中奖时间</th>
+                            <th style="width: 60px;">奖品发货状态</th>
+                            <th style="width: 120px;">备注</th>
+                        </tr>
+                    </thead>
+                    <volist name="tlist" id="item">
+                        <tr>
+                            <td></td>
+                            <td>{$item.userid}</td>
+                            <td>{$item.prizeid}</td>
+                            <td>{$item.prizetime|date="Y-m-d H:i:s",###}</td>
+                            <td>
+                                <if condition="$item['extatus'] eq 1">
+                                    <label class="label label-success">已发货</label>
+                                    <else />
+                                    <label class="label label-inverse">待发货</label>
+                                </if>
+                            </td>
+                            <td>{$item.remark}</td>
+                        </tr>
+                    </volist>
+                </table>
+                <div class="pagination pull-right">{$page}</div>
+            </form>
+        </div>
+        <include file="public:foot" />
+        <script type="text/javascript">
+
+        </script>
+    </body>
+
+</html>

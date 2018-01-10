@@ -1,0 +1,408 @@
+﻿        .leftBar {
+            margin: 44px 0 50px;
+        }
+        .slideShowBar{
+            width:960px;
+            height:300px;
+            overflow:hidden;
+        }
+        .slide-show{
+            position:relative;
+        }
+        .slide-show .container{
+            height:300px;
+            position:relative;
+            overflow:hidden;
+        }
+
+        .slide-show .container p{
+            position:absolute;
+            top:300px;
+            width:960px;
+            height:300px;
+            overflow:hidden;
+        }
+        .slide-show .container p.current,
+        .slide-show .container p.next{
+            top:0;
+        }
+        .slide-show .container p.current{
+            z-index:1;
+        }
+        .slide-show .hidden{display:none;}
+        .slide-show img{
+            width:960;
+            height:300px;
+        }
+        .slide-show .controller{
+            position:absolute;
+            top:19px;
+            left:0;
+            width:100%;
+            text-align:center;
+            z-index:2;
+        }
+        .slide-show .controller .current{
+            background:url(../img/bd_union/sprites24.png) -306px -383px no-repeat;
+            _background:url(../img/bd_union/sprites2.png) -306px -383px no-repeat;
+        }
+        .slide-show  .pager {
+            display:inline-block;
+            margin:0 6px;
+            width:10px;
+            height:10px;
+            text-align:center;
+            background:url(../img/bd_union/sprites24.png) -306px -420px no-repeat;
+            _background:url(../img/bd_union/sprites2.png) -306px -420px no-repeat;
+            cursor: pointer;
+        }
+        .slide-show .pager span{
+            display:inline-block;
+            text-indent:-3000px;
+        }
+li{ list-style: none outside none;margin:0;padding:0px;}
+body,img,a,p,ul,li,td,div,span,botton,h1,h2,h3,h4,h5,form{border:0;margin:0;padding:0;}
+h3{font-size:14px;color:#333333;}
+h4{font-size:14px;}
+h5{font-size:12px;}
+a{ text-decoration:none;color:#4b81c2;}
+img{display:block;}
+body{
+    font:12px '宋体',Arial,Helvetica,sans-serif;
+    color:#666666;
+    text-algin:left;
+}
+.dot{
+	background: url("../img/bd_union/sprites2.png") -310px -536px no-repeat;
+    padding-left: 1em;
+}
+.hidden{display: none;}
+
+.mainArea{
+	width:960px;
+	margin:0 auto;
+}
+.wrapper{
+    min-width: 960px;
+}
+#Header{
+	height:55px;
+	background:url("../img/bd_union/sprites.png") repeat-x ;
+}
+#Header a{
+	color:#686868;
+}
+.logo{
+	float:left;
+}
+#Toolbar{
+	float:right;
+	margin-top:15px;
+	overflow:hidden;
+}
+#Toolbar li{
+	float:left;
+	margin-left:16px;
+	line-height:40px;
+}
+#Toolbar a{
+	padding-left:12px;
+	background:url("../img/bd_union/sprites2.png") -310px -348px no-repeat;
+}
+#Nav{
+	height:59px;
+	background:url("../img/bd_union/sprites.png") left -56px repeat-x;
+}
+#Nav ul{
+	float:left;
+}
+#Nav li{
+	float:left;
+}
+#Nav li a{
+	display:inline-block;
+	height:59px;
+	line-height:59px;
+	color:#f5f5f7;
+	font-size:14px;
+}
+#Nav li span{
+	margin:0 33px;
+}
+#Nav .cur{
+	font-weight:bold;
+	background:url("../img/bd_union/sprites.png") left -118px no-repeat;
+}
+#Nav .cur a{
+	background:url("../img/bd_union/sprites.png") right -180px no-repeat;
+}
+#Nav a:hover{
+	background:url("../img/bd_union/sprites.png") right -180px no-repeat;
+}
+#Nav .join a:hover{
+	background: none;
+	text-decoration: underline;
+}
+.join{
+	float:right;
+	margin-top:13px;
+	padding-left:23px;
+	width:84px;
+	height:33px;
+	background:url("../img/bd_union/sprites2.png") left -305px no-repeat;
+	text-shadow:0 1px 2px #abacc1;
+	line-height:33px;
+	font-weight:bold;
+}
+.join a{
+	color:#363a46;
+}
+.mainBody{
+	margin-top:27px;
+	overflow:hidden;
+}
+.indexBody{
+	overflow:hidden;
+	background:url("../img/bd_union/sprites.png") left -552px repeat-x;
+}
+.indexContent{
+	position:relative;
+	margin-bottom:54px;
+}
+.leftBar{
+	width:620px;
+	margin:40px 0 50px;
+}
+.rightBar{
+	position:absolute;
+	right:0;
+	top:246px;
+	margin-right:-2px;
+	width:316px;
+	background:url("../img/bd_union/loginbar.png") no-repeat;
+	_background:url("../img/bd_union/loginbar2.png") no-repeat;
+	z-index:99;
+}
+.union-products{
+	height:206px;
+}
+.union-products ul{
+	overflow:hidden;
+	zoom:1;
+}
+.union-products  li{
+	float:left;
+	width:290px;
+	margin:0 36px 0 0;
+}
+.union-products ul .last{
+	margin-right:0;
+}
+.union-products .first{
+	border-bottom:1px dotted #d7dbea;
+	margin-bottom:24px;
+	padding-bottom:24px;
+}
+.union-products .first li{
+	margin-bottom:0;
+}
+
+.union-products .title{
+	padding-bottom:15px;
+	font-size:14px;
+	color:#444444;
+	font-weight:bold;
+}
+.union-products .pic{
+	display:block;
+	float:left;
+	width:46px;
+	height:46px;
+	text-indent:-3000px;
+}
+.union-products .intro{
+	float:right;
+	width:228px;
+	color:#999999;
+}
+
+.union-products2{
+	margin-left: 8px;
+}
+.union-products2 li{
+	width : 180px;
+	margin-right: 36px;
+}
+.union-products2 .pic-head{
+	overflow:  hidden;
+	zoom: 1;
+	margin-bottom: 27px;
+}
+.union-products2 .title{
+	padding:15px 0 15px 12px;
+	float: left;
+	font-size:14px;
+	color:#444444;
+	font-weight:bold;
+}
+
+.union-products2 .pic{
+	display:block;
+	float:left;
+	width:46px;
+	height:46px;
+	text-indent:-3000px;
+}
+.union-products2 .intro{
+	width:auto;
+	line-height: 18px;
+	color:#999999;
+}  
+.pic-wm{
+	background:url("../img/bd_union/sprites2.png") left -435px repeat-x;
+}
+.pic-ss{
+	background:url("../img/bd_union/sprites2.png") -47px -435px repeat-x;
+}
+.pic-app{
+	background:url("../img/bd_union/sprites2.png") -94px -435px repeat-x;
+}
+.pic-hong{
+	background:url("../img/bd_union/sprites2.png") -141px -435px repeat-x;
+}
+
+.parters,.bulletinBar{
+	margin:55px 0 0;
+}
+.parters-head,.bulletin-head{
+	border-bottom:1px solid #e6e9f2;
+	padding-bottom:10px;
+	margin-bottom:10px;
+	overflow:hidden;
+	zoom:1;
+}
+.parters-head h3,.bulletin-head h3{
+	float:left;
+	font-size:14px;
+	color:black;
+}
+.parters-head a,.bulletin-head a{
+	float:right;
+	text-align:right;
+}
+.parters ul{
+	overflow:hidden;
+	zoom:1;
+	margin:20px 0;
+}
+.partersList2{
+	margin-bottom:0;
+}
+.parters li{
+	display:inline-block;
+	float:left;
+	width:120px;
+	height: 60px;
+	margin:0 3px 0 0;
+}
+.parters .last{
+	margin-right:0;
+}
+.parters li a{
+	display:block;
+	height:60px;
+}
+.parter-sina{
+	background:url("../img/bd_union/parters.png") left top no-repeat;
+}
+.parter-youku{
+	background:url("../img/bd_union/parters.png") left -54px no-repeat;
+}
+.parter-xiuxiu{
+	background:url("../img/bd_union/parters.png") -124px top no-repeat;
+}
+.parter-168{
+	background:url("../img/bd_union/parters.png") -124px -54px no-repeat;
+}
+.parter-kugou{
+	background:url("../img/bd_union/parters.png") -262px top no-repeat;
+}
+.parter-ah{
+	background:url("../img/bd_union/parters.png") -262px -54px no-repeat;
+}
+.parter-ct{
+	background:url("../img/bd_union/parters.png") -392px top no-repeat;
+}
+.parter-tt{
+	background:url("../img/bd_union/parters.png") -392px -54px no-repeat;
+}
+.parter-skype{
+	background:url("../img/bd_union/parters.png") -518px top no-repeat;
+}
+.parter-pp{
+	background:url("../img/bd_union/parters.png") -518px -54px no-repeat;
+}
+.loginBar,.customerInfoBar{
+	height:303px;
+	overflow:hidden;
+}
+#Footer{
+	height:203px;
+	background:#f6f6f8 url("../img/bd_union/sprites.png") 0 -342px repeat-x;	
+	line-height:29px;
+	overflow:hidden;
+}
+#Footer .mainArea{
+	padding-top:37px;
+}
+#Footer a{
+	color:#777777;
+}
+#Footer strong{
+	color:#555555;
+}
+#Footer .content{
+	overflow:hidden;
+}
+#Footer .reLinks{
+	float:left;
+}
+#Footer .reLinks a{
+	padding:0 21px;
+}
+.weibo,.voice{
+	float:right;
+	padding-left: 24px;
+}
+.weibo a, .voice a{
+	display:block;
+	padding-left:24px;
+	height:24px;
+	line-height:24px;
+	text-align:right;
+	background-image:url("../img/bd_union/sprites2.png");
+	background-repeat: no-repeat;
+}
+.weibo a{
+	background-position: -292px -305px ;
+	width:54px;
+}
+.voice a{
+	background-position: 0 -576px ; 
+	width: 66px;
+}
+
+.copyRight{
+	margin-top:50px;
+	clear:both;
+	text-align:center;
+	color:#717171;
+}
+.copyRight .t{
+    font-family:Tahoma,'宋体',Arial,Helvetica,sans-serif;
+}
+.copyRight .m{
+    color:#4b81c2;
+	padding:0 5px;
+}
+.ucsl-install-plug{display:block;font-size:12px;width:100%;height:100%;line-height:26px;text-align:center;background:#fff;}.ucsl-dialog{z-index:1000;width:540px;left:-3000px;background:#fff;position:absolute;top:110px;border-radius:6px;}.ucsl-dialog-title{border-bottom:1px solid #cecece;height:30px;line-height:30px;padding:6px;padding-left:16px;}.ucsl-dialog-title-word{float:left;font:16px 'Microsoft YaHei','Simsun';}.ucsl-dialog-title-close{float:right;width:21px;height:21px;background:url("http://cas.baidu.com/img/close.png") no-repeat #fff;cursor:pointer;margin-right:4px;}.ucsl-dialog-content{margin:10px;text-align:center;}.ucsl-dialog-content h1{font-size:14px;color:#000;}.ucsl-dialog-content div{font-size:14px;margin:30px;}.ucsl-dialog-content div.orange{color:#FE7E01;font-weight:700;}.ucsl-layermask{z-index:999;position:absolute;top:0;left:0;background-color:silver;filter:alpha(opacity=25);opacity:.25;}

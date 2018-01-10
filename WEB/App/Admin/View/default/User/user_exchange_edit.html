@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <include file="public:header" />
+        <link href="__CSS__/page-min.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <form action="{:u('User/user_exchange_update')}" class="form-horizontal" method="post" id='user_exchange_update'>
+                    <div class="control-group">
+                        <label class="control-label"><s>*</s>商品id：</label>
+                        <input type="hidden" name="Id" value="{$rice.id}">
+                            <div class="controls">
+                                <select name="itemId">
+                                    <volist name="goods" id="goodsid">
+                                        <option value="{$goodsid.id}">{$goodsid.title}</option>
+                                    </volist>
+                                </select>
+                            </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label"><s>*</s>兑换所需米粒：</label>
+                        <div class="controls">
+                            <input type="text" class="span2 taoPrice" name="ricenum" value="{$rice.ricenum}"/>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label"><s>*</s>备注：</label>
+                        <div class="controls">
+                            <input type="text" class="span2 taoPrice" name="remark" value="{$rice.remark}"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <include file="public:foot" />
+
+        <script type="text/javascript">
+
+        </script>
+
+    </body>
+</html>

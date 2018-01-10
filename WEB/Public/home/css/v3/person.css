@@ -1,0 +1,20 @@
+
+/**中间部分**/
+/*头部*/
+#c_head{width: 100%;background:#F7860C;}
+.c_head{width: 1000px;margin: 0 auto;height: 118px;}
+.c_head .left{width: 500px;float:left;}
+.c_head .left img{margin: 21px 20px 0 0;width: 82px;height:82px;border-radius: 50%;}
+.c_head .left .desc{display: inline-block;}
+.c_head .right{width: 500px;float:right;padding-left: 300px;box-sizing: border-box;}
+.c_head .right h3{font-weight: bold; }
+.c_form{width: 100%;background: #FED586;}
+.c_form .content{width: 1000px;margin: 0 auto;height:600px;padding-top: 45px;box-sizing: border-box;}
+.c_form .content #myTab {float: left;}
+.c_form .content #myTab li{width: 116px;height: 40px;margin: 9px 0px;border: 2px solid #002651;float: none;line-height: 40px;text-align: center;color: #4c5365;border-right: 0;border-top-left-radius: 4px;border-bottom-left-radius: 4px;}
+.c_form .content #myTab li.active{width: 116px;height: 40px;margin: 7px 0;border: 2px solid #002651;border-top-left-radius: 4px;border-bottom-left-radius: 4px;background: #4c5365;float: none;line-height: 40px;text-align: center;color: #fff;}
+.c_form .content #myTab li:hover{cursor:pointer;}
+.c_form .content #myTab li{font-size: 16px;font-family: "微软雅黑"}
+.c_form .box{width: 860px;height: 510px;border-radius: 4px;border:4px solid #002651;display: inline-block;background: #fff;margin-left: -2px;}
+
+.yingcangdian span{overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}

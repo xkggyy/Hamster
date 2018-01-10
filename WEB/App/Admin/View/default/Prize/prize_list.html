@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+    <head>
+        <include file="public:header" />
+
+        <link href="__CSS__/page-min.css" rel="stylesheet" type="text/css" />
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="toolbar pull-left">
+                <a id="cadd" data-type="{$type}" class="button button-small button-primary" href="#">
+                    <i class="icon-white icon-plus" data-href=""></i>{$typename}
+                </a>
+            </div>
+
+            <form class="pl_del" id="J_Form" action="{:u('Prize/prize_del_batch')}" method="post">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th style="width: 10px;">&nbsp;</th>
+                            <th style="width: 32px;">奖品图片</th>
+                            <th style="width: 32px;">奖品名称</th>
+                            <th style="width: 32px;">奖品价格</th>
+                            <th style="width: 32px;">奖品概率</th>
+                            <th style="width: 32px;">奖品类型</th>
+                            <th style="width: 32px;">所属活动</th>
+                            <th style="width: 32px;">奖品状态</th>
+                            <th style="width: 32px;">奖品兑换所需米粒</th>
+                            <th style="width: 32px;">操作</th>
+                        </tr>
+                    </thead>
+
+                    <volist name="plist" id="item">
+                        <tr>
+                            <td><input class="x-grid-checkbox" type="checkbox" name="vm[]" title="{$item.id}" value="{$item.id}" /></td>
+                            <td><img src="{$item.goodspic}" class="img-responsive" width="32" height="32" /></td>
+                            <td>{$item.prizename}</td>
+                            <td>{$item.prizeprice}</td>
+                            <td>{$item.prizeprobability}</td>
+                            <td>
+                                <if condition="$item['prizetype'] eq 1">
+                                    <label class="label label-success">积分奖品</label>
+                                    <elseif condition="$item['prizetype'] eq 2"/>
+                                    <label class="label label-success">虚拟奖品</label>
+                                    <else />
+                                    <label class="label label-inverse">实物奖品</label>
+                                </if>
+                            </td>
+                            <td>
+                                <if condition="$item['activetype'] eq 1">
+                                    <label class="label label-success">大转盘</label>
+                                    <else />
+                                    <label class="label label-inverse">其他</label>
+                                </if>
+                            </td>
+                            <td>
+                                <if condition="$item['prizestatus'] eq 1">
+                                    <label class="label label-success">正常</label>
+                                    <else />
+                                    <label class="label label-inverse">不显示</label>
+                                </if>
+                            </td>
+                            <td>{$item.ricenum}</td>
+                            <td>
+                                <button type="button" class="button button-small button-primary edit" data-id="{$item['id']}" href="#">编辑</button>
+                            </td>
+                        </tr>
+                    </volist>
+                </table>
+                <div class="row-fluid">
+                    <ul class="toolbar pull-left">
+                        <li><label class="checkbox"><input type="checkbox" id="chk_all" />全选</label></li>
+                        <li><a class="delcfm button button-danger"><i class="icon-white icon-trash"></i>删除</a></li>
+                    </ul>
+                    <div class="pagination pull-right">{$page}</div>
+                </div>
+            </form>
+        </div>
+        <include file="public:foot" />
+        <script type="text/javascript">
+
+            $("#chk_all").click(function () {
+                //全选
+                if ($(this).attr("checked")) {
+                    $("input[name='vm[]']").attr("checked", true);
+                } else {
+                    $("input[name='vm[]']").attr("checked", false);
+                }
+            });
+
+            BUI.use(['bui/overlay', 'bui/form', 'bui/mask'], function (Overlay, Form) {
+                function showdel() {
+                    BUI.Message.Confirm('请核实清楚后再做批量删除操作！', function () {
+                        var DForm = new Form.HForm({
+                            srcNode: '#J_Form',
+                            submitType: 'ajax',
+                            callback: function (data) {
+                                location.reload();
+                            }
+                        }).render();
+                        DForm && DForm.ajaxSubmit();
+                    }, 'question');
+
+                }
+                $('.delcfm').on('click', function () {
+                    showdel();
+                });
+                // 显示添加对话框
+                $('#cadd').on('click', function () {
+                    $this = $(this);
+                    var form, dialog = new Overlay.Dialog({
+                        title: $this.text(),
+                        width: 700,
+                        height: 600,
+                        closeAction: 'destroy', //每次关闭dialog释放
+                        loader: {
+                            url: '{:u("Prize/prize_add")}?type=' + $this.attr("data-type"),
+                            autoLoad: false, //不自动加载
+                            lazyLoad: false,
+                            callback: function () {
+                                var node = dialog.get('el').find('form');//查找内部的表单元素
+                                form = new Form.HForm({
+                                    srcNode: node,
+                                    autoRender: true,
+                                    submitType: 'ajax',
+                                    callback: function (data) {
+                                        dialog.close();
+                                        if (data.status == 2) {
+                                            BUI.Message.Alert(data.content, 'error');
+                                        } else {
+                                            location.reload();
+                                        }
+                                    }
+                                }).render();
+                            }
+                        },
+                        mask: true,
+                        success: function () {
+                            //可以直接action 提交
+                            form && form.ajaxSubmit(); //也可以form.ajaxSubmit(params);
+                        }
+                    });
+                    form && form.destroy(); //移除掉之前的表单
+                    dialog.show();
+                    var params = {}; //加载表单的参数
+                    dialog.get('loader').load(params);
+                });
+                // 显示编辑对话框
+                $('.edit').on('click', function () {
+                    var iid = $(this).attr('data-id');
+                    var form, dialog = new Overlay.Dialog({
+                        title: '修改奖品信息',
+                        width: 700,
+                        height: 600,
+                        closeAction: 'destroy', //每次关闭dialog释放
+                        loader: {
+                            url: "{:u('Prize/prize_edit')}",
+                            autoLoad: false, //不自动加载
+                            lazyLoad: false,
+                            callback: function () {
+                                var node = dialog.get('el').find('form');//查找内部的表单元素
+                                form = new Form.HForm({
+                                    srcNode: node,
+                                    autoRender: true,
+                                    submitType: 'ajax',
+                                    callback: function (data) {
+                                        dialog.close();
+                                        if (data.status == 2) {
+                                            BUI.Message.Alert(data.content, 'error');
+                                        } else {
+                                            location.reload();
+                                        }
+                                    }
+                                }).render();
+                            }
+                        },
+                        mask: true,
+                        success: function () {
+                            //可以直接action 提交
+                            form && form.ajaxSubmit(); //也可以form.ajaxSubmit(params);
+                        }
+                    });
+                    form && form.destroy(); //移除掉之前的表单
+                    dialog.show();
+                    var params = {id: iid}; //加载表单的参数
+                    dialog.get('loader').load(params);
+                });
+            });
+
+
+        </script>
+    </body>
+
+</html>

@@ -1,0 +1,117 @@
+*{margin: 0;padding: 0;font-family: '黑体';}
+#main_v3 .toplogo{position: absolute;left: 40px;top: 35px;z-index: -2;}
+#main_v3 .top_cmi {width: 80px;height: 20px;position: absolute;top: 15px;right: 15px;/*border: 1px solid #DCDCDC;*/z-index: 2;}
+#main_v3 .top_cmi div { width: 20px;float: left;height: 100%;text-align: center;line-height: 20px;cursor: pointer;margin-right: 10px;}
+#main_v3 .top_cmi .topc_close{margin-right: 0;}
+/*首页*/
+#main_v3 .menu .function{width: 278px;height: 208px;position: absolute;text-align: center;line-height: 268px;transition: transform 400ms;cursor: pointer;}
+#main_v3 .menu .pt_30 img{position: relative;top: -30px;}
+#main_v3 .menu .function a{width: 100%;height: 100%;display: inline-block;}
+#main_v3 .menu .function img{transition: transform 400ms; vertical-align:initial}
+#main_v3 .menu .function:hover{transform: scale(1.03);z-index: 2;}
+#main_v3 .menu .function:hover img{transform: scale(1.15); vertical-align:initial}
+#main_v3 .menu .function p{color: #FFF;position: absolute;bottom: 35px;font-family: '微软雅黑';font-size: 22px;line-height: 22px;width: 100%;top: 152px;transition: top 400ms;}
+#main_v3 .menu .function:hover p{top: 157px;}        
+#main_v3 .swiper-container{top:135px;}
+#main_v3 .swiper-pagination-bullet-active{background: #FF6400;}
+#main_v3 .swiper-container-horizontal>.swiper-pagination{top:435px;}
+#main_v3 .swiper-pagination-bullet{width: 12px;height: 12px;}
+#main_v3 .swiper-button-next, #main_v3 .swiper-button-prev{top: 35%; height: 70px;width: 40px;background-size: 100% 100%;}
+#iframe{position: relative;z-index: 100;background-color: #FFF;border: none;}
+.iframe_other{position: absolute;background-color: #FFF;left: 975px;top:0px;z-index:100;width:100%;height:100%}
+/*头部*/
+#qqgroup .top{background: url('../img/img/qun/qq_top_bg.jpg');background-size: 100% 100%;position: relative;}
+#wxgroup .top{background: url('../img/img/qun/wx_top_bg.jpg');background-size: 100% 100%;position: relative;}
+#rmdSr .top{background: url('../img/img/rmdSr_top_bg.jpg');background-size: 100% 100%;position: relative;}
+#center .top{background: url('../img/img/user/user_top_bg.jpg');background-size: 100% 100%;position: relative;height: 160px;}
+#help .top{background: url('../img/img/help/help_top_bg.jpg');background-size: 100% 100%;position: relative;}
+/*#qfset .top{background: url('../img/img/help/help_top_bg.jpg');background-size: 100% 100%;position: relative;}*/
+.toplogo{position: absolute;left: 40px;top: 25px;cursor: pointer;}
+.top_cmi {height: 24px;position: absolute;top: 15px;right: 15px;z-index: 2;}
+.top_cmi div { width: 26px;float: left;height: 100%;text-align: center;line-height: 20px;cursor: pointer;}
+.top_cmi .topc_max {width: 28px;}
+/*QQ、微信群发*/
+.qwgroup .qq_goods{position: absolute;left: 40px;top: 30px;width: 60%;}
+.qwgroup .qq_goods_main{border: 1px solid #d3d3d3;height: 500px;padding: 6px;}
+.qwgroup .qq_goods .goods_li{width: 100%;height: 46px;text-align: center;line-height: 46px;}
+.qwgroup .qq_goods .goods_li li{list-style: none;width: 50%;color: #bfbfbf;float: left;cursor: pointer;font-size: 18px;}
+.qwgroup .qq_goods .goods_li .xuan_li{color: #f6750d;border-bottom: 3px solid #f6750d;}
+.qwgroup .qq_goods .q_goods{padding: 12px 18px;height: 430px;overflow:auto;margin-top: 5px;}
+#wait_goods::-webkit-scrollbar {width: 5px;background-color: #cbcbcb;}
+#wait_goods::-webkit-scrollbar-thumb {background-color: #cbcbcb;}
+#wait_goods::-webkit-scrollbar-track {background-color: #FFF;}
+#already_goods::-webkit-scrollbar {width: 5px;background-color: #cbcbcb;}
+#already_goods::-webkit-scrollbar-thumb {background-color: #cbcbcb;}
+#already_goods::-webkit-scrollbar-track {background-color: #FFF;}
+#crowdId::-webkit-scrollbar {width: 5px;background-color: #cbcbcb;margin-right: 3px;}
+#crowdId::-webkit-scrollbar-thumb {background-color: #cbcbcb;margin-right: 3px;}
+#crowdId::-webkit-scrollbar-track {background-color: #FFF;margin-right: 3px;}
+.qwgroup .qq_goods .goods_q{height: 56px;margin-top: 5px;position: relative;}
+.qwgroup .qq_goods .goods_q img{width: 56px;height: 56px;}
+.qwgroup .qq_goods .goods_q p{position: absolute;width: 80%;top: 10px;left: 60px;font-size: 14px;}
+.qwgroup .qq_crowd{position: absolute;right: 58px;top: 30px;width: 360px;box-shadow: 0px 0px 30px -5px rgba(246,117,13,.2);border-radius: 10px;}
+.qwgroup .qq_crowd_bg{background:url("../img/img/qun/qun_bg_cen.png") repeat-y;height: 350px;margin-top: -5px;}
+.qwgroup .qq_crowd_but{background:url("../img/img/qun/qun_bg_bottom.png") no-repeat;height: 100px;}
+.qwgroup .qq_crowd .qq_crowd_bg{padding: 20px 60px;}
+.qwgroup .qq_crowd .qq_crowd_bg .crowd_title{font-size: 14px;}
+.qwgroup .qq_crowd .qq_crowd_bg .crowd{height: 188px;padding:0 10px 11px 10px;margin-top: 15px;overflow: auto;}
+.qwgroup .qq_crowd .qq_crowd_bg .crowd p{margin: 6px 0 0;font-size: 13px;}
+.qwgroup .qq_crowd .qq_crowd_bg .crowd p:first-child{margin: 0;}
+.qwgroup .qq_crowd .qq_crowd_bg .time_title{margin-top: 20px;}
+.qwgroup .qq_crowd .qq_crowd_bg .crowd_time{width: 100%; height: 30px;border-radius: 3px;margin-top: 10px;}
+.qwgroup .qq_crowd .qq_crowd_but{padding: 45px 8px 0 0;}
+.qwgroup .qq_crowd .qq_crowd_but div{width: 90px;height: 28px;border-radius: 3px;border: none;float: right;margin-right: 12px;color: #FFF;text-align: center;line-height: 28px;cursor: pointer;}
+#other{border-left: 1px solid #f6750d;height: 370px;position: absolute;right: 480px;top: 100px;}
+/*个人中心*/
+#center .userInfo{width: 95%;height: 136px;position: relative;margin: 0 auto;top: -86px;background-color: #FFF;box-shadow: 0px 0px 20px 10px rgba(246,117,13,.2);border-top-left-radius: 68px;border-bottom-left-radius: 68px;border-top-right-radius: 8px;border-bottom-right-radius: 8px;}
+#center .userInfo .touxiang{width: 136px;width: 136px;border-radius: 50%;box-shadow: 0px 0px 10px 5px rgba(246,117,13,.2);position: relative;}
+#center .userInfo .touxiang .user_touxiang{width: 126px;height: 126px;border-radius: 50%;margin-top: 5px;margin-left: 5px;}
+#center .userInfo .touxiang .user_dengji{position: absolute;right: 3px;top: 3px;width: 35px;height: 35px;}
+#center .userInfo .info{width: 136px;padding-left: 18px;position: relative;top: -136px;left: 146px;}
+#center .userInfo .info p{font-size: 16px;font-family: '微软雅黑';color: #373737;}
+#center .userInfo .info .user_name{}
+#center .userInfo .info .user_jifen{}
+#center .userInfo .info .user_jifen span{display: inline-block;width: 19px;height: 19px;background: url('../img/img/user/money1.png') no-repeat;background-size: 100% 100%;position: relative;top: 2px;right: 2px;}
+#center .userInfo .dengji{position: relative; top: -208px;left: 260px;width: 660px;height: 100px;}
+#center .userInfo .dengji .jdtiao{width: 600px;height: 7px;background-color: #E1E1E1;position: absolute;top: 28px;left: 15px;}
+#center .userInfo .dengji .jdtiao div{position: absolute;background-color: #C00707;height: 100%;}
+#center .userInfo .dengji .jddengji .xunzhang span{display: inline-block;width: 48px;height: 53px;background: url('../img/img/icon_v3.png') no-repeat;position: absolute;}
+#center .userInfo .dengji .jddengji .dengjibiaozhi span{display: inline-block;width: 19px;height: 15px;background: url('../img/img/icon_v3.png') no-repeat;position: absolute;top: 56px;}
+
+/*帮助中心*/
+#help .help_content{position: relative;}
+#help .help_title{width: 100px;background-color: #F4F4F4;position: absolute;top: 0;left: 0;border-right: 1px solid #D3D3D3;}
+#help .help_title li{list-style: none;height: 76px;font-size: 14px;text-align: center;padding-top: 24px;cursor: pointer;width: 101px;}
+#help .help_title .li_xuan{background-color: #FFF;border-top: 1px solid #d3d3d3;border-bottom: 1px solid #d3d3d3;border-right: none;color: #f6750d}
+#help .help_title li:hover{background-color: #FFF;border-top: 1px solid #d3d3d3;border-bottom: 1px solid #d3d3d3;border-right: none;}
+/*#help .help_title li img{position: relative;}*/
+#help .help_title li span{display: inline-block;position: relative;background: url('../img/img/icon_v3.png');}
+#help .help_title li .span_rumen{width: 36px;height: 26px;background-position:0px -95px;}
+#help .help_title li .span_guanyu{width: 29px;height: 29px;background-position:0px 0px;}
+#help .help_title li .span_qunfa{width: 34px;height: 30px;background-position:0px -63px;}
+#help .help_title li .span_wenti{width: 32px;height: 31px;background-position:0px -123px;}
+#help .help_title li .span_kefu{width: 29px;height: 32px;background-position:0px -30px;}
+#help .help_conInfo{position: absolute;left: 100px;top: 0;color: #333;}
+#help .help_conInfo .new_left_bg{background: url('../img/img/help/bg_newHand.png');}
+#help .help_conInfo .about_left_bg{background: url('../img/img/help/bg_about.png');}
+#help .help_conInfo .qun_left_bg{background: url('../img/img/help/bg_qunFunction.png');}
+#help .help_conInfo .q_left_bg{background: url('../img/img/help/bg_common_q.png');}
+#help .help_conInfo .help_right{display: none;background-size: 100% 100%;}
+#help .help_conInfo .classify{padding: 30px 50px 0 45px;}
+#help .classify div{margin-top: 20px;}
+#help .classify .que_title{font-size: 18px;font-weight: 700;}
+#help .classify .ans_con{margin-top: 6px;}
+#help .classify p{line-height: 25px;margin: 0;position: relative;margin-left: 35px;font-size: 14px;}
+#help .classify p span{display: inline-block;width: 35px;height: 26px;position: absolute;left: -35px;}
+#help .classify .que{background: url("../img/img/help/icon_q.png") no-repeat;}
+#help .classify .ans{background: url("../img/img/help/icon_a.png") no-repeat;}
+#help .classify h3{font-size: 18px;text-align: center;margin-bottom: 10px;font-family: "微软雅黑";}
+#help .help_conInfo .qqcontact{width: 200px;height: 215px;border:1px solid #ececeb;position: relative;top:30px;left: 130px;}
+#help .help_conInfo .qqcontact>div{width: 200px;height: 215px;position: absolute;left: 20px;top: 14px;border: 4px solid #ececeb;margin-top: 0;}
+#help .help_conInfo .qqcontact p{margin-left: 15px;}
+#help .help_conInfo .qqcontact span{display: inline-block;width: 26px;height: 26px;position: relative;top: 7px;left: -5px;}
+#help .help_conInfo .qqcontact .b_qq{background: url("../img/img/help/icon_qq1.png");}
+#help .help_conInfo .qqcontact .o_qq{background: url("../img/img/help/icon_qq2.png");}
+#help .help_conInfo .qqcontact .ww{background: url("../img/img/help/ww.png");background-size: 100% 100%;}
+#help .help_conInfo .common_q a:hover,#help .help_conInfo .qunFunction a:hover{color: #72ACE3;text-decoration:underline}
+

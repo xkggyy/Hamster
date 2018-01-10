@@ -1,0 +1,63 @@
+
+
+<script>
+	/**************************存储类********************/
+	storage = {
+		db: localStorage,
+		get: function(key, isJson) {
+			try {
+				return isJson === true ? JSON.parse(this.db.getItem(key)) : this.db.getItem(key);
+			} catch(err) {
+				return null;
+			}
+		},
+		set: function(key, value, isJson) {
+			try {
+				if(isJson === true) {
+					this.db.setItem(key, JSON.stringify(value));
+				} else {
+					this.db.setItem(key, value);
+				}
+			} catch(err) {}
+		},
+		remove: function(key) {
+			try {
+				this.db.removeItem(key);
+			} catch(err) {}
+		},
+		clear: function(keylist) {
+			try {
+				var self = this;
+				if(keylist instanceof Array) {
+					$.each(keylist,
+						function(i, n) {
+							self.db.removeItem(n);
+						})
+				}
+			} catch(err) {}
+		}
+	}
+	
+
+</script>
+<script type="text/javascript" src="__JS__/jq/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="__BUI__/bui-min.js"></script>
+<script type="text/javascript" src="__JS__/ClipBoard.js"></script>
+<script type="text/javascript" src="__JS__/jq/jquery.fly.min.js"></script>
+<!--<script type="text/javascript" src="https://unpkg.com/dexie@1.5.1/dist/dexie.js"></script>-->
+
+<!--<script type='text/javascript'>
+		var db = new Dexie("hamster");
+		db.version(1).stores({
+              pLinks: 'id,lid,link,addtime',
+			  product:'++id,pid'
+          });
+		 
+		var pLinks=db.pLinks;
+		var product=db.product;
+		
+</script>-->
+<!--<script type="text/javascript" src="__JS__/index.js"></script>-->
+<div style="display: none;">
+<script src="https://s22.cnzz.com/z_stat.php?id=1262995498&web_id=1262995498" language="JavaScript"></script>
+</div>

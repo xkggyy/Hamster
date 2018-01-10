@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <include file="public:header" />
+        <link href="__CSS__/page-min.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <div class="span10">
+                    <div class="tips tips-large tips-success">
+                        <span class="x-icon x-icon-success"><i class="icon icon-ok icon-white"></i></span>
+                        <div class="tips-content">
+                            <h2>操作成功</h2>
+                            <p class="auxiliary-text">
+                                <?php echo($message); ?>
+                            </p>
+                            <p class="jump">
+                                页面即将自动 <a id="href" href="<?php echo($jumpUrl); ?>">跳转</a> 等待时间： <b id="wait"><?php echo($waitSecond); ?></b>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <include file="public:foot" />
+        <script type="text/javascript">
+            (function () {
+                var wait = document.getElementById('wait'), href = document.getElementById('href').href;
+                var interval = setInterval(function () {
+                    var time = --wait.innerHTML;
+                    if (time <= 0) {
+                        location.href = href;
+                        clearInterval(interval);
+                    }
+                    ;
+                }, 1000);
+            })();
+        </script>
+    </body>
+</html>

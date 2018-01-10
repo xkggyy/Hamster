@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>今日推荐</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <include file="public:head" />
+    <link rel="stylesheet" href="__CSS2__/index.css" />
+    <link rel="stylesheet" href="__CSS2__/newindex.css" />
+    <style>
+        @media (min-width: 0px) {
+            .col-xs-6 {width: 242px;}
+        }
+        .bui-grid-hd .bui-grid-hd-inner {height: 40px;}
+        .bui-stdmod-body {overflow-x: hidden;overflow-y: auto;}
+        *{font-family: '微软雅黑'}
+    </style>
+</head>
+<body style="min-width: 975px;min-height: 650px;overflow:auto;overflow:hidden;">
+    <div id="rmdSr">
+        <!--logo AND 最大化最小化-->
+        <div class="top">
+            <div onmousedown="TApp.hWMove()" style="width:100%;height: 100%;position: absolute;z-index: 0"></div>
+            <!--logo-->
+            <div class="toplogo" onclick="window.parent.hiddenIframe('tj');"><img src="__IMG2__/img/back.png" alt="" /></div>
+            <!--最小化、最大化、关闭-->
+            <div class="top_cmi">
+                <!--回菜单-->
+                <!--<div class="topc_menu t_r_least"><a href="javascript:window.parent.hiddenIframe('tj');"><img src="__IMG2__/img/icon_menu.png" alt=""></a></div>-->
+                <!--最小化-->
+                <div onclick="TApp.hWMin();" class="topc_min t_r_least"><img src="__IMG2__/img/icon_zuixiao.png" alt=""></div>
+                <!--最大化-->
+                <!--<div onclick="TApp.hWMax();" class="topc_max t_r_most"><img src="__IMG2__/img/icon_zuida.png" alt=""></div>-->
+                <!--关闭-->
+                <div onclick="TApp.hExitApp();" class="topc_close t_r_close"><img src="__IMG2__/img/icon_close.png" alt=""></div>
+            </div>
+        </div>
+
+        <div id="bottom_bg">
+            <div id="bottom">
+                <div class="goods_center" style="min-width: 980px;">
+                    <!--头部菜单-->
+                    <div class="bot_menu" style="min-width: 950px;">
+                        <!--商品分类-->
+                        <div class="goods_classify" style="overflow: hidden;">
+                            <p class="goods_classify_title">商品分类:</p>
+                            <ul>
+                                <li class='nav_btn b_menu_h'>全部</li>
+                                <volist name="nav" id="item" offset="0">
+                                    <li data-itid="{$item.id}" class="nav_btn">{$item.name}</li>
+                                </volist>
+                            </ul>
+                        </div>
+                        <!--高级筛选-->
+                        <div class="goods_filter">
+                            <p class="goods_filter_title">高级筛选:</p>
+                            <ul>
+                                <volist name="tag" id="item" offset="0">
+                                    <li><label><input name="shaixuan" type="checkbox" data-sxid="{$item.id}"/>{$item.name}</label></li>
+                                </volist>
+                            </ul>
+                            <div class="goods_filter_jsx">
+                                <p>价格&nbsp;<input type="text" name="minPrice" onkeyup="this.value = this.value.replace(/[^\d]/g, '')" onafterpaste="this.value=this.value.replace(/[^\d]/g,'')" value="" placeholder="¥" class="minPrice">-
+                                    <input type="text" name="maxPrice" onkeyup="this.value = this.value.replace(/[^\d]/g, '')" onafterpaste="this.value=this.value.replace(/[^\d]/g,'')" value="" placeholder="¥" class="maxPrice">&nbsp;&nbsp; 收入比例≥&nbsp;
+                                    <input type="text" name="yjScale" onkeyup="this.value = this.value.replace(/[^\d]/g, '')" onafterpaste="this.value=this.value.replace(/[^\d]/g,'')" value="" placeholder="%" class="yjScale">&nbsp;&nbsp; 销量≥&nbsp;
+                                    <input type="text" name="salesVolume" onkeyup="this.value = this.value.replace(/[^\d]/g, '')" onafterpaste="this.value=this.value.replace(/[^\d]/g,'')" value="" placeholder="" class="salesVolume">
+                                    <input class="goods_shaixuan_submit" type="submit" value="筛选" />
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--商品-->
+                    <div class="bot_goods" id="botsa_bot">
+                        <div class="container-fluid">
+                            <div class="row" id="listView">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--回到顶部-->
+                <div class="go_top">
+                    <img src="__IMG2__/menu_up.png" alt="" />
+                </div>
+            </div>
+            <div class="bots_alradd_bg ba_st"></div>
+        </div>
+    </div>
+
+
+</body>
+<include file="public:foot" />
+<!--<script type="text/javascript" src="__JS__/index.js"></script>-->
+<script type="text/javascript" src="__JS__/jq/jquery-ui.js" ></script>
+<script>
+                                        var pageSize = 20; //每页条数
+                                        // 首页
+                                        $(function () {
+                                            $(".top_menu li").each(function () {
+                                                $(this).click(function () {
+                                                    $(".top_menu li").removeClass("t_menu_h");
+                                                    $(this).addClass("t_menu_h");
+                                                });
+                                            });
+                                            z();
+                                            setbah();
+                                            window.onresize = z;
+                                            window.onresize = setbah;
+                                            function z() {
+                                                setup_H();
+                                                g_c();
+                                            }
+                                            goodsScreen(); //高级筛选
+                                            couponfen(); //商品分类
+                                            clickSx(); //筛选价格、佣金比例、销量
+                                            setPage();//分页加载
+
+
+                                            // 点击出现已发商品
+                                            $(".ba_st").click(function () {
+                                                if ($(".bots_alradd").css("display") == "none") {
+                                                    $(".bots_alradd_bg").css("display", "block");
+                                                    $(".go_myxpk").css({
+                                                        "transform": "rotate(180deg)"
+                                                    });
+                                                    $(".bot_selgoods").css({
+                                                        "box-shadow": "0px 0px 0px 0px #A0A0A0"
+                                                    });
+                                                } else {
+                                                    $(".bots_alradd_bg").css("display", "none");
+                                                    $(".go_myxpk").css({
+                                                        "transform": "rotate(0deg)"
+                                                    });
+                                                    $(".bot_selgoods").css({
+                                                        "box-shadow": "0px 0px 20px 2px #A0A0A0"
+                                                    });
+                                                }
+                                                $(".bots_alradd").slideToggle();
+                                            });
+
+                                            //回到顶部
+                                            $("#bottom").scroll(function () {
+                                                var scrollTop = parseInt($(this).scrollTop());
+                                                if (scrollTop > 1000)
+                                                    $(".go_top").show();
+                                                else
+                                                    $(".go_top").hide();
+                                                if (scrollTop > 50)
+                                                    $("#bottom .bot_menu").css({
+                                                        "margin-top": "0px"
+                                                    });
+                                                else
+                                                    $("#bottom .bot_menu").css({
+                                                        "margin-top": "1%"
+                                                    });
+                                            });
+                                            $(".go_top").click(function () {
+                                                $("#bottom").animate({
+                                                    scrollTop: 0
+                                                }, 400);
+                                            });
+
+                                            if ($("#listView").length > 0) {
+                                                var tcid = $(".bot_menu li:eq(0)").attr("data-cid");
+                                                $(".bot_menu li:eq(0)").addClass("b_menu_h");
+                                                getList({
+                                                    tcid: tcid,
+                                                    pageSize: pageSize
+                                                });
+                                            }
+
+
+
+                                        });
+                                        function setup_H() {
+                                            var l_w = $(window).height();
+                                            $(".bots_alradd_bg").height(l_w);
+                                            $(".bot_goods").height(l_w - 175); //设置首页商品列表的高度
+                                            $("#bottom").height(l_w - 70 - 22); //设置个人中心专属有人商品列表的高度
+                                            $("#bottom_c").height(l_w - 70); //设置个人中心专属有人商品列表的高度
+                                        }
+                                        function g_c() {
+                                            var z_w = Math.floor(($(window).width() - 10) / 242);
+                                            var gc_w = 242 * z_w;
+                                            $(".goods_center").width(gc_w + 10);
+                                            $("#bottom .bot_menu").width((gc_w + 10) * 0.978);
+                                            var c_w = Math.floor(($(window).width() - 20) / 242);
+                                            var gcc_w = 242 * c_w;
+                                            $(".goods_center_c").width(gcc_w + 10);
+                                        }
+
+                                        function search(pageSize, pageIndex, isReload) {
+                                            if (isReload) {
+                                                $("#listView").html("");
+                                            }
+                                            var data = {
+                                                pageSize: pageSize,
+                                                pageIndex: pageIndex
+                                            };
+                                            getList(data);
+                                        }
+                                        function getList(data) {
+                                            $.ajax({
+                                                url: '/index.php/hamster/index/listView',
+                                                data: data,
+                                                type: 'get',
+                                                dataType: 'html',
+                                                success: function (h) {
+                                                    var o = $(h).appendTo("#listView");
+                                                    bindClick(o);
+                                                },
+                                                error: function (r, s, e) {
+
+                                                },
+                                                beforeSend: function () {
+                                                    //提示加载信息
+                                                },
+                                                complete: function () {
+                                                    //隐藏加载提示
+                                                }
+                                            });
+                                        }
+                                        //加载完成后bind事件
+                                        function bindClick(o) {
+                                            $(o).find(".good_but_t").on('click', function () {
+                                                console.log('http://pub.alimama.com/promo/search/index.htm?q=' + encodeURIComponent($(this).attr('data-url')));
+
+                                                TApp.hOpenUrl('http://pub.alimama.com/promo/search/index.htm?q=' + encodeURIComponent($(this).attr('data-url')));
+                                            });
+                                        }
+                                        function setPage() {
+                                            //scroll()滚动事件
+                                            var searchflag = true;
+                                            $("#bottom").scroll(function () {
+                                                var conHeight = $(".row").height();
+                                                var rigHeight = $("#bottom").height();
+                                                // alert($(".bot_goods").scrollTop() + "," + (conHeight - rigHeight));
+                                                //所加载的数据块的高度是不是大于right div的高度alert(conHeight > rigHeight);
+                                                if (conHeight > rigHeight) {
+                                                    //判断滚动条是不是移动到最下面了
+                                                    //alert($("#bottom").scrollTop()+"\nconHeight:"+conHeight+"\nrigHeight:"+rigHeight+"\nconHeight - rigHeight:"+(conHeight - rigHeight));
+                                                    if ($("#bottom").scrollTop() >= conHeight - rigHeight) {
+
+                                                        var pageIndex = parseInt($("input:hidden[name='pageIndex']").last().val());
+                                                        var count = parseInt($("input:hidden[name='count']").last().val());
+                                                        var pageCount = 1;
+                                                        pageCount = Math.ceil(count / pageSize);
+
+                                                        if (pageIndex === pageCount || pageIndex > pageCount) {
+                                                            // BUI.Message.Show({ msg: "没有更多商品加载了", icon: 'info', buttons: [], autoHide: true, autoHideDelay: 1000 });
+                                                        } else {
+                                                            if (searchflag) {
+                                                                searchflag = false;
+                                                                search(pageSize, pageIndex + 1, false);
+                                                                //防止请求过快,2秒后才能加载下一页
+                                                                setTimeout(function () {
+                                                                    searchflag = true;
+                                                                }, 1000);
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            });
+                                        }
+
+                                        function setbah() {
+                                            var ba_width = $(".top").width();
+                                            $(".top").height((ba_width * 9) / 122);
+
+                                            var w_w = $(window).width();
+                                            var left_w = w_w - 580;
+                                            $(".qq_goods").width(left_w);
+                                        }
+                                        //获取高级筛选已勾选
+                                        function goodsScreen2() {
+                                            var xx = "";
+                                            $("input[name='shaixuan']:checked").each(function () {
+                                                xx += $(this).attr("data-sxid") + ",";
+                                            });
+                                            xx = xx.substr(0, xx.lastIndexOf(","));
+                                            return xx;
+                                        }
+                                        //高级筛选
+                                        function goodsScreen() {
+                                            $(".goods_filter ul li").each(function () {
+                                                $(this).find("input").click(function () {
+                                                    var data = {
+                                                        sxid: goodsScreen2(),
+                                                        itid: couponfen2(),
+                                                        pageSize: pageSize,
+                                                        pageIndex: 1
+                                                    };
+                                                    $("#listView").html(""); //清空所有商品
+                                                    getList(data);
+                                                });
+                                            });
+                                        }
+                                        //获取商品分类
+                                        function couponfen2() {
+                                            var itid;
+                                            $(".goods_classify li").each(function () {
+                                                if ($(this).attr("class") === "nav_btn b_menu_h") {
+                                                    itid = $(this).attr("data-itid");
+                                                }
+                                            });
+                                            //    alert(itid);
+                                            return itid;
+                                        }
+                                        //商品分类
+                                        function couponfen() {
+                                            $(".goods_classify li").each(function () {
+                                                $(this).click(function () {
+                                                    var itid = $(this).attr("data-itid");
+                                                    $(this).siblings().removeClass("b_menu_h");
+                                                    $(this).addClass("b_menu_h");
+                                                    var data = {
+                                                        sxid: goodsScreen2(),
+                                                        itid: itid,
+                                                        pageSize: pageSize,
+                                                        pageIndex: 1
+                                                    };
+                                                    $("#listView").html(""); //清空所有商品
+                                                    getList(data); //加载商品
+                                                });
+                                            });
+                                        }
+                                        // 获取最小价格
+                                        function getMinPrice() {
+                                            var minPrice = $(".goods_filter_jsx p input:nth-child(1)").val();
+                                            return minPrice;
+                                        }
+                                        // 获取最高价格
+                                        function getMaxPrice() {
+                                            var maxPrice = $(".goods_filter_jsx p input:nth-child(2)").val();
+                                            return maxPrice;
+                                        }
+                                        // 获取佣金比例
+                                        function getYjScale() {
+                                            var yjScale = $(".goods_filter_jsx p input:nth-child(3)").val();
+                                            return yjScale;
+                                        }
+                                        // 获取销量
+                                        function getSalesVolume() {
+                                            var salesVolume = $(".goods_filter_jsx p input:nth-child(4)").val();
+                                            return salesVolume;
+                                        }
+                                        // 点击筛选，筛选价格、佣金比例、销量
+                                        function clickSx() {
+                                            $(".goods_shaixuan_submit").click(function () {
+                                                var data = {
+                                                    minPrice: getMinPrice(),
+                                                    maxPrice: getMaxPrice(),
+                                                    yjScale: getYjScale(),
+                                                    salesVolume: getSalesVolume(),
+                                                    itid: couponfen2(),
+                                                    sxid: goodsScreen2(),
+                                                    pageSize: pageSize,
+                                                    pageIndex: 1
+                                                };
+                                                $("#listView").html(""); //清空所有商品
+                                                getList(data);
+                                            });
+                                        }
+</script>
+</html>

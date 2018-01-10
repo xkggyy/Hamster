@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<head>
+    <include file="public:header" />
+
+    <link href="__CSS__/page-min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="container">
+        <!--{*搜索表单*}-->
+        <div class="row">
+            <div class="span24">
+                <form id="searchForm" class="well form-inline" method="POST" action="{:u('members/members_list')}">
+                    <input type="text" class="control-text bui-form-field" name="account" value="{$map.account}" placeholder="用户ID" />
+                    <input type="text" class="control-text bui-form-field" name="nickname" value="{$map.nickname}" placeholder="昵称" />
+                    <input type="text" class="control-text bui-form-field" name="tel" value="{$map.tel}" placeholder="手机号码" />
+                    <button type="submit" class="button button-primary">搜索</button>
+                </form>
+            </div>
+        </div>
+        <form class="pl_del" action="{:u('members/members_del_batch')}" method="post">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th style="width: 40px;">&nbsp;</th>
+                        <th style="width: 32px;">头像</th>
+                        <th style="width: 60px;">用户号</th>
+                        <th>昵称</th>
+                        <th style="width: 120px;">手机</th>
+                        <th style="width: 120px;">性别</th>
+                        <th style="width: 160px;">城市</th>
+                        <th style="width: 140px;">登陆时间</th>
+                        <th style="width: 140px;">注册时间</th>
+                        <th style="width: 40px;">状态</th>
+                        <th style="width: 160px;">操作</th>
+                    </tr>
+                </thead>
+
+                <volist name="mlist" id="item">
+                    <tr>
+                        <td><input class="x-grid-checkbox" type="checkbox" name="vm[]" title="{$item.uid}" value="{$item.uid}" /></td>
+                        <td><img src="{$item.thumb}" class="img-responsive" width="32" height="32" /></td>
+                        <td>{$item.account}</td>
+                        <td><a class="frmShow control-text bui-form-field bui-form-field-error" uid="{$item.id}" href="#">{$item.nickname}</a></td>
+                        <td>{$item.tel}</td>
+                        <td>{$item.gender}</td>
+                        <td>{$item.province} {$item.city}</td>
+                        <td>{$item.lastlogintime|date="Y-m-d H:i:s",###}</td>
+                        <td>{$item.regdate|date="Y-m-d H:i:s",###}</td>
+                        <td>
+                            <if condition="$item['status'] eq 1">
+                                <label class="label label-inverse">锁定</label>
+                                <else />
+                                <label class="label label-success">正常</label>
+                            </if>
+                        </td>
+                        <td>
+                            <button type="button" class="button button-small button-primary edit_access" data-id='{$item.id}'>配置权限</button>
+                            <button type="button" class="button button-small button-danger delete_access" data-id='{$item.id}'>删除权限</button>
+                        </td>
+                    </tr>
+                </volist>
+            </table>
+            <div class="">
+                <ul class="toolbar pull-left">
+                    <li><label class="checkbox"><input type="checkbox" id="chk_all" />全选</label></li>
+                    <li><button type="submit" onclick="delcfm();" class="button button-danger"><i class="icon-white icon-asterisk"></i>锁定选中的用户</button></li>
+                </ul>
+                <div class="pagination pull-right">
+                    {$page}
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <include file="public:foot" />
+    <script type="text/javascript">
+        $("#chk_all").click(function() {
+            //全选
+            if ($(this).attr("checked")) {
+                $("input[name='vm[]']").attr("checked", true);
+            } else {
+                $("input[name='vm[]']").attr("checked", false);
+            }
+        });
+
+        function delcfm() {
+            if (!confirm("确认要删除？")) {
+                window.event.returnValue = false;
+            }
+        }
+        var acc_dialog;
+
+        var acc_form;
+        BUI.use(['bui/overlay', 'bui/form', 'bui/mask'], function(Overlay, Form) {
+            //dialog.show();
+            $('.frmShow').on('click', function() {
+                var uid = $(this).attr('uid');
+                var username = $(this).text();
+                var form, dialog = new Overlay.Dialog({
+                    title: username,
+                    width: 600,
+                    height: 400,
+                    closeAction: 'destroy', //每次关闭dialog释放
+                    loader: {
+                        url: '{:u("members/members_edit")}',
+                        autoLoad: false, //不自动加载
+                        lazyLoad: false,
+                        callback: function() {
+                            var node = dialog.get('el').find('form'); //查找内部的表单元素
+                            form = new Form.HForm({
+                                srcNode: node,
+                                autoRender: true,
+                                submitType: 'ajax',
+                                callback: function(data) {
+                                    dialog.close();
+                                    location.reload();
+                                }
+                            }).render();
+                        }
+                    },
+                    mask: true,
+                    success: function() {
+                        //可以直接action 提交
+                        form && form.submit(); //也可以form.ajaxSubmit(params);
+                    }
+                });
+                form && form.destroy(); //移除掉之前的表单
+                dialog.show();
+                var params = {
+                    id: uid
+                }; //加载表单的参数
+                dialog.get('loader').load(params);
+            });
+            acc_dialog = new Overlay.Dialog({
+                title: '配置用户角色',
+                width: 500,
+                height: 300,
+                //配置DOM容器的编号
+                loader: {
+                    url: '{:u("members/set_access")}',
+                    type: 'GET',
+                    autoLoad: false,
+                    lazyLoad: false,
+                    mask: false,
+                    callback: function() {
+                        var node = acc_dialog.get('el').find('form'); //查找内部的表单元素
+                        acc_form = new Form.HForm({
+                            srcNode: node,
+                            autoRender: true,
+                            submitType: 'ajax',
+                            callback: function(data) {
+                                acc_dialog.close();
+                                //location.reload();
+                            }
+                        }).render();
+                    }
+                },
+                success: function() {
+                    acc_form.submit({
+                        url: '{:u("members/doset_access")}',
+                        success: function(d) {
+                            if (d) {
+                                BUI.Message.Alert('权限配置成功', 'success')
+                            } else {
+                                BUI.Message.Alert('权限配置失败', 'error')
+                            }
+                        }
+                    });
+                }
+            });
+
+        });
+        $(".edit_access").click(function() {
+            acc_dialog.show();
+            acc_dialog.get('loader').load({
+                userid: $(this).attr('data-id')
+            });
+        });
+        $(".delete_access").click(function() {
+            $this = $(this);
+            $.ajax({
+                url: '{:u("members/delete_access")}',
+                type: 'post',
+                dataType: 'json',
+                data: {
+                    userid: $this.attr('data-id')
+                },
+                success: function(d) {
+                    if (d) {
+                        BUI.Message.Alert('成功删除权限', 'success');
+                    } else {
+                        BUI.Message.Alert('权限删除失败', 'error');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

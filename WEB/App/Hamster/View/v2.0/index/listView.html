@@ -1,0 +1,52 @@
+<volist name="goods" id="item" offset="0">
+    <div class="col-xs-6">
+        <div class="goods" data-info="{$item.id}" style="height: 308px;">
+            <div style="text-align: center;">
+                <img data-openurl="{$item['auctionurl']}" class="good_img" data-img="img_{$item.id}" src="{$item.picturl}" alt="">
+            </div>
+            <div class="intro" id="intro_{$item.auctionid}" style="display: none;">
+                <img width="50" height="50" class="thumb" src="{$item.picturl}" _scr="{$item.picturl}" id="{$item.auctionid}">
+                <div class='clcontent'></div>
+            </div>
+            <div class="goods_info" style="padding: 2% 5% 0;height: 43px;">
+                <h5 title="{$item.title}" data-openurl="{$item['auctionurl']}" class="goods_title opac {$item['couponamount']==0?'owt2':'owt1'}"><span></span>{$item.title}</h5>
+                <div class="good_m" style="margin-top: {$item['couponamount']==0?'5':'0'}px;">
+                    <p class="f_l good_y_b good_jiage">
+                        <span class="opac" style="color: #666;">价格：</span><span><b class="qh_jiage_c"><span>¥ </span>{$item['zkprice']}</b>
+                        </span>
+                    </p>
+                    <p class="f_r good_y_y good_jiage">
+                        <span class="opac" style="color: #666;">已售：</span><span class="ys_jiage_c"><b>{$item.biz30day}</b></span>
+                    </p>
+                </div>
+<!--                <div class="good_y" style='position: relative;'>
+                    <p class="f_l good_y_b good_jiage" style="color: #666;width: 100%">
+                        <span class="opac">佣金：</span><span><span style="color:#4291B1">¥ </span><b class="yj_jiage_c">{$item.tkcommfee}</b></span>
+                    </p>
+                </div>
+                <if condition="$item.couponamount neq '0'">
+                    <div class="good_q" style="color:#666;">
+                        <p class="gq_quan">券<span><span class="qian_yel"></span>{$item['couponamount']|round=###,2}</span>
+                        </p>
+                        <p class="gq_yl">已领<span>{$item['coupontotalcount']-$item['couponleftcount']}</span></p>
+                        <p class="gq_sy">剩余{$item.couponleftcount}</p>
+                    </div>
+                </if>-->
+                <!--<div class="good_d dianpu" style="cursor:pointer" data-sellerid='{$item.sellerid}'>
+                        <span class="good_d_dp"></span>{$item.shoptitle}
+                </div>-->
+            </div>
+            <div class="good_but">
+                <div class="good_but_t goods_but f_l opac" data-tg="{$item.id}" data-img="{$item.picturl}" data-couponShortLinkUrl='{$item.couponlink}' data-title="{$item.title}" data-old-price="{$item.reserveprice}" data-price="{$item.zkprice}" data-rates="{$item['eventrate']?$item['eventrate']:$item['tkrate']}" data-coupon="{$item.couponamount}" data-couponurl="{$item.couponlink}" data-url="{$item.auctionurl}" data-baoyou="" data-tkCommFee="{$item.tkcommfee}" data-id="{$item.id}" data-tid="{$item.auctionid}" data-sid="{$item.sellerid}" data-remark="{$item.remark}" data-couponprice="{$item.couponamount}" data-clipboard-target="#intro_{$item.auctionid}" data-biz30day="{$item.biz30day}" data-type="{$item.usertype}" style="width: 100%;">去选品</div>
+<!--                <div class="good_but_x goods_but f_r opac" data-id="{$item.id}" data-tid='{$item.auctionid}'>
+                    申请定向
+                    <span class="icon-wrap" data-tid='{$item.auctionid}'>
+                        <em>定</em>
+                    </span>
+                </div>-->
+            </div>
+        </div>
+    </div>
+</volist>
+<input type="hidden" name="pageIndex" value="{$pageIndex}" />
+<input type="hidden" name="count" value="{$count}" />

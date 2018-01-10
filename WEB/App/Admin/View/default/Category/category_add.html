@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <include file="public:header" />
+        <link href="__CSS__/page-min.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div class="container" >
+            <div class="row">
+                <form action="{:u('Category/category_save')}" class="form-horizontal" method="post" id="category_add">
+                    <input type="hidden" name="spid" value="{$_GET['type']}">
+                    <div class="control-group">
+                        <label class="control-label"><s>*</s>分类名称：</label>
+                        <div class="controls">
+                            <input type="text" class="input-normal taoNick" name="name" value=""/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label"><s>*</s>分类排序：</label>
+                        <div class="controls">
+                            <input type="text" class="span2 taoPrice" name="ordid" value="255"/> （越大越靠后）
+                        </div>
+                   
+                    </div>
+                         <div class="control-group">
+                        <label class="control-label"><s>*</s>图片上传：</label>
+                        <div class="controls">
+                            <div id="J_Uploader" ></div> 
+                        </div>
+                    </div>
+                    <input type="hidden" value="" name="cate_icon" id="adv_imgurl"   >
+                    <div class="control-group">
+                        <label class="control-label"><s>*</s>是否展示：</label>
+                        <div class="controls">
+                            <label class="radio " for=""><input class="status_1" type="radio" name="status" checked="true" value="1">展示</label>
+                            <label class="radio " for=""><input class="status_2" type="radio" name="status" value="2">不展示</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <include file="public:foot" />
+
+
+         <script type="text/javascript">
+            BUI.use('bui/uploader', function (Uploader) {
+                
+                    var uploader = new Uploader.Uploader({
+                    render: '#J_Uploader',
+                    url: '/index.php/Admin/Category/uploadCategory',
+                    isSuccess: function (data) {
+                        if (data.status) {
+                            var imgOriginalUrl = data['link'];
+                            $("#adv_imgurl").val(imgOriginalUrl);
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
+                }).render();
+            });
+        </script>
+        
+    </body>
+</html>

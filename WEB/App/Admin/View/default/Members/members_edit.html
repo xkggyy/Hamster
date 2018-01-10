@@ -1,0 +1,35 @@
+<form id="J_Form" class="form-horizontal bui-form-horizontal bui-form bui-form-field-container" action="{:U('members/members_update')}" aria-disabled="false" method="post" aria-pressed="false">
+    <input type="hidden" name="id" value="{$userdata.id}" />
+    <div class="row">
+        <div class="control-group span8">
+            <label class="control-label">昵称：</label>
+            <div class="controls">
+                <label class="control-text bui-form-field bui-form-field-error">{$userdata.nickname}</label>&nbsp;&nbsp;-&nbsp;&nbsp;<label class="control-text bui-form-field bui-form-field-error">{$userdata.gender}</label>
+            </div>
+        </div>
+        <div class="control-group span8">
+            <label class="control-label">手机：</label>
+            <div class="controls">
+                <label class="control-text bui-form-field bui-form-field-error">{$userdata.tel}&nbsp;</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="control-group span15">
+            <label class="control-label">状态：</label>
+            <div class="controls">
+                <label class="control-text bui-form-field bui-form-field-error">锁定</label><input name="status" type="radio" value="1" <if condition="$userdata['status'] eq 1">checked="true"</if> />
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <label class="control-text bui-form-field bui-form-field-error">解锁</label><input name="status" type="radio" value="0" <if condition="$userdata['status'] eq 0">checked="true"</if> />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="control-group span15">
+            <label class="control-label">备注：</label>
+            <div class="controls control-row4">
+                <textarea name="memo" class="input-large bui-form-field" type="text" aria-disabled="false" aria-pressed="false">{$userdata.memo}</textarea>
+            </div>
+        </div>
+    </div>
+</form>

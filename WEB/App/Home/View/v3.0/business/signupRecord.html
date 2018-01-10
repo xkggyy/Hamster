@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>积米淘-商家中心</title>
+    <link rel="shortcut icon" href="__IMG2__/logo16.png">
+    <link rel="stylesheet" href="__CSS2__/indexS.css">
+    <link rel="stylesheet" href="__BUI__/css/bs3/bui-min.css">
+    <link rel="stylesheet" href="__BUI__/css/bs3/dpl-min.css">
+</head>
+<body style="overflow-y:scroll;min-width: 1200px;">
+<include file="business:header" />
+<div id="bocen">
+    <div class="main">
+        <div class="left" style="float: left;">
+            <div class="left_title"><span style="background: url('__IMG2__/icon_signup.png')  no-repeat;"></span><span class="left_user">报名管理</span></div>
+            <ul>
+                <li><a href="http://www.j1m1.com/index.php/business"><span>我要报名</span><span>></span></a></li>
+                <li class="le_nav"><a href="http://www.j1m1.com/index.php/business/signupRecord.html"><span>报名记录</span><span>></span></a></li>
+                <li><a href=""><span>联系客服</span><span>></span></a></li>
+            </ul>
+        </div>
+        <!--报名记录-->
+        <div class="signup_record"
+             style="float: left;margin-left: 5px;width: 992px;outline: 1px solid #D8D8D8;padding: 4px;">
+            <div class="remainder">
+                <p style="float: left;margin-top: 8px;">可用余额：<span>0.00</span>元</p>
+                <button>充值</button>
+            </div>
+            <div class="signup_info">
+                <div class="sr_nav">
+                    <ul>
+                        <li class="srn_xuan">全部</li>
+                        <li>审核中</li>
+                        <li>进行中</li>
+                        <li>未结算</li>
+                        <li>已结算</li>
+                        <li>已拒绝</li>
+                    </ul>
+                </div>
+                <div class="sr_search">
+                    <form id="searchForm" class="form-horizontal" tabindex="0"
+                          style="outline: none;margin: 40px 0 10px;">
+                        <div class="row">
+                            <div class="control-group span10">
+                                <label class="control-label">时间：</label>
+                                <div class="controls bui-form-group" data-rules="{dateRange : true}">
+                                    <input id="t1" name="start" data-tip="{text : '起始日期'}" data-rules="{required:true}"
+                                           data-messages="{required:'起始日期不能为空'}" class="input-small calendar"
+                                           type="text"><label>&nbsp;到&nbsp;</label>
+                                    <input id="t2" name="end" data-rules="{required:true}"
+                                           data-messages="{required:'结束日期不能为空'}" class="input-small calendar"
+                                           type="text">
+                                </div>
+                            </div>
+                            <div class="control-group span8">
+                                <label class="control-label">商品ID：</label>
+                                <div class="controls">
+                                    <input type="text" name="c" class="control-text">
+                                </div>
+                            </div>
+                            <div class="form-actions span3">
+                                <button id="btnSearch" type="submit" class="button button-primary">搜索</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="sgnup_goods" id="sgnup_goods">
+
+                </div>
+            </div>
+        </div>
+        <div style="clear: both"></div><!--清除浮动-->
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="__JS__/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="__BUI__/bui-min.js"></script>
+<script type="text/javascript">
+    $(function(){
+        var main_H = $(".main").height();
+        $(".left").height(main_H);
+    });
+    BUI.use(['bui/grid', 'bui/data', 'bui/calendar'], function (Grid, Data, Calendar) {
+        var datepicker1 = new Calendar.DatePicker({
+            trigger: '#t1,#t2',
+            showTime: true,
+            dateMask: 'mm-dd HH:MM',
+            autoRender: true
+        });
+        var operate = '<a href="javascript:;">修改商品</a><br><a href="javscript:;">下架</a><br>';
+        var Store = Data.Store,
+                columns = [
+                    {title: '报名时间', dataIndex: 'add_time',elCls : 'regTime', width:88},
+                    {title: '商品图片', dataIndex: 'picturl',elCls : 'goodsPic', width:116,renderer : function (value){
+                        return '<img src="'+value+'" />';
+                    }},
+                    {title: '券后价', dataIndex: 'couponamount',elCls : 'postCouponPrice', width:54,renderer:function(value,obj){
+                        return obj.zkprice-obj.couponamount;
+                    }},
+                    {title: '优惠券信息', dataIndex: 'couponlink',elCls : 'couponInfo', width:195,renderer:function(value,obj){
+                        return '<p>优惠券¥<span>'+obj.couponamount+'</span>元</p><a href="'+obj.couponlink+'">查看优惠券</a>';
+                    }},
+                    {title: '佣金信息', dataIndex: 'tkcommfee',elCls : 'commInfo', width:90,renderer:function(value,obj){
+                        return '佣金:'+value;
+                    }},
+                    {title: '状态', dataIndex: 'status',elCls : 'status', width:61,renderer:function(value,obj){
+                       switch(value){
+                           case '3':
+                                return '待审核';
+                           break;
+                           case '1':
+                                return '审核通过';
+                           break;
+                           case '0':
+                                return '审核失败';
+                           break;
+                       }
+                    }},
+                    {title: '活动时间', dataIndex: 'activestarttime',elCls : 'actTime', width:100,renderer:function(value,obj){
+                            var daf = new Date();
+                            daf.setTime(value*1000);
+                            
+                            var datestr =daf.toLocaleDateString()
+                            daf.setTime(obj.activeendtime*1000)
+                            datestr+="-"+daf.toLocaleDateString()
+                            return datestr;
+                    }},
+                    {title: '服务费', dataIndex: 'servermoney',elCls : 'serCharge', width:53},
+                    {title: '成交笔数', dataIndex: 'bargainOn',elCls : 'bargainOn', width:73},
+                    {title: '扣费', dataIndex: 'feeDeduction',elCls : 'feeDeduction', width:44},
+                    {title: '操作', dataIndex: 'id',elCls : 'operate', width:100,renderer:function(value,obj){
+                        return '<a class="edit" href="javascript:shomemessage();">修改商品</a><br><a class=.down"   href="javascript:shomemessage();">下架</a><br>';
+                    }}
+                ];
+                // data = [{registrationTime: '05-12 17:07', goodsPic: '<img src="__IMG2__/goods_pic1.jpg" alt="">', postCouponPrice: '¥19',couponInfo: '<p>优惠券¥<span>20</span>元<br>剩余<span>5000</span>/<span>5000</span><br>过期时间<span>2017-5-18 23:59:59</span></p><a href="">查看优惠券链接</a>', commissionInfo: '通用:25%', status: '待审核',activityTime: '05-13 00:00<br>至<br>05-19 00:00', serviceCharge: 1, bargainOn: '',feeDeduction: '', operate: operate},
+                //     {registrationTime: '05-12 17:07', goodsPic: '<img src="__IMG2__/goods_pic1.jpg" alt="">', postCouponPrice: '¥19',couponInfo: '<p>优惠券¥<span>20</span>元<br>剩余<span>5000</span>/<span>5000</span><br>过期时间<span>2017-5-18 23:59:59</span></p><a href="">查看优惠券链接</a>', commissionInfo: '定向:35.5%<br><br><a href="">查看计划链接</a>', status: '未开始',activityTime: '05-13 00:00<br>至<br>05-19 00:00', serviceCharge: 5, bargainOn: '',feeDeduction: '', operate: operate},
+                //     {registrationTime: '05-12 17:07', goodsPic: '<img src="__IMG2__/goods_pic1.jpg" alt="">', postCouponPrice: '¥19',couponInfo: '<p>优惠券¥<span>20</span>元<br>剩余<span>5000</span>/<span>5000</span><br>过期时间<span>2017-5-18 23:59:59</span></p><a href="">查看优惠券链接</a>', commissionInfo: '鹊桥:25%', status: '已结束<br><span style="color: red;">已结算</span><br><a href="">交易记录</a>',activityTime: '05-13 00:00<br>至<br>05-19 00:00', serviceCharge: 1, bargainOn: '',feeDeduction: '', operate: operate},
+                //     {registrationTime: '05-12 17:07', goodsPic: '<img src="__IMG2__/goods_pic1.jpg" alt="">', postCouponPrice: '¥19',couponInfo: '<p>优惠券¥<span>20</span>元<br>剩余<span>5000</span>/<span>5000</span><br>过期时间<span>2017-5-18 23:59:59</span></p><a href="">查看优惠券链接</a>', commissionInfo: '通用:25%', status: '已拒绝<br><a href="">查看失败原因</a>',activityTime: '05-13 00:00<br>至<br>05-19 00:00', serviceCharge: 0.5, bargainOn: '',feeDeduction: '', operate: operate}];
+
+        var store = new Store({
+                    url:"/index.php/home/business/getMyItems",
+                    autoLoad: true,
+                    remoteSort: true,
+                    root:'item',
+                    totalProperty:'totalCount',
+                    pageSize: 5		// 需要在store中 配置pageSize
+                }),
+                grid = new Grid.Grid({
+                    render: '#sgnup_goods',
+                    width: '100%',
+                    columns: columns,
+                    idField: 'a',
+                    store: store,
+                    // 底部工具栏
+                    bbar: {
+                        pagingBar: true
+                    }
+                });
+
+        grid.render();
+    });
+    function shomemessage(){
+        BUI.Message.Alert('功能正在努力开发中','success');
+    }
+</script>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>效果报表</title>
+    <include file="public:head" />
+    <link rel="stylesheet" href="__CSS2__/rpf.css" />
+    <script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=1bf0503b093b0"></script>
+</head>
+
+<body style="min-width: 1150px;min-height: 750px;overflow:auto;overflow:hidden">
+    <div id="main">
+        <!--导航开始-->
+        <include file="public:nav" />
+        <!--导航结束-->
+        <div id="bottom">
+            <div class="bot_time">
+                <ul>
+                    <li onclick="showChart(1)">昨天</li>
+                    <li onclick="showChart(7)" class="bot_time_before">过去7天</li>
+                    <li onclick="showChart(15)">过去15天</li>
+                    <li onclick="showChart(30)">过去30天</li>
+                </ul>
+            </div>
+            <div class="bot_info">
+                <div class="bot_info_basic">
+                    <div class="bib_djs">
+                        <p>点击数<span></span></p>
+                        <p id='pclick'>0</p>
+                    </div>
+                    <div class="bib_fkbs">
+                        <p>付款笔数<span></span></p>
+                        <p id='ppay'>0</p>
+                    </div>
+                    <div class="bib_xgyg">
+                        <p>效果预估<span></span></p>
+                        <p id='pxgyg'>0</p>
+                    </div>
+                    <div class="bib_ygsr">
+                        <p>预估收入<span></span></p>
+                        <p id="pygsr">0</p>
+                    </div>
+                </div>
+                <div class="bot_info_pic" id="canvas">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+<include file="public:foot" />
+
+<script type='text/javascript'>
+    var mask;
+    function showChart(day) {
+        var data = TApp.hGetRpt(day);
+        mask.show();
+        setTimeout(function () {
+            mask.hide();
+            if (data == "") {
+                return;
+            }
+            if (data == "ndk") {
+                //操作频繁
+                BUI.Message.Alert('操作频繁', 'info')
+                return;
+            }
+            if (data == "nck") {
+                //未登录淘宝或者登录超时
+                BUI.Message.Alert('未登录淘宝或者登录超时', function () {
+                    TApp.hShowTkLogin();
+                }, 'info')
+                return;
+            }
+            if (data == "nck") {
+                //不是淘宝客
+                BUI.Message.Alert('你不是淘宝客', 'info')
+                return;
+            }
+            var d = new Array(); //时间数组
+            data = eval("(" + data + ")");
+            var clicknum = new Array(); //点击数
+            var alipayNum = new Array(); //付款笔数
+            var alipayRec = new Array(); //预估效果
+            //var mixRphc = new Array(); //预估收益
+
+            var datas = data.datas;
+            var countMap = data.countMap;
+            $("#pygsr").text(countMap.totalRec);
+            $("#pxgyg").text(countMap.totalAlipayRec);
+            $("#pclick").text(countMap.totalMixClick);
+            $("#ppay").text(countMap.totalAlipayNum);
+            for (var i = 0; i < datas.length; i++) {
+                clicknum.push(datas[i].mixClick);
+                alipayNum.push(datas[i].alipayNum);
+                alipayRec.push(datas[i].alipayRec)
+                if (day != 30) {
+                    d.push(datas[i].thedate);
+                } else {
+                    if (i % 2 == 0) {
+                        d.push(datas[i].thedate);
+                    } else {
+                        d.push("");
+                    }
+                }
+                //mixRphc.push(datas[i].mixRphc);
+            }
+            $("#canvas").html("");
+
+            var win_H = $(window).height();
+            var win_W = $(window).width();
+            var cha_H = win_H - 250;
+            var cha_W = win_W;
+//            alert(cha_W);
+            BUI.use('bui/chart', function (Chart) {
+                var chart = new Chart.Chart({
+                    render: '#canvas',
+                    theme: Chart.Theme.Smooth1,
+                    height: cha_H,
+                    width: cha_W,
+                    xAxis: {
+                        categories: d
+                    },
+                    tooltip: {
+                        valueSuffix: '',
+                        shared: true, //是否多个数据序列共同显示信息
+                        crosshairs: true //是否出现基准线
+                    },
+                    plotCfg: {
+                        margin: [50, 50, 80] //画板的边距
+                    },
+                    series: [{
+                            name: '点击数',
+                            data: clicknum
+                        }, {
+                            name: '付款笔数',
+                            data: alipayNum
+                        }, {
+                            name: '预估效果',
+                            data: alipayRec
+                        }]
+                });
+
+
+                chart.render();
+            });
+
+        }, 3000);
+    }
+    BUI.use('bui/mask', function (Mask) {
+        mask = new Mask.LoadMask({
+            el: '#bottom',
+            msg: '积米淘客助手正在努力工作....'
+        });
+    });
+    showChart(7);
+//    //当浏览器窗口大小改变时，设置显示内容的高度  
+//    window.onresize = function () {
+//        showChart(7);
+//    };
+</script>
+
+</html>

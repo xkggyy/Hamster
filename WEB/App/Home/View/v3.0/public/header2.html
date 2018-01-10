@@ -1,0 +1,92 @@
+<style>
+    a {text-decoration: none;}
+    a:hover {text-decoration: none;}
+    a:link {text-decoration: none;}
+    #top>div>div{width: 1200px;margin:0 auto;}
+    #top .tm_welcome{height: 28px;background: #F5F5F5;color: #828282;font-size: 12px;font-family: '微软雅黑';line-height:28px;}
+    #top .tm_welcome div div{float: left;}
+    #top .tm_welcome .tmw_left{width: 220px;line-height: 12px;margin-top: 8px;border-right: 1px solid #CCCCCC;}
+    #top .tm_welcome .tmw_info a{color: #828282;margin-left: 15px;}
+    #top .tm_welcome .tmw_info:hover a{color: #3C99FF;}
+    #top .tm_welcome .tmw_info span{width: 9px;height: 5px;display: inline-block;background: url(__IMG2__/img/downward.png);position: relative;left: 5px;top: -2px;}
+    #top .tm_welcome .tmw_right{float: right;}
+    #top .tm_welcome .tmw_right li{list-style: none;float: left;padding: 0 9px;color: #828282;height: 20px;line-height: 12px;margin-top: 8px;}
+    #top .tm_welcome .tmw_right li a{display: block;width: 100%;height: 100%;}
+    
+    #top .tm_cen{height: 106px;}
+    #top .tm_cen>div{padding: 28px 0 33px 22px ;}
+    #top .tm_cen .logo{float: left;}
+
+    #top .tmc_search{float: left;margin-left: 80px;}
+    #top .tmc_search input{width: 420px;height: 40px;border: 3px solid #218ACB;border-radius: 0px;font-size: 14px;font-family: "微软雅黑";padding-left: 22px;border-top: 2px solid #218ACB;}
+    #top .tmc_search span{width: 40px;height: 40px;display: inline-block;background: #218ACB;line-height: 40px;text-align: center;margin-left: -45px; position: relative;top: 1px;cursor: pointer;}
+
+    #top .tmc_right{float: right;}
+    #top .tmc_right ul{margin-top: -10px;}
+    #top .tmc_right li{float: left;width: 100px;text-align: center;font-family: "微软雅黑";font-size: 12px;color: #838282;}
+    #top .tmc_right a li:hover{color: #3C99FF;}
+    #top .tmc_right li p{margin-top: -8px;}
+    #top .tmc_right li span{margin: 0 4px;display: inline-block;width: 40px;height: 40px;border-radius: 50%;}
+    #top .tmc_right li .qual{background: url(__IMG2__/img/icon_artificial.png) center no-repeat;}
+    #top .tmc_right li .test{background: url(__IMG2__/img/icon_maintenance.png) center no-repeat;}
+    #top .tmc_right li .cheap{background: url(__IMG2__/img/icon_new.png) center no-repeat;}
+
+    #top .tm_nav{height: 40px;background: #1CD6AF;}
+    #top .tm_nav li{list-style: none;float: left;height: 40px;line-height: 40px;padding: 0 28px;cursor: pointer;color: #FFF;font-family: '微软雅黑';font-size: 16px;margin-right: -1px;}
+    #top .tm_nav li span{display: inline-block;width: 1px;height: 30px;position: relative;top:5px;left: 27px;background: linear-gradient(rgba(10,160,129,0), rgba(10,160,129,1),rgba(10,160,129,0));float: right;}
+    #top .tm_nav li img{position: relative;top: -20px;left: -6px;}
+    #top .tm_nav li:hover{background: #03BF98;}
+    #top .tm_nav .nav_xz{background: #03BF98;}
+</style>
+<!--头部-->
+<div id="top">
+    <div class="tm_welcome">
+        <div>
+            <div class="tmw_left">专注单品，极致转化！</div>
+            <div class="tmw_info"><a href="http://www.j1m1.com/index.php/business/userinfo.html">个人中心<span></span></a></div>
+            <div class="tmw_right">
+                <ul>
+                    <a href="http://www.j1m1.com/index.php/business/enter.html"><li style="border-left: none;">招商合作入驻</li></a>
+                    <li>|</li>
+                    <a href="http://www.j1m1.com/index.php/business"><li>商家合作</li></a>
+                    <li>|</li>
+                    <a href="/index.php/home/business/help.html"><li>使用帮助</li></a>
+                    <li>|</li>
+                    <a href="javascript:void(0);"><li id="addsvc" >加入积米淘客QQ群</li></a>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="tm_cen">
+        <div>
+            <img class="logo" src="__IMG2__/img/logo.png" alt="">
+            <div class="tmc_search">
+                <input class="goodsNameLike" type="text" name="goodsName" value="" placeholder="请输入搜索内容"/>
+                <span class="search_goods"><img src="__IMG2__/search_icon.png" alt=""></span>
+            </div>
+            <div class="tmc_right">
+                <ul>
+                    <li><span class="qual"></span><p>100%人工审核</p></li>
+                    <li><span class="test"></span><p>实时维护排查</p></li>
+                    <li><span class="cheap"></span><p>全体持续上新</p></li>
+                </ul>
+            </div>
+            <div>
+            </div>
+        </div>
+    </div>
+    <div class="tm_nav">
+        <div>
+            <ul>
+                <a href="http://www.j1m1.com"><li class="{:CONTROLLER_NAME=='Index' && ACTION_NAME=='index'?'nav_xz':''}">主页<span></span></li></a>
+                <a href="/index.php/home/news/coupon"><li data-cid="59" class="{:ACTION_NAME=='coupon'?'nav_xz':''}">领券直播<span></span></li></a>
+                <a href="/index.php/home/news/"><li data-cid="45" class="{:CONTROLLER_NAME=='News'&& ACTION_NAME=='index'?'nav_xz':''}">实时榜单<span></span></li></a>
+                <a href="/index.php/home/news/tmall"><li data-cid="59" class="{:ACTION_NAME=='tmall'?'nav_xz':''}">天猫独家<img src="__IMG2__/img/icon_nav_new.png" alt=""/><span></span></li></a>
+                <a href="/index.php/home/index/introduce.html"><li class="{:ACTION_NAME=='introduce'?'nav_xz':''}">淘客软件<img src="__IMG2__/img/icon_nav_app.png" alt=""/><span></span></li></a>
+                <a href="/index.php/home/index/contactus.html"><li class="{:ACTION_NAME=='contactus'?'nav_xz':''}">联系我们<span></span></li></a>
+                <!--<a href="/index.php/home/index/qqsvc.html"><li class="{:ACTION_NAME=='qqsvc'?'nav_xz':''}">QQ群发<img src="__IMG2__/img/icon_nav_app.png" alt=""/><span></span></li></a>
+                <a href="/index.php/home/index/wesvc.html"><li class="{:ACTION_NAME=='wesvc'?'nav_xz':''}">微信群发<img src="__IMG2__/img/icon_nav_app.png" alt=""/></li></a>-->
+            </ul>
+        </div>
+    </div>
+</div>

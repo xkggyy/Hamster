@@ -1,0 +1,62 @@
+*{margin: 0;padding: 0;font-family: 微软雅黑;font-size: 14px;}
+li{list-style: none;}
+a{text-decoration: none;}
+a:link{text-decoration: none;}/* 未访问的链接 */
+a:visited{text-decoration: none;}/* 已访问的链接 */
+a:hover{text-decoration: none;}/* 鼠标移动到链接上 */
+#head .top{width: 1200px;height: 70px;margin: 0 auto;padding: 20px 10px 10px;}
+#head .top .logo span{display: inline-block;padding-left: 25px;height: 30px;text-align: center;line-height: 30px;color: #797979;font-size: 20px;border-left: 1px solid #797979;position: relative;left: 25px;}
+#head .seller_login span{display: inline-block;color: #1E8BCE;font-size: 20px;}
+#head .seller_login a{color: #1E8BCE;font-size: 20px;text-decoration: none;}
+#head .he_nav{width: 100%;height: 40px;background-color: #1CD6AF;}
+#head .he_nav ul{width: 1200px;margin: 0 auto;}
+#head .he_nav li{float: left;line-height: 40px;}
+#head .he_nav li a{display: inline-block;color: #FFF;padding: 0 28px;font-size: 16px;}
+#head .he_nav .nav_z{background-color: #03BF98;height: 40px;}
+
+#bocen{background-color: #FDFDFD;}
+#bocen .main{width: 1200px;margin: 0 auto;padding-top: 30px;}
+#bocen .main .left{width: 145px;background-color: #F5F5F5;padding: 20px 25px;}
+#bocen .left .left_title .left_user{color: #3C3C3C;position: relative;top: -7px;left: 3px;}
+#bocen .left .left_title span:first-child{display: inline-block;width: 22px;height: 22px;background: url("../img/icon_user.png") no-repeat;}
+#bocen .left li{text-align: right;}
+#bocen .left .le_nav a{color: #FE7E3F;}
+#bocen .left li a{display: inline-block;color: #3C3C3C;width: 100px;margin-top: 25px;}
+#bocen .left li a span:first-child{float: left;}
+#bocen .left li a span:nth-child(2){float: right;}
+
+#bocen .user_info .control-group{border-bottom: 1px solid #E6E6E6;line-height: 49px;}
+#bocen .user_info .control-group .control-label{color: #323232;margin-top: 10px;}
+#bocen .user_info .control-group .controls{color: #7E7C7D;margin-left: 50px;}
+
+/*我要报名*/
+#bocen .signup .control-group{/*border-bottom: 1px solid #E6E6E6;*/line-height: 49px;}
+#bocen .signup .control-group .control-label{color: #323232;margin-top: 10px;}
+/*#bocen .user_info .control-group .controls{color: #7E7C7D;}*/
+#bocen .signup form h3{margin: 30px 0 5px;}
+#bocen .signup form hr{margin-bottom: 10px;}
+
+/*报名记录*/
+#bocen .signup_record .remainder {height: 50px;padding: 5px 8px;}
+#bocen .signup_record .remainder span {color: #FF6600;font-size: 24px;}
+#bocen .signup_record .remainder button {font-size: 15px; color: #FFF;width: 70px;height: 30px; background-color: #FF6600;text-align: center; line-height: 30px;border: none; border-radius: 3px;margin-left: 45px;}
+#bocen .signup_info .sr_nav {height: 40px;background-color: #F5F5F5;line-height: 40px;}
+#bocen .signup_info .sr_nav li {padding: 0 10px;float: left;cursor: pointer;}
+#bocen .signup_info .sr_nav .srn_xuan {color: #F60;}
+
+#sgnup_goods table tr{text-align: center;}
+#sgnup_goods table .goodsPic img{width: 100px;height: 100px;}
+#sgnup_goods .bui-grid-table .bui-grid-cell-text{padding: 0 2px;font-size: 13px;}
+#sgnup_goods table .couponInfo p{color: #D3867F;margin: 0;}
+
+/*淘客入驻中心*/
+#bocen .enter form .input-large{width: 250px;float: left;margin-top: 10px;}
+#bocen .enter form select{float: left;margin-top: 10px;}
+#bocen .enter .form-horizontal .control-group-img .controls{height: inherit;line-height: 170px;}
+#bocen .enter .form-horizontal .control-group-img .control-label{margin-top: 70px;}
+#bocen .enter form img{float: left;margin-top: 10px;}
+#bocen .enter .form-horizontal .controls .control-label{width: inherit;margin-left: 15px;}
+#bocen .enter .form-horizontal .controls .control-label s{color:#EA6A77;font-size: 14px;}
+
+
+.form-horizontal .valid-text{margin-top: -8px;}

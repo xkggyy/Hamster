@@ -1,0 +1,69 @@
+#main_title
+{
+    width:958px;
+    height:30px;
+    background-color: #F0F8FF;
+    border:1px solid  gray;
+    margin-left:auto;
+    margin-right:auto;
+    text-align:left;
+    font-size:14px;
+    color: #004364;
+    line-height: 30px;
+    border-top:none;
+    border-bottom:none;
+}
+#main
+{
+    width:958px;
+    height:500px;
+    margin-left:auto;
+    margin-right:auto;
+    border:1px solid  gray;
+
+}
+
+#main table tr td
+{
+    font-size:14px;
+}
+#main input.text
+{
+    width:250px;
+    height:25px;
+    margin-left: 20px;
+    font-size:20px;
+
+    color:  #004A6F;
+}
+#main select
+{
+    width:255px;
+    height:25px;
+    margin-left: 20px;
+    color:  #004A6F;
+    font-size:16px;
+}
+
+#main input.submit
+{
+    width:260px;
+    height:38px;
+}
+
+#bottom
+{
+    margin-top:-1px;
+    border:1px solid gray;
+    width:958px;
+    height:80px;
+    border-top:none;
+    margin-left:auto;
+    margin-right:auto;
+}
+#bottom .txt
+{
+    padding-top:20px;
+    font-size:14px;
+    color: #00274F;
+}

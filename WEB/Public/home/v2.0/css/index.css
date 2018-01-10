@@ -1,0 +1,98 @@
+*{margin: 0;padding: 0;font-family: 微软雅黑;color: #333;}
+a{text-decoration: none;color: #FFF;}
+li{list-style: none;}
+.main_width1000{width: 1000px;margin: 0 auto;}
+.main_width1200{width: 1200px;margin: 0 auto;}
+#main{background-color: #F6F6F6;}
+/*头部*/
+#top_nav{background-color: #FDFEF9;}
+#top_nav .top_main{width: 1200px;margin: 0 auto;height: 80px;}
+#top_nav .nav{position: relative;left: 300px;top: -70px;}
+#top_nav .nav li{float: left;font-size: 16px;height: 76px;line-height: 76px;text-align: center;margin: 0 8px;padding: 0 18px;cursor: pointer;border-top: 4px solid #FDFEF9;}
+#top_nav .nav li:hover{color: #F6750D;border-top: 4px solid #F6750D;}
+#top_nav .nav .li_xz{color: #F6750D;border-top: 4px solid #F6750D;}
+/*底部*/
+#bottom{background: #3A3C48;font-family: 黑体;}
+#bottom .bo_main{width: 1100px;height: 355px;position: relative;margin: 0 auto;}
+#bottom .bo_top{width: 700px;height: 200px;margin-bottom: 30px;margin: 0 auto;padding-top: 50px;}
+#bottom .bo_con{width: 190px;float: left;}
+#bottom .bo_con h3{letter-spacing: 2px;margin-bottom: 5px;opacity: .9;font-size: 22px;color: #FFF;}
+#bottom .bo_con li{margin-top: 18px;opacity: .8;font-size: 16px;}
+#bottom .bo_con li:hover a{color: #F50;}
+#bottom .bo_bot{text-align: center;color: #7E8793;border-top: 1px solid silver;padding-top: 30px;margin-bottom: 55px;}
+/*首页*/
+#center_con .about{text-align: center;}
+#center_con .about .ab_top h3{font-size: 24px;margin-top: 80px;}
+#center_con .about .ab_top p{font-size: 18px;margin-top: 30px;line-height: 33px;}
+#center_con .about .ab_bot{margin-top: 20px;height: 430px;}
+#center_con .about .ab_bot div{width: 25%;height: 230px;float: left;margin-top: 50px;}
+#center_con .about .ab_bot h4{font-size: 20px;margin-top: 8px;}
+#center_con .about .ab_bot p{font-size: 14px;color: #666;margin-top: 8px;}
+#center_con .type{background-color: #E5E5E5;height: 390px;}
+#center_con .type .type_diannao{position: absolute;top: 137px;}
+#center_con .type .type_right{width: 670px;height: 625px;position: absolute;right: 0px;top: 0px;}
+/*#center_con .type .type_right div{width: 48px;height: 75px;position: relative;text-align: center;float: left;margin-right: 60px;margin-top: 40px;}
+#center_con .type .type_right div p{font-size: 14px;color: #666;position: absolute;bottom: 0px;width: 48px;}*/
+#center_con .type .type_bot{font-size: 24px;padding-top: 320px;text-align: center;}
+#center_con .bot_th{height: 550px;}
+/*#center_con .bot_th .info{width: 400px;padding-top: 203px;}
+#center_con .help .info{position: absolute;left: 700px;top: 210px;padding-top: 0;}
+#center_con .bot_th .info h3{font-size: 24px;}
+#center_con .bot_th .info p{font-size: 24px;margin-top: 15px;}
+#center_con .bot_th .info_pic img{position: absolute;}
+#center_con .bot_th .info_pic .info_pic1{right: 90px;top: 80px;}
+#center_con .bot_th .info_pic .info_pic2{right: 0;top: 137px;}
+#center_con .bot_th .info_pic .info_pic3{left: 0;top: 95px;}
+#center_con .bot_th .info_pic .info_pic4{right: 0;top: 90px;}*/
+/*积米动态*/
+#trends_con .trends .trends_top{text-align: center;font-size: 24px;margin-top: 88px;}
+#trends_con .trends .history .ht_center{position: relative;left: 50%;margin-left: -60px;margin-bottom: 80px;}
+#trends_con .trends .history .ht_left{width: 400px;position: absolute;left: 50%;margin-left: -420px;text-align: right;}
+#trends_con .trends .history .ht_right{width: 400px;position: absolute;left: 50%;margin-left: 20px;top: 0;}
+#trends_con .trends .history .ht{position: absolute;right: 0;;width: 340px;background-size: 100% 100%;padding: 12px 30px;text-align: left;font-size: 14px;}
+#trends_con .trends .history .ht .p_tit{position: absolute;color: #f6750d;}
+#trends_con .trends .history .ht .p_con{position: absolute;width: 338px;top: 40px;}
+#trends_con .trends .history .ht .p_img{position: absolute;left: 60px;top: 80px;}
+/*积米APP*/
+#app_con .app_con .con_info{width: 320px;padding: 140px 82px 0 42px;position: absolute;}
+#app_con .app_con .con_info h4{font-size: 36px;}
+#app_con .app_con .con_info p{font-size: 18px;margin-top: 22px;color: #999;line-height: 30px;}
+#app_con .app_con .con_pic{width: 556px;position: absolute;left: 444px;}
+#app_con .app_con .con_pic img{position: absolute;}
+#app_con .app_con .con_pic .app_pic1{left: 152px;top: 98px;}
+#app_con .app_con .con_pic .app_pic2{left: 96px;top: 145px;box-shadow: 5px 5px 15px -2px #F0F0F0;}
+#app_con .app_jpfl .type_info{position: absolute;left: 42px;top: 310px;width: 390px;}
+#app_con .app_jpfl .type_info div{width: 62px;height: 76px;position: relative;text-align: center;margin-right: 68px;margin-top: 15px;float: left;}
+#app_con .app_jpfl .type_info p{font-size: 14px;}
+#app_con .app_gnqd .other_info{font-size: 14px;width: 260px;height: 44px;background-color: #FFF;border: 1px solid #E4E4E4;box-shadow: 0px 0px 5px 3px #EBEBEB;position: absolute;padding: 37px 25px;left: -224px;top: 338px;}
+/*关于我们*/
+#cu_banner{background: url("../images/contactus_banner.jpg");background-size: 100% 100%;height: 440px;}
+#cu_banner .cube_main{width: 1000px;margin: 0 auto;position: relative;}
+#cu_banner .cube_left img{position: absolute;left: 47px;top: 90px;}
+#cu_banner .cube_left .img1{animation: cu_banner_img1 1500ms linear;}
+#cu_banner .cube_left .img2{left: 139px;top: 183px;animation: cu_banner_img1 1500ms linear;}
+#cu_banner .cube_left .img3{left: 343px;top: 238px;animation: cu_banner_img3 1s 1500ms linear both;}
+#cu_banner .cube_right{position: absolute;left: 595px;top: 110px;color: #FFF;font-family: 萍方-繁;}
+#cu_banner .cube_right .con_top{width: 110px;height: 40px;font-size: 18px;padding-left: 12px;border-radius: 20px;line-height: 40px;background: #1DA0FB;}
+#cu_banner .cube_right .con_cen{font-size: 40px;margin: 23px 0 16px;font-family: serif;}
+#cu_banner .cube_right .con_bot{font-size: 18px;}
+    /*详细信息*/
+#cu_info{width: 914px;height: 284px;background: #FFF;margin: 0 auto;padding: 43px;}
+#cu_info p{font-size: 36px;margin-bottom: 22px;font-family: 冬青黑体简体中文;}
+#cu_info div{margin-bottom: 24px;}
+#cu_info .cuin_com{font-size: 23px;opacity: 0.9;}
+#cu_info .cuin_con{font-size: 16px;opacity: 0.8;font-family: 冬青黑体简体中文;}
+#cu_info .cuin_con span{display: inline-block;margin-right: 8px;}
+#cu_info .cuin_line span{background: url("../images/contactus_icon_line.png");width: 20px;height: 18px;}
+#cu_info .cuin_site span{background: url("../images/contactus_icon_site.png");width: 13px;height: 21px;margin-right: 14px;margin-left: 1px;}
+#cu_info .cuin_tel span{background: url("../images/contactus_icon_tel.png");width: 18px;height: 19px;margin-right: 9px;margin-left: 1px;}
+#cu_info .cuin_mail span{background: url("../images/contactus_icon_mail.png");width: 19px;height: 14px;margin-right: 9px;}
+/*联系我们banner动画*/
+@keyframes cu_banner_img1{
+    0%{transform: translate(-40px,0);opacity: 0;}
+    100%{transform: translate(0,0);opacity: 1;}
+}
+@keyframes cu_banner_img3{
+    0%{transform: translate(60px,40px);opacity: 0;}
+    100%{transform: translate(0,0);opacity: 1;}
+}

@@ -1,0 +1,79 @@
+<div class="coupon_con">
+    <!--商品分类筛选-->
+    <div class="coupon_filter">
+        <div class="coupon_goods_classify">
+            <!--<form>-->
+            <div class="goods_fenlei">
+                <p class="coupon_goods_title">商品分类：</p>
+                <ul>
+                    <li class='nav_btn cgf_xuanz'>全部</li>
+                    <volist name="nav" id="item" offset="0">
+                        <li data-cid="{$item.id}" class="nav_btn">{$item.name}</li>
+                    </volist>
+                    <!--<li><img src="__IMG2__/img/icon_time.png" alt="" style="position: relative;left:-3px;top:0px;"/>预告(29988)</li>-->
+                </ul>
+                <!--<p class="nav_fenlei_more">更多>></p>-->
+            </div>
+            <div class="goods_shaixuan">
+                <p class="coupon_goods_title">高级筛选：</p>
+                <ul>                                            
+                    <volist name="tag" id="item" offset="0">
+                        <li><label><input name="shaixuan" type="checkbox" data-cid="{$item.id}"/>{$item.name}</label></li>
+                    </volist>
+                </ul>
+                <div class="goods_shaixuan_jiage">
+                    <p>价格&nbsp;<input type="text" name="minPrice" onkeyup="this.value = this.value.replace(/[^\d]/g, '')" onafterpaste="this.value=this.value.replace(/[^\d]/g,'')" value="" placeholder="¥" class="minPrice">-
+                        <input type="text" name="maxPrice" onkeyup="this.value = this.value.replace(/[^\d]/g, '')" onafterpaste="this.value=this.value.replace(/[^\d]/g,'')"  value="" placeholder="¥" class="maxPrice">&nbsp;&nbsp;
+                        收入比例≥&nbsp;<input type="text" name="yjScale" onkeyup="this.value = this.value.replace(/[^\d]/g, '')" onafterpaste="this.value=this.value.replace(/[^\d]/g,'')"  value="" placeholder="%" class="yjScale">&nbsp;&nbsp;
+                        销量≥&nbsp;<input type="text" name="salesVolume" onkeyup="this.value = this.value.replace(/[^\d]/g, '')" onafterpaste="this.value=this.value.replace(/[^\d]/g,'')"  value="" placeholder="" class="salesVolume"></p>
+                </div>
+                <input class="goods_shaixuan_submit" type="submit" value="筛选"/>
+            </div>
+            <!--</form>-->
+        </div>
+        <div class="coupon_goods_other">
+            <ul>
+                <li class="cgo_xuanz">综合</li>
+                <li>最新<img src="__IMG2__/img/icon_nav_new.png" alt="" style="position: relative;left:-5px;top:-18px;"/></li>
+                <li>销量</li>
+                <li>领券量</li>
+                <li>收入比例</li>
+                <li>价格<span class="cgo_pai"></span></li>
+            </ul>
+            <div class="cgo_lar">
+                <span class="cgo_lar_left"></span>
+                <b class="pageIndex" style="color:#1C9BD4;">1</b>/<b class="all_page"></b>
+                <span class="cgo_lar_right"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="coupon_good">
+        <!--领券直播商品-->
+        <div class="coupon_goods" id="listView">
+
+        </div>
+        <!--商品分页-->
+        <div class="goods_page">
+            <div class="count">共<b>{$count}</b>条</div>
+            <div class="first_page bor_cl page_no">首页</div>
+            <div class="up_page bor_cl page_no"><上一页</div>
+            <div class="page_size">
+                <span class="bor_cl page_num1 page_num_no">1</span>
+                <span class="bor_cl page_num2">2</span>
+                <span class="bor_cl page_num3">3</span>
+                <span class="bor_cl page_num4">4</span>
+            </div>
+            <div class="down_page bor_cl">下一页></div>
+            <div class="last_page bor_cl">尾页</div>
+            <div class="numpage">页次:<b class="pageIndex" style="color:#1C9BD4;">1</b>/<b class="all_page">{$all_page}</b>页&nbsp;&nbsp;(<b>16</b>条/页)</div>
+            <div class="go_numpage">到
+                <select class="bor_cl">
+                    <!--<for start="1" end="$all_page+1">-->
+                    <!--<option value = "-4">第-4页</option>-->
+                    <!--</for>-->
+                </select>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,target-densitydpi=high-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>积米淘客助手</title>
+</head>
+<body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    .logo {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-content: center;
+        margin-top: 0.8rem;
+    }
+
+    .qq-text {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        font-size: 12px;
+        justify-content: space-around;
+        align-items: center;
+        font-weight: 600;
+    }
+
+    .chart {
+        position: relative;
+        background-color: #e5e5e5;
+        margin-top: 0.3rem;
+        width: 100%;
+        height: 20rem;
+    }
+
+    .chart_img {
+        width: 16rem;
+        height: 13rem;
+        position: absolute;
+        left: 50%;
+        margin-left: -8rem;
+        margin-top: 4rem;
+    }
+
+    .chart_text {
+        width: 100%;
+        height: 21rem;
+        position: absolute;
+        top: 1rem;
+        text-align: center;
+        color: #174f52;
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .introduction {
+        width: 100%;
+        height: 15rem;
+        background: url('__IMG__/introduction_bg.png') no-repeat 0 0;
+        margin-top: -.5rem;
+        background-size: 100% 15rem;
+        padding-top: 1rem;
+    }
+
+    .introduction_text {
+        width: 85%;
+        height: 85%;
+        font-size: 12px;
+        color: #ffffff;
+        letter-spacing: 1px;
+        line-height: 180%;
+        padding: 0.5rem;
+    }
+
+    .function {
+        width: 100%;
+        height: 9rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center
+    }
+
+    #functions div {
+        width: 25%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center
+    }
+
+    .download {
+        width: 100%;
+        height: 8rem;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin-top: 3rem;
+        background-color: #3a3c48;
+        font-size: 12px;
+    }
+
+    #download div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .download_now {
+        text-align: center;
+        width: 9rem;
+        height: 1.8rem;
+        color: #3a3c48;
+        border: thin solid #ffffff;
+        border-radius: 20px;
+        background-color: rgba(255, 255, 255, 1);
+        font-size: 1.2rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        margin-top: 1rem;
+    }
+
+</style>
+
+<div class="logo">
+    <div>
+        <img src="__IMG__/logo_1.png" style="width: 2rem;height: 2rem">
+        <img src="__IMG__/text.png" style="width: 8rem;height: 2rem;margin-left: 0.4rem">
+    </div>
+    <label style="font-size: .8rem;padding-top: 0.5rem;font-family: '微软雅黑';font-weight: 600">定制版APP介绍</label>
+</div>
+<img src="__IMG__/banner.png" style="height: 13.5rem;width: 100%;margin-top: 0.5rem">
+
+<div class="qq-text">
+    <label>为淘客定制的独一无二专属APP</label>
+    <div style="display: flex;flex-direction: row">
+        <label>咨询客服QQ：</label>
+        <label style="color: #cc1615">362951995</label>
+    </div>
+</div>
+
+<div class="chart">
+    <img src="__IMG__/chart.png" class="chart_img">
+    <p class="chart_text">强大的数据支持，超高人气使用量</p>
+    <div style='left: 6.5rem;top: 2.7rem;position: absolute'>
+        <p style="font-size: 12px;color: #174f52">接入淘客用户：</p>
+        <p style="font-size: 14px;color:  #e61134;padding-left: .5rem;font-weight: 600">6827</p>
+    </div>
+
+    <div style='right: .5rem;top: 4.7rem;position: absolute'>
+        <p style="font-size: 12px;color: #174f52">今日淘客订单数: </p>
+        <p style="font-size: 14px;color:  #e61134;padding-left: 2rem;font-weight: 600">49780</p>
+    </div>
+
+    <div style='left: .5rem;top: 5.2rem;position: absolute'>
+        <p style="font-size: 12px;color: #174f52">今日淘客收益: </p>
+        <p style="font-size: 14px;color:  #e61134;padding-left: .5rem;font-weight: 600">539083</p>
+    </div>
+    <div style='left: .5rem;top: 16.5rem;position: absolute'>
+        <p style="font-size: 12px;color: #174f52">淘客总订单数: </p>
+        <p style="font-size: 14px;color:  #e61134;padding-left: .5rem;font-weight: 600">8650W+</p>
+    </div>
+
+    <div style='right: .5rem;top: 16.5rem;position: absolute'>
+        <p style="font-size: 12px;color: #174f52">淘客总佣金收益: </p>
+        <p style="font-size: 14px;color:  #e61134;padding-left: .5rem;font-weight: 600">3581W+</p>
+    </div>
+</div>
+
+<div style="width: 100%;display: flex;align-items: center;flex-direction: column">
+    <img src="__IMG__/advantage.png" style="width: 40%;height: 2rem;margin-top: 1rem;">
+    <div style="width:100%;display: flex;flex-direction: row;align-content: center;justify-content: space-around;margin-top: 1rem">
+        <img src="__IMG__/timely_update.png" style="width: 30%;height: 3rem">
+        <img src="__IMG__/exclusive_offers.png" style="width: 30%;height: 3rem">
+        <img src="__IMG__/better_goods.png" style="width: 30%;height: 3rem">
+    </div>
+</div>
+
+<img src="__IMG__/reason.png" style="width: 100%;height: 10rem;margin-top: .5rem">
+
+<div class="introduction">
+
+    <div style="display: flex;flex-direction: row;background-color: rgba(255,255,255,0.21);margin: 0 auto;width: 90%">
+        <p class="introduction_text">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;积米淘客助手，超过2W淘客都在用的新一代淘客软件，QQ微信自动群发， 简单易上手；
+            海量商品任你选择，丰富细分类；美女主播耐心解疑，全程带你飞；功能强大完全免费，一心为淘客；最新上线专属APP，定制新玩法。
+            <br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;积米惠购是我们推出的一款专为淘客定制的手机APP我们有最强大的技术团队和招商团队，
+            自由最大化地实现最高效的推广效果。捷足先登轻松网赚，你与淘客大神，只差了一个积米APP！
+        </p>
+        <p style="width: 1rem;height: 11rem;color: #ffffff;margin-top: 2rem;margin-left: .2rem;text-align: center">
+            打造你的专属</p>
+    </div>
+</div>
+
+<div class="function" id="functions">
+    <div>
+        <img src="__IMG__/function_first.png" style="width: 5rem;height: 5rem">
+        <p style="width: 5rem;font-size: 12px;height: 2rem">QQ微信群发： 自动群发，稳定快速 </p>
+    </div>
+    <div>
+        <img src="__IMG__/function_second.png" style="width: 5rem;height: 5rem">
+        <p style="width: 5rem;font-size: 12px;height: 2rem">免费使用：功能强大，免费和使用 </p>
+    </div>
+    <div>
+        <img src="__IMG__/function_third.png" style="width: 5rem;height: 5rem">
+        <p style="width: 5rem;font-size: 12px;height: 2rem">产品丰富：联盟产品库+官方产品库 </p>
+    </div>
+    <div>
+        <img src="__IMG__/function_fourth.png" style="width: 5rem;height: 5rem">
+        <p style="width: 5rem;font-size: 12px;height: 2rem">高度定制：没有我们做不到的，只有你想不到的</p>
+    </div>
+</div>
+
+<div class="download" id="download">
+
+    <div>
+        <img src="__IMG__/qr_code.png" style="width: 4.5rem;height: 4.5rem">
+        <label style="color: #ffffff;font-size: 12px;margin-top: .5rem">扫一扫立刻关注</label>
+    </div>
+
+    <div>
+        <label style="color: #ffffff">积米淘客助手官方QQ群：596807694</label>
+        <label style="color: #ffffff">积米淘客助手QQ交流群：528522273</label>
+        <p style="color: #ffffff;width: 100%;">旺旺交流群：1407699530</p>
+        <label class="download_now" onclick="window.open('http://www.j1m1.com/public/download/huigou.apk')">立即下载</label>
+    </div>
+</div>
+</body>
+</html>

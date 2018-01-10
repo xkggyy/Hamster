@@ -1,0 +1,36 @@
+<form id="form" action='rule_add' method="post" lass="form-horizontal">
+    <input type="hidden" name="id" value="{$group.id}">
+    <div class="row">
+        <div class="control-group ">
+            <label class="control-label">角色名称：</label>
+            <div class="controls">
+                <input type="text" class="input-normal control-text bui-form-field" name='title' data-rules="{required : true}" value="{$group.title}" aria-disabled="false">
+            </div>
+        </div>
+    </div>
+    <div class="control-group ">
+        <label class="control-label">是否启用：</label>
+        <div class="controls">
+            <label class="checkbox">
+               <input type="checkbox" name='status' value="1" {$group['status']==1?"checked='checked'":""}>启用
+            </label>
+        </div>
+    </div>
+    <div class="control-group ">
+        <label class="control-label">角色权限：</label>
+    </div>
+    <div class="controls row-fluid show-grid">
+        <div class="row">
+            <volist name='items' id='item' key='i'>
+                <div class="span8 {$i==0?'':'span-first'}"><input type="checkbox" name='rules' value="{$item.id}"> {$item.title} </div>
+            </volist>
+        </div>
+    </div>
+</form>
+<script type="text/javascript">
+    var grule = '{$group.rules}';
+    var rules = grule.split(',');
+    for (var i = 0; i < rules.length; i++) {
+        $('[name=rules][value=' + rules[i] + ']').attr("checked", "checked")
+    }
+</script>

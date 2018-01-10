@@ -1,0 +1,33 @@
+*{margin: 0;padding:0;}
+.svc .que_ans{width: 100%;height: 265px;}
+.svc .qqque_ans{background: url("../img/qqsvc_bg.png");}
+.svc .weque_ans{background: url("../img/wesvc_bg.jpg");}
+.svc .que_ans .qa_main{width: 1200px;margin: 0 auto;position: relative;}
+.svc .qa_main .video{width: 270px;height: 265px;cursor: pointer;}
+.svc .qa_main .svc_explain{width: 450px;text-align: center;padding-top: 40px;position: absolute;top: 0;left: 495px;}
+.svc .qa_main .svc_t_info{font-size:  18px;font-family: 冬青黑体简体中文;color: #40bea7;padding: 25px 0 18px;text-align: left;}
+.svc .qa_main .svc_download_but{width: 156px;height: 41px;background: #40bea7;color: #FFF;font-family: 冬青黑体简体中文;font-size: 18px;text-align: center;line-height: 41px;border-radius: 4px;margin: 0 auto;cursor: pointer;}
+
+.svc .step{background: #FAFAFA;}
+.svc .step .step_exp{width: 100%;height: 160px;margin: 0 auto;font-family: 微软雅黑;color: #494949;background: #FFF;}
+.svc .step_exp h4{font-weight: 100;font-size:22px;padding: 37px 0 18px;text-align: center;}
+.svc .step_exp p{font-size:16px;word-spacing: 25px;width: 650px;margin: 0 auto;}
+
+.svc .step_main{width: 1100px;margin: 0 auto;}
+.svc .step_main .step_title h3{font-family: 黑体;font-size: 24px;color: #40bea7;text-align: center;margin-top: 44px;}
+.svc .step_main .step_title h3 span{width: 36px;height: 29px;display: inline-block;background: url("../img/svc_instructions.png");position: relative;right: 8px;top: 8px;}
+
+.svc .step_main .step_info{height: 520px;border-top: 2px solid #CECECE;}
+.svc .step_main .step_left{text-align: left;width: 490px;height: 370px;padding-top: 150px;float: left;}
+.svc .step_main .step_left h4{font-family: 黑体;font-size: 22px;color: #40bea7;padding: 12px 0 16px;}
+.svc .step_main .step_left p{font-family: 微软雅黑;font-size: 16px;color: #494949;word-spacing: 16px;}
+.svc .step_main .step_t_left p span{color: #f78f1e;}
+
+.svc .step_main .step_right{width: 610px;height: 447px;float: right;padding-top: 73px;position: relative;top: 0;}
+.svc .step_main .step_right img{position: absolute;}
+.svc .step_main .step_f_right .step_pic1{left: 128px;top: 72px;}
+.svc .step_main .step_f_right .step_pic2{z-index: 1;left: 49px;top: 127px;}
+.svc .step_main .step_s_right .step_pic1{left: 0px;top: 75px;}
+.svc .step_main .step_s_right .step_pic2{z-index: 1;left: 54px;top: 168px;}
+.svc .step_main .step_t_right .step_pic1{left: 132px;top: 75px;}
+.svc .step_main .step_t_right .step_pic2{z-index: 1;left: 26px;top: 242px;}

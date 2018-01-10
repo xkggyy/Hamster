@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+    <include file="public:header" />
+    <link href="__CSS__/main-min.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="header">
+        <div class="dl-title">
+            <span class="lp-title-port">仓鼠网</span><span class="dl-title-text">后台管理系统</span>
+        </div>
+        <div class="dl-log"><img src="{$Think.session.user.thumb}" style="width: 25px;height: 25px;" /> <span class="dl-log-user">{$Think.session.user.nickname}</span><a href="{:u('login/out')}" title="退出系统" class="dl-log-quit">[退出]</a>
+        </div>
+    </div>
+    <div class="content">
+        <div class="dl-main-nav">
+            <!--导航容器-->
+            <div class="dl-inform">
+                <div class="dl-inform-title">贴心小秘书
+                    <s class="dl-inform-icon dl-up"></s>
+                </div>
+            </div>
+            <ul id="J_Nav" class="nav-list ks-clear">
+                <li class="nav-item dl-selected">
+                    <div class="nav-item-inner nav-home">首页</div>
+                </li>
+                <li class="nav-item">
+                    <div class="nav-item-inner nav-order">商品管理</div>
+                </li>
+                <li class="nav-item">
+                    <div class="nav-item-inner nav-inventory">分类管理</div>
+                </li>
+                <li class="nav-item">
+                    <div class="nav-item-inner nav-marketing">日程管理</div>
+                </li>
+                <li class="nav-item">
+                    <div class="nav-item-inner nav-marketing">用户管理</div>
+                </li>
+                <li class="nav-item">
+                    <div class="nav-item-inner nav-supplier">后台用户管理</div>
+                </li>
+            </ul>
+        </div>
+        <ul id="J_NavContent" class="dl-tab-conten">
+
+        </ul>
+    </div>
+<include file="public:foot" />
+<!--后台首页配置js-->
+<script type="text/javascript">
+    BUI.use('common/main', function () {
+        var config = [{
+                id: 'index',
+                homePage: 'main',
+                menu: [{
+                        text: '常用操作',
+                        items: [{
+                                id: 'main',
+                                text: '快速开始',
+                                href: "{:U('index/main')}",
+                                closeable: false
+                            }, {
+                                id: 'goods_list',
+                                text: '商品列表',
+                                href: "{:U('Goods/goods_list?gtype=0')}"
+                            }, {
+                                id: 'shlist',
+                                text: '待审核商品',
+                                href: '/index.php/Admin/Goods/goods_list?gtype=1'
+                            }, {
+                                id: 'category_list',
+                                text: '所有分类',
+                                href: "{:U('Category/category_list')}"
+                            }, {
+                                id: 'schedule_list',
+                                text: '日程列表',
+                                href: "{:U('Schedule/schedule_list')}"
+                            }, {
+                                id: 'import_goods_list',
+                                text: '导入商品',
+                                href: "{:U('Goods/goods_import?gtype=2')}"
+                            }]
+                    }]
+            }, {
+                id: 'item',
+                homePage: 'list',
+                menu: [{
+                        text: '商品管理',
+                        items: [{
+                                id: 'list',
+                                text: '商品列表',
+                                href: '/index.php/Admin/Goods/goods_list?gtype=0'
+                            }, {
+                                id: 'shlist',
+                                text: '待审核商品',
+                                href: '/index.php/Admin/Goods/goods_list?gtype=1'
+                            }, {
+                                id: 'shlist',
+                                text: '自招商品',
+                                href: '/index.php/Admin/Goods/goods_list?gtype=2'
+                            }, {
+                                id: 'shlist',
+                                text: '已审核商品',
+                                href: '/index.php/Admin/Goods/goods_list?gtype=3'
+                            }, {
+                                id: 'shlist',
+                                text: '回收站',
+                                href: '/index.php/Admin/Goods/goods_list?gtype=4'
+                            }]
+                    }]
+            }, {
+                id: 'category',
+                homePage: 'goodscate',
+                menu: [{
+                        text: '分类管理',
+                        items: [
+                            {
+                                id: 'goodscate',
+                                text: '商品分类',
+                                href: '/index.php/Admin/Category/category_list?type=1'
+                            },
+
+                            {
+                                id: 'slides',
+                                text: '轮播图管理',
+                                href: '/index.php/Admin/Slides/slides_list'
+                            }
+                        ]
+                    }]
+            }, {
+                id: 'schedule',
+                homePage: 'list1',
+                menu: [{
+                        text: '日程管理',
+                        items: [{
+                                id: 'list1',
+                                text: '日程管理',
+                                href: '/index.php/Admin/Schedule/schedule_list'
+                            }]
+                    }]
+            }, {
+                id: 'rice',
+                homePage: 'userDetails',
+                menu: [{
+                        text: '米粒用户管理',
+                        items: [{
+                                id: 'userDetails',
+                                text: '用户管理',
+                                href: '/index.php/Admin/User/user_details'
+
+                            }, {
+
+                                id: 'riceRecordDetails',
+                                text: '米粒详情',
+                                href: '/index.php/Admin/Rice/rice_details'
+                            }, {
+
+                                id: 'riceRecordExchange',
+                                text: '米粒兑换商品',
+                                href: '/index.php/Admin/User/user_exchange'
+                            }, {
+
+                                id: 'raffleSetting',
+                                text: '转盘奖品设置',
+                                href: '/index.php/Admin/Prize/prize_list'
+                            }, {
+
+                                id: 'trophyInformation',
+                                text: '中奖信息',
+                                href: '/index.php/Admin/Prize/trophy_information'
+                            }]
+                    }]
+            }, {
+                id: 'user',
+                homePage: 'members',
+                menu: [{
+                        text: '后台用户中心',
+                        items: [{
+                                id: 'members',
+                                text: '后台用户管理',
+                                href: '/index.php/Admin/members/members_list'
+                            }]
+                    }, {
+                        text: '权限管理',
+                        items: [{
+                                id: 'rule',
+                                text: '模块管理',
+                                href: '/index.php/Admin/oauth/rule_list'
+                            }, {
+                                id: 'group',
+                                text: '角色管理',
+                                href: '/index.php/Admin/oauth/group_list'
+                            }]
+                    }]
+            }];
+        new PageUtil.MainPage({
+            modulesConfig: config
+        });
+    });
+</script>
+</body>
+
+</html>

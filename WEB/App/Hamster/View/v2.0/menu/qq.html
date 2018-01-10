@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>微信群发</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <include file="public:head" />
+    <link rel="stylesheet" href="__CSS2__/newindex.css" />
+    <link rel="stylesheet" href="__CSS2__/loading.css" />
+    <style>
+        .bui-overlay{z-index: 9999;}
+    </style>
+</head>
+<body>
+    <div id="qqgroup" class="qwgroup">
+        <!--logo AND 最大化最小化-->
+        <div class="top">
+            <div onmousedown="TApp.hWMove()" style="width:100%;height: 100%;position: absolute;z-index: 0"></div>
+            <!--logo-->
+            <div class="toplogo" style=""><img src="__IMG2__/img/back.png" alt="" /></div>
+            <!--最小化、最大化、关闭-->
+            <div class="top_cmi">
+                <!--回菜单-->
+                <!--<div class="topc_menu t_r_least"><a id="home_btn" href="javascript:void(0);"><img src="__IMG2__/images/icon_menu.png" alt=""></a></div>-->
+                <!--最小化-->
+                <div onclick="TApp.hWMin();" class="topc_min t_r_least"><img src="__IMG2__/img/icon_zuixiao.png" alt=""></div>
+                <!--最大化-->
+                <!--<div onclick="TApp.hWMax();" class="topc_max t_r_most"><img src="__IMG2__/img/icon_zuida.png" alt=""></div>-->
+                <!--关闭-->
+                <div onclick="TApp.hExitApp();" class="topc_close t_r_close"><img src="__IMG2__/img/icon_close.png" alt=""></div>
+            </div>
+        </div>
+        <div style="width:100%;height: 100%;position: relative;">
+            <!--待发、已发商品-->
+            <div class="qq_goods">
+                <div class="qq_goods_main">
+                    <div class="goods_li">
+                        <ul>
+                            <li class="wait xuan_li">待发商品<span style='color:red' id='waitcountspan'>(0)</span></li>
+                            <li class="already">已发商品<span style='color:red' id='sendcountspan'>(0)</span></li>
+                        </ul>
+                    </div>
+                    <div class="wait_goods q_goods" id="wait_goods">
+                    </div>
+                    <div class="already_goods q_goods" id="already_goods" style="display:none;">
+                    </div>
+                </div>
+            </div>
+
+            <div id='other'></div>
+            <!--QQ群发-->
+            <div class="qq_crowd">
+                <img src="__IMG2__/img/qun/qun_bg_top.png" alt=""/>
+                <div class="qq_crowd_bg">
+                    <p class="crowd_title">将进行群发的QQ群：</p>
+                    <div style="border-radius: 5px;color: #f6750d;padding: 0 5px 11px 5px;border: 1px solid #d3d3d3;">
+                        <div class="crowd" id="crowdId">
+
+                        </div>
+                    </div>
+                    <p class="time_title">自动群发间隔设置</p>
+                    <select class="crowd_time"> 
+                        <option value="15">15秒</option> 
+                        <option value="30">30秒</option> 
+                        <option value="60">1分钟</option> 
+                        <option value="120">2分钟</option> 
+                        <option value="300">5分钟</option> 
+                        <option value="600">10分钟</option> 
+                        <option value="900">15分钟</option> 
+                    </select> 
+                </div>
+                <div class="qq_crowd_but">
+                    <div class="begin_crowd" style="background-color: #f6750d;z-index: 9999;position: relative;">开始群发</div>
+                    <div class="update_crowd" onclick="TApp.hOpenDir();" style="background-color: #4385f1;">修改QQ群</div>
+                    <button  id="copyBtn" style="display:none">复制</button>
+                </div>
+            </div>
+        </div>
+        <!--进度条-->
+        <div id="jdt" style="position: fixed;width: 100%;height: 100%;top: 0;left: 0;z-index: 9995;background-color: rgba(0,0,0,.6);display: none;">
+            <!--可拖动位置和返回主页-->
+            <div style="position: relative;width: 100%;height: 70px;z-index: 9996;" onmousedown="TApp.hWMove()"></div>
+            <div class="toplogo" style="width: 38px;height: 34px;z-index: 9997;position: absolute;cursor: default;"></div>
+            <!--进度-->
+            <!--                        <div style="position: relative;width: 80%;margin-left: 10%;top: 35%;">
+                                        <div class="progress progress-striped">
+                                            <div id="cjd" class="bar bar-success"></div>
+                                        </div>
+                                    </div>-->
+            <div class="loading-container" style="position: relative;width: 80%;margin-left: 10%;top: 35%;">
+                <div class="loading-bar">
+                    <div class="loaded"></div>
+                    <div id="cjd" class="amount green" style="width: 0%;">
+                        <div class="lines"></div>
+                    </div>
+                </div>
+            </div>
+            <!--暂停群发按钮-->
+            <!--            <div class="begin_crowd" style="background-color: #f6750d;display: none;width: 90px;height: 28px;border-radius: 3px;border: none;color: #FFF;text-align: center;line-height: 28px;cursor: pointer;position: relative;top: 250px;left: 800px;">开始群发</div>-->
+        </div>
+
+    </div>
+    <div class="qclcontent" style="display:none;"></div>
+</body>
+<include file="public:foot" />
+<script type="text/javascript">
+    var waitSendGoods = new Array();
+    $(function () {
+        setbah();
+        window.onresize = setbah;
+
+        $(".goods_li li").click(function () {
+            $(this).siblings().removeClass("xuan_li");
+            $(this).addClass("xuan_li");
+        });
+        //返回主菜单
+        $(".toplogo").click(function () {
+            // $("#qqgroup").animate({left:'1200px'});
+//            if (flag) {
+//                BUI.Message.Alert('请先暂停群发后,再返回主菜单', function () {}, 'info');
+//                return;
+//            }
+            window.parent.hiddenIframe("qq");
+        });
+
+        $(".already").click(function () {
+            $("#already_goods").show();
+            $(".wait_goods").hide();
+        });
+        $(".wait").click(function () {
+            $("#already_goods").hide();
+            $(".wait_goods").show();
+        });
+//        $("#home_btn").click(function () {
+//            if (flag) {
+//                BUI.Message.Alert('请先暂停群发后,再返回主菜单', function () {}, 'info');
+//                return;
+//            }
+//            window.parent.hiddenIframe("qq");
+//        });
+
+        getQQGroup();
+        if (waitSendGoods.length == 0) {
+            getAllGoods();
+        }
+        $(".begin_crowd").click(function () {
+            if ($(this).text() == "开始群发") {
+                start();
+                if (flag) {
+                    $(this).text("暂停群发");
+                    $("#jdt").show();
+                }
+            } else {
+                $(this).text("开始群发");
+                flag = false;
+                window.clearTimeout(timer);
+                timer = null;
+            }
+        });
+    });
+    function setbah() {
+        var ba_width = $(".top").width();
+        $(".top").height((ba_width * 9) / 122);
+
+        var w_w = $(window).width();
+        var left_w = w_w - 580;
+        $(".qq_goods").width(left_w);
+    }
+
+
+
+    function getExcel() {
+
+    }
+    //显示文件夹下的群
+    function getQQGroup() {
+        var qqGroup = TApp.hGetQQGroup();
+        qqGroup = eval("(" + qqGroup + ")");
+        for (var i = 0; i < qqGroup.length; i++) {
+            $(".crowd").append("<p>" + qqGroup[i].replace(".lnk", "") + "</p>");
+        }
+    }
+    function refreshQQGroup(type, name1, name2) {
+        //console.log(type,name1,name2);
+        switch (type) {
+            case "Add":
+                $(".crowd").append("<p>" + name1 + "</p>");
+                break;
+            case "remove":
+                $(".crowd p").each(function () {
+                    if ($(this).text() == name1) {
+                        $(this).remove();
+                    }
+                });
+                break;
+        }
+    }
+
+    function getAllGoods() {
+        var allGoods = TApp.hReadAll();
+        $("#wait_goods").html("");
+        //console.log(allGoods);
+        var goodsDivTemp = '<div class="goods_q"><img src="{pic}" alt="" /><p>{goodsname}</p></div>';
+//        console.log(allGoods);
+        waitSendGoods = eval("(" + allGoods + ")");
+        //waitSendGoods=allGoods;
+        //var gcount=0;//有效的商品个数
+        for (var i = 0; i < waitSendGoods.length; i++) {
+            if (waitSendGoods[i].name == "") {
+                waitSendGoods.slice(i, 1);
+                continue;
+            }
+            var html = goodsDivTemp.replace('{pic}', waitSendGoods[i].pic).replace('{goodsname}', i + waitSendGoods[i].name);
+            $("#wait_goods").append(html);
+            //gcount++;
+        }
+        glength = waitSendGoods.length;
+        $("#waitcountspan").text("(" + glength + ")");
+        $("#sendcountspan").text("(0)");
+        $("#already_goods").html("");
+    }
+
+
+    var qi = 0; //当前发送第几个群
+    var length = 0; //选择群的长度
+    var groupdiv; //群的div
+    var glength = 0; //要发送的商品的个数
+    var gi = 0; //当前发送第几个商品
+    var flag = false; //是否发送
+    var st;
+    var timer;//setTimeout定时器
+    var gitem = null;//当前发送的商品
+    var time;//群发间隔时间
+    var ji = 0;//群发进度
+
+    //设置群发进度
+    function groupJd() {
+        //总长度(群个数*商品个数)
+        console.log(ji);
+        var zwidth = waitSendGoods.length * length;
+        var jwidth = parseFloat(ji / zwidth * 100).toFixed(2);
+        $("#cjd").css("width", jwidth + "%");
+    }
+    function start() {
+        setInterval(function () {
+            var jd = parseFloat(($("#cjd").width()) / 768 * 100).toFixed(2);
+            if (jd < 50) {
+                $(".loaded").css({"width": (100-jd) + "%", "color": "#8AC320", "left": jd + "%"});
+            } else {
+                $(".loaded").css({"width": jd + "%", "color": "#FFF", "left": "0"});
+            }
+            $(".loaded").text(jd + "%");
+        }, 100);
+        if (timer != null) {
+            window.clearTimeout(timer);
+            timer = null;
+        }
+        var o = TApp.hGetQQGroup();
+        o = eval("(" + o + ")");
+        $(".crowd").html("");//清空旧的QQ群记录
+        if (o.length == 0) {
+            BUI.Message.Alert('请将要发送的QQ群快捷方式拖入制定文件夹,再开始', function () {
+                TApp.hOpenDir();
+            }, 'info');
+            return;
+        }
+        for (var f = 0; f < o.length; f++) {
+            $(".crowd").append("<p>" + o[f].replace(".lnk", "") + "</p>");
+        }
+        flag = true;
+        groupdiv = $(".crowd p");
+        length = o.length;
+        time = parseInt($(".crowd_time").val());
+        $("#cjd").css("transition", "width " + (time + 5) + "s linear");
+        time = time * 1000;
+//        console.log($("#cjd").css("transition"));
+        timer = setTimeout(sendMsg, 3000);
+        //sendMsg(qi,gi);
+    }
+
+    //发送商品推广信息
+    function sendMsg() {
+        //如果一轮发送完毕 换商品 群从0开始
+        if (qi >= length) {
+            qi = 0;
+            gi++;
+        }
+        ji++;
+        groupJd();
+        if (qi == 0) {
+            if (gi != 0) {
+                var html = '<div class="goods_q"><img src="{pic}" alt="" /><p>{goodsname}</p></div>'.replace('{pic}', gitem.pic).replace('{goodsname}', gitem.name);
+                $("#already_goods").append(html);
+                $("#wait_goods .goods_q").eq(0).remove();
+                $("#waitcountspan").text("(" + (glength - gi) + ")");
+                $("#sendcountspan").text("(" + gi + ")");
+            }
+            if (gi >= glength) {
+                gi = 0;
+                ji = 0;
+                $("#cjd").css({"width": "0%", "transition": "width 0s linear"});
+                $("#jdt").hide();
+                BUI.Message.Alert('商品已经发完,请重新选品,选择excel', function () {
+                    window.parent.hiddenIframe('qq');
+                }, 'info');
+                flag = false;
+                clearTimeout('timer');
+                timer = null;
+                $(".begin_crowd").text("开始群发");
+                return;
+            }
+            gitem = waitSendGoods[gi];
+//            console.log(gitem);
+            if (gitem == null || gitem.name == '' || typeof (gitem) == 'undefined') {
+                wxsendMsg();
+                return;
+            }
+            $("#copyBtn").click();
+
+        } else {
+            TApp.hSendQQMsg(groupdiv.eq(qi).text());
+        }
+
+    }
+    function qqcomplate() {
+        qi++;
+        if (flag) {
+            timer = setTimeout(sendMsg, time);
+        }
+    }
+
+    var qqclipboard = new Clipboard('#copyBtn', {
+        target: function (trigger) {
+            var elemet = $(".qclcontent")[0];
+            var img;
+            var imgurl = gitem.pic;
+//            console.log(imgurl);
+            if (imgurl.indexOf('http') != 0) {
+                imgurl = 'http:' + imgurl;
+            }
+            try {
+                img = TApp.hGetImg(imgurl);
+            } catch (e) {
+                BUI.Message.Alert('请使用积米淘客助手淘客助手', 'info');
+                return;
+            }
+            if (elemet) {
+                var clcontent = $(".qclcontent");
+                clcontent.html("");
+                clcontent.append("<br><img src='" + img + "' />");
+                clcontent.append("<br>" + gitem.name);
+                clcontent.append("<br>【在售价】:" + gitem.price + "元");
+                if (gitem.couponInfo != '无') {
+                    var cuInfo = gitem.couponInfo.indexOf("减");
+                    var cuPrice = parseFloat(gitem.couponInfo.substring(cuInfo + 1));
+                    var cuPricehou = parseFloat(gitem.price - cuPrice).toFixed(2);
+                    clcontent.append("<br>【领券价】:" + cuPricehou + "元包邮");
+                    clcontent.append("<br>【下单链接】:" + gitem.couponShotUrl);
+                    clcontent.append("<br>-------------------");
+                    clcontent.append("<br>复制当前文字" + gitem.couponTaoToken + "打开【手机淘宝】即可领券下单");
+                } else {
+                    clcontent.append("<br>【商品地址】:" + gitem.shortUrl);
+                    clcontent.append("<br>-------------------");
+                    clcontent.append("<br>复制当前文字" + gitem.taoToken + "打开【手机淘宝】即可下单");
+                }
+                if ($(".good_but_t [data-tid='" + gitem.gid + "']").length > 0) {
+                    clcontent.append("<br>" + $(".good_but_t [data-tid='" + gitem.gid + "']").attr("data-remark"));
+                }
+                clcontent.show();
+            }
+//            console.log($(elemet).html())
+            return elemet;
+        }
+    });
+
+    qqclipboard.on('success', function (e) {
+        //console.log('sss')
+        e.clearSelection();
+        $(".qclcontent").hide();
+        setTimeout(function () {
+            TApp.hSendQQMsg(groupdiv.eq(qi).text());
+        }, 3000)
+
+        errortime = 0;
+    });
+    var errortime = 0;
+    qqclipboard.on('error', function (e) {
+        //console.log(e);
+        if (errortime >= 3) {
+            gi++;
+            sendMsg();//如果已经复制失败3次
+        } else {
+            sendMsg();//如果复制失败继续复制
+            errortime++;
+        }
+        $(".qclcontent").hide();
+    });
+</script>
+</html>

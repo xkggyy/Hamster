@@ -1,0 +1,89 @@
+.loading-bar {
+    margin: 0px auto;
+    height: 61px;
+    border-radius: 5px;
+    background-color: #FFF;
+    padding: 4px 5px;
+    box-shadow: inset 3px 0px 10px rgba(0,0,0,0.1);
+}
+.amount {
+    height: 60px;
+    border-radius: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-top: -9px;
+}
+.lines {
+    width: 2000%;
+    background: url('lines.svg') repeat-x;
+    height: 120%;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 50px;
+    -webkit-animation: moveBars 1s linear infinite;
+    -moz-animation: moveBars 1s linear infinite;
+    -ms-animation: moveBars 1s linear infinite;
+    -o-animation: moveBars 1s linear infinite;
+    animation: moveBars 1s linear infinite;
+    font-weight: bold;
+    color: #fff;
+    font-size: 18px;
+    text-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+}
+.loaded {position: absolute;text-align: center; font-size: 30px;font-weight: 700;top: 10px; color: #FFF;}
+.green {
+    background-color: #8ac320;
+    box-shadow: inset 0px 4px 40px rgba(255,255,255,0.2), 0 10px 10px -5px #79aa1e , 0 7px 0 #628c14;
+}
+.blue {
+    background-color: #20b9c3;
+    box-shadow: inset 0px 4px 40px rgba(255,255,255,0.2), 0 10px 10px -5px #1e8aaa, 0 7px 0 #13768c;
+}
+.red {
+    background-color: #dc6565;
+    box-shadow: inset 0px 4px 40px rgba(255,255,255,0.2), 0 10px 10px -5px #d23333, 0 7px 0 #8c1212;
+}
+@keyframes moveBars { 100% { margin-left: -180px; } }
+@-webkit-keyframes moveBars { 100% { margin-left: -180px; } }
+@-moz-keyframes moveBars { 100% { margin-left: -180px; } }
+@-ms-keyframes moveBars { 100% { margin-left: -180px; } }
+@-o-keyframes moveBars { 100% { margin-left: -180px; } }
+
+#header {
+    width: 100%;
+    margin: 0px auto;
+}
+
+#header #center {
+    text-align: center;
+}
+
+#header h1 span {
+    color: #000;
+    display: block;
+    font-size: 50px;
+}
+
+#header p {
+    font-family: 'Georgia', serif;
+}
+#header h1 {
+    color: #892dbf;
+    font: bold 40px 'Bree Serif', serif;
+}
+
+#travel {
+    padding: 10px;
+    background: rgba(0,0,0,0.6);
+    border-bottom: 2px solid rgba(0,0,0,0.2);
+    font-variant: normal;
+    margin-bottom: 40px;
+    text-decoration: none;
+}
+
+#travel a {
+    font-family: 'Georgia', serif;
+    text-decoration: none;
+    border-bottom: 1px solid #f9f9f9;
+    color: #f9f9f9;
+}

@@ -1,0 +1,50 @@
+ @charset "UTF-8";
+
+
+/*绘制气泡和脚标*/
+.deal .con .isdacu { width: 49px; height: 61px; position: absolute; top: 0px; left: 0px; display: block; }
+.deal .con .isdacu.dacuCon1 { background: url(../images/deal-icon-0126.png) no-repeat;}
+.side_nav .content .bd ul li{position: relative;*position: static;}
+.deal .con.dealon .isdacu.dacuCon1 { top:-1px;left: -1px;}
+.deal .con.dealon .isdacu.dacuCon2 { top:-1px;left: -1px;}
+
+/*首页导航20150126 00:00 -20150128 24:00*/
+#Dacu15bannerWeek4{display: block;height: 275px;width: 980px;overflow: hidden;background-color: #fda500;padding-top: 5px;}
+#Dacu15bannerWeek4 li {float: left;margin-left: 5px;}
+#Dacu15bannerWeek4 li a{display: block;height: 265px;width: 190px;overflow: hidden;}
+#Dacu15bannerWeek4 li a .hover{display: none;}
+#Dacu15bannerWeek4 li a .nomal{display: none;}
+#Dacu15bannerWeek4 li a:hover .hover{display: block;}
+#Dacu15bannerWeek4 li a:hover .normal{display: none;}
+/*首页导航20150126 00:00 -20150128 24:00 end*/
+
+/*首页导航 #62961 万明曦 01月29日00:00~02月01日24:00*/
+#Dacu15bannerWeek4_v2{display: block;height: 275px;width: 980px;overflow: hidden;background-color: #8e1fc2;border: 1px solid #4f0b67;}
+#Dacu15bannerWeek4_v2 ul {border: 1px solid #e292fc;overflow: hidden;height: 274px;}
+#Dacu15bannerWeek4_v2 li {float: left;margin: 20px 5px 0px 10px;}
+#Dacu15bannerWeek4_v2 li a{display: block;height: 241px;width: 180px;overflow: hidden;}
+#Dacu15bannerWeek4_v2 li a .hover{display: none;}
+#Dacu15bannerWeek4_v2 li a .nomal{display: none;}
+#Dacu15bannerWeek4_v2 li a:hover .hover{display: block;}
+#Dacu15bannerWeek4_v2 li a:hover .normal{display: none;}
+/*首页导航 #62961 万明曦 01月29日00:00~02月01日24:00 end*/
+
+/*右侧导航20150126-20150128*/
+#dacu0126Nav{width: 128px;position: absolute; top: 591px; left: 49%; z-index: 999; text-align: center; visibility: hidden;}
+.dc1225_rightNav{ margin-left: 516px;}
+#dacu0126Nav.affix{top: 0px; position: fixed;visibility: visible;-webkit-animation: showin 500ms ease-in-out; -moz-animation: showin 500ms ease-in-out; animation: showin 500ms ease-in-out;}
+@-webkit-keyframes showin{0% {-webkit-transform: scale(0);} 40% {-webkit-transform: scale(0.3);} 60% {-webkit-transform: scale(0.6);} 80% {-webkit-transform: scale(0.9);} 90% {-webkit-transform: scale(1);} 100% {-webkit-transform: scale(1);} }
+@-moz-keyframes showin{0% {-moz-transform: scale(0);} 40% {-moz-transform: scale(0.3);} 60% {-moz-transform: scale(0.6);} 80% {-moz-transform: scale(0.9);} 90% {-moz-transform: scale(1);} 100% {-moz-transform: scale(1);} }
+@keyframes showin{0% {transform: scale(0);} 40% {transform: scale(0.3);} 60% {transform: scale(0.6);} 80% {transform: scale(0.9);} 90% {transform: scale(1);} 100% {transform: scale(1);} }
+
+#dacu0126Nav{border: none;}
+#dacu0126Nav .rightNav_li{width: 128px; height: 41px;display: block;background:url(../images/rightNav_icon0126_new.png);}
+#dacu0126Nav .rightNav_li.goods99{background-position: 0px 0px;}
+#dacu0126Nav .rightNav_li.baokuan0126{background-position: 0px -53px;}
+#dacu0126Nav .rightNav_li.koubei0126{background-position: 0px -107px;}
+#dacu0126Nav .rightNav_li.qingcang0126{background-position: 0px -157px;}
+#dacu0126Nav .rightNav_li.nianhuo0126{background-position: 0px -209px;}
+#dacu0126Nav .rightNav_li.rightNav_li_top{height: 134px; background-position: -130px 0px;}
+#dacu0126Nav .rightNav_li.rightNav_li_bottom{height: 35px; background-position:-130px -157px;margin-left: -2px;}
+#dacu0126Nav.side_nav{background: none;}
+/*右侧导航end*/

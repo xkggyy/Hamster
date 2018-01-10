@@ -1,0 +1,41 @@
+<form id="form" action='rule_add' method="post" lass="form-horizontal">
+    <input type="hidden" name="id" value="{$item.id}">
+    <div class="row">
+        <div class="control-group ">
+            <label class="control-label">模块名称：</label>
+            <div class="controls">
+                <input type="text" class="input-normal control-text bui-form-field" name='title' data-rules="{required : true}" value="{$item.title}" aria-disabled="false">
+            </div>
+        </div>
+        <div class="control-group ">
+            <label class="control-label">模块url：</label>
+            <div class="controls">
+                <input type="text" class="input-normal control-text bui-form-field" name="name" data-rules="{required : true}" value="{$item.name}" aria-disabled="false">
+            </div>
+        </div>
+        <div class="control-group ">
+            <label class="control-label">附加条件：</label>
+            <div class="controls">
+                <input type="text" placeholder="可以不填" class="input-normal control-text bui-form-field" name="condition" value="{$item.condition}" aria-disabled="false">
+            </div>
+        </div>
+        <div class="control-group ">
+            <label class="control-label">类型：</label>
+            <div class="controls">
+                <select class="input-normal" name="type"> 
+                            <option value="1" {$item['type']==1?'selected="selected"':''}>url</option>
+                            <option value='2' {$item['type']==2?'selected="selected"':''}>菜单</option>
+                        </select>
+            </div>
+        </div>
+        <div class="control-group ">
+            <label class="control-label">是否启用：</label>
+            <div class="controls">
+                <label class="checkbox">
+                            <input type="checkbox" name='status' value="1" {$item['status']==1?"checked='checked'":""}>启用
+                </label>
+            </div>
+        </div>
+    </div>
+
+</form>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>淘客助手</title>
+    <script src="jquery-1.11.3.min.js"></script>
+    <style>
+        *{margin: 0;padding: 0;}
+        #first{background-color: #F5F5F5;position: relative;}
+        #omd_hwm{position: absolute;left: 0;top: 0;width: 100%;height: 100%;z-index: 1;}
+        #first .main{background: url("v2/login_bg.png") no-repeat 100%;background-position-x: -190px;width: 100%;height: 100%;}
+        #first .close{width: 32px;height: 34px;position: fixed;top: 28px;right: 28px;z-index: 2;cursor: pointer;}
+        #first .login_left{width: 50%;position: relative;}
+        #first .login_left .logo{position: absolute;left: 55px;top: 55px;}
+        .right{width: 50%;float: right;position: relative;}
+
+        .star{position: absolute;}
+        .star img{position: absolute;transition: transform 2s;}
+        .star .star_login1{left: 15px;top: 230px;transform: scale(0.7);animation:star_big 760ms linear 50ms infinite;}
+        .star .star_login2{left: 100px;top: 150px;animation:star_big 800ms linear 100ms infinite;}
+        .star .star_login3{left: 260px;top: 170px;animation:star_big 700ms linear 150ms infinite;}
+        .star .star_login4{left: 290px;top: 223px;transform: scale(0.5);animation:star_big 700ms linear 150ms infinite;}
+        @keyframes star_big{
+            0%   {transform: scale(1);}
+            50%  {transform: scale(1.4);}
+            100% {transform: scale(1);}
+        }
+        .loading{position: absolute;left: 120px;top: 530px;font-family: '华康少女文字W5(P)';font-size: 30px;color: #ff6400;line-height: 40px;}
+        .loading span{position: absolute;}
+
+        .gift{width: 331px;height: 349px;background: url("v2/fp_lbg.png") no-repeat;position: absolute;left: 80px;top: 160px;}
+        .gift img{position: absolute;opacity: 0;}
+        .gift .gift1{width: 61px;height: 68px;left: 138px;top: 236px;animation:gift5 1500ms linear infinite;}
+        .gift .gift2{width: 38px;height: 46px;left: 140px;top: 240px;animation:gift4 1500ms linear 100ms infinite;}
+        .gift .gift3{width: 41px;height: 37px;left: 127px;top: 230px;animation:gift1 1500ms linear 1200ms infinite;}
+        .gift .gift4{width: 72px;height: 32px;left: 135px;top: 237px;animation:gift2 1500ms linear 900ms infinite;}
+        .gift .gift5{width: 59px;height: 48px;left: 145px;top: 238px;animation:gift1 1500ms linear 1100ms infinite;}
+        .gift .gift6{width: 63px;height: 53px;left: 129px;top: 245px;animation:gift3 1500ms linear 700ms infinite;}
+        .gift .gift7{width: 45px;height: 44px;left: 131px;top: 241px;animation:gift4 1500ms linear 1000ms infinite;}
+        .gift .gift8{width: 49px;height: 42px;left: 134px;top: 246px;animation:gift3 1500ms linear 300ms infinite;}
+        .gift .gift9{width: 52px;height: 64px;left: 138px;top: 238px;animation:gift2 1500ms linear 1300ms infinite;}
+        .gift .gift10{width: 95px;height: 120px;left: 137px;top: 201px;animation:gift5 1500ms linear 500ms infinite;}
+        @keyframes gift1{
+            0% {transform: scale(0.8) translate(0px,0px);opacity: 1;}
+            70% {transform: scale(1.06) translate(0px,-126px);opacity: 1;}
+            100% {transform: scale(1.2) translate(0px,-180px);opacity: 0;}
+        }
+        @keyframes gift2{
+            0% {transform: scale(0.8) translate(0px,0px);opacity: 1;}
+            70% {transform: scale(1.06) translate(42px,-126px);opacity: 1;}
+            100% {transform: scale(1.2) translate(60px,-180px);opacity: 0;}
+        }
+        @keyframes gift3{
+            0% {transform: scale(0.8) translate(0px,0px);opacity: 1;}
+            70% {transform: scale(1.06) translate(84px,-126px);opacity: 1;}
+            100% {transform: scale(1.2) translate(120px,-180px);opacity: 0;}
+        }
+        @keyframes gift4{
+            0% {transform: scale(0.8) translate(0px,0px);opacity: 1;}
+            70% {transform: scale(1.06) translate(-42px,-126px);opacity: 1;}
+            100% {transform: scale(1.2) translate(-60px,-180px);opacity: 0;}
+        }
+        @keyframes gift5{
+            0% {transform: scale(0.8) translate(0px,0px);opacity: 1;}
+            70% {transform: scale(1.06) translate(-84px,-126px);opacity: 1;}
+            100% {transform: scale(1.2) translate(-120px,-180px);opacity: 0;}
+        }
+        @keyframes jump1{
+            0% {transform: translate(0px,0px);}
+            5%{transform: translate(0px,-15px);}
+            10%{transform: translate(0px,0px);}
+        }
+        @keyframes jump2{
+            10%{transform: translate(0px,0px);}
+            15%{transform: translate(0px,-15px);}
+            20%{transform: translate(0px,0px);}
+        }
+        @keyframes jump3{
+            20%{transform: translate(0px,0px);}
+            25%{transform: translate(0px,-15px);}
+            30%{transform: translate(0px,0px);}
+        }
+        @keyframes jump4{
+            30%{transform: translate(0px,0px);}
+            35%{transform: translate(0px,-15px);}
+            40%{transform: translate(0px,0px);}
+        }
+        @keyframes jump5{
+            40%{transform: translate(0px,0px);}
+            45%{transform: translate(0px,-15px);}
+            50%{transform: translate(0px,0px);}
+        }
+        @keyframes jump6{
+            50%{transform: translate(0px,0px);}
+            55%{transform: translate(0px,-15px);}
+            60%{transform: translate(0px,0px);}
+        }
+        @keyframes jump7{
+            60%{transform: translate(0px,0px);}
+            65%{transform: translate(0px,-15px);}
+            70%{transform: translate(0px,0px);}
+        }
+        @keyframes jump4{
+            30%{transform: translate(0px,0px);}
+            35%{transform: translate(0px,-15px);}
+            40%{transform: translate(0px,0px);}
+        }
+        @keyframes jump8{
+            70%{transform: translate(0px,0px);}
+            75%{transform: translate(0px,-15px);}
+            80%{transform: translate(0px,0px);}
+        }
+        @keyframes jump9{
+            80%{transform: translate(0px,0px);}
+            85%{transform: translate(0px,-15px);}
+            90%{transform: translate(0px,0px);}
+        }
+        @keyframes jump10{
+            90%{transform: translate(0px,0px);}
+            95%{transform: translate(0px,-15px);}
+            100%{transform: translate(0px,0px);}
+        }
+    </style>
+    <script>
+        $(function(){
+            $("#first").height($(window).height());
+            $("#first").width($(window).width());
+        });
+    </script>
+</head>
+<body style="width: 975px;height: 650px;overflow:auto;overflow:hidden">
+<div id="first">
+    <div class="main">
+        <div id="omd_hwm" onmousedown="TApp.hWMove()"></div>
+        <!--退出程序-->
+        <div class="close"><img src="v2/close_login.png" alt="" title="退出程序" onclick="TApp.hExitApp();"></div>
+        <!--左侧说明-->
+        <div class="login_left">
+            <div class="logo" onclick=""><img src="v2/logo.png" alt=""></div>
+            <div class="gift">
+                <img class="gift1" src="v2/gift1.png" alt="">
+                <img class="gift2" src="v2/gift2.png" alt="">
+                <img class="gift3" src="v2/gift3.png" alt="">
+                <img class="gift4" src="v2/gift4.png" alt="">
+                <img class="gift5" src="v2/gift5.png" alt="">
+                <img class="gift6" src="v2/gift6.png" alt="">
+                <img class="gift7" src="v2/gift7.png" alt="">
+                <img class="gift8" src="v2/gift8.png" alt="">
+                <img class="gift9" src="v2/gift9.png" alt="">
+                <img class="gift10" src="v2/gift10.png" alt="">
+            </div>
+            <div class="loading">
+                <p>积米正在努力工作~</p>
+                <p><span class="jump1" style="animation:jump1 1000ms linear infinite;">请</span>
+                    <span class="jump2" style="animation:jump2 1000ms linear infinite;left: 30px;">您</span>
+                    <span class="jump3" style="animation:jump3 1000ms linear infinite;left: 60px;">稍</span>
+                    <span class="jump4" style="animation:jump4 1000ms linear infinite;left: 90px;">后</span>
+                    <span class="jump5" style="animation:jump5 1000ms linear infinite;left: 120px;">.</span>
+                    <span class="jump6" style="animation:jump6 1000ms linear infinite;left: 130px;">.</span>
+                    <span class="jump7" style="animation:jump7 1000ms linear infinite;left: 140px;">.</span>
+                    <span class="jump8" style="animation:jump8 1000ms linear infinite;left: 150px;">.</span>
+                    <span class="jump9" style="animation:jump9 1000ms linear infinite;left: 160px;">.</span>
+                    <span class="jump10" style="animation:jump10 1000ms linear infinite;left: 170px;">.</span></p>
+            </div>
+        </div>
+        <!--右侧说明-->
+        <div class="right">
+            <div class="right_main">
+                <div class="star">
+                    <img class="star_login1" src="v2/star1.png" alt="">
+                    <img class="star_login2" src="v2/star_login2.png" alt="">
+                    <img class="star_login3" src="v2/star_login3.png" alt="">
+                    <img class="star_login4" src="v2/star4.png" alt="">
+                </div>
+                <img src="v2/fp_title.png" alt="" style="position:absolute;left: 10px;top: 200px;">
+                <img src="v2/fp_rbg.png" alt="" style="position:absolute;left: 10px;top: 280px;">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

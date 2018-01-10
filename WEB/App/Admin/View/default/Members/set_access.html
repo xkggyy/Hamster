@@ -1,0 +1,10 @@
+<form id="form" action='rule_add' method="post" lass="form-horizontal">
+    <input type="hidden" name="userid" value="{$userid}">
+    <div class="row">
+        <volist name='items' id='item'>
+            <div class='span8'>
+                <input type="radio" name="group_id" value="{$item.id}" />{$item.title}
+            </div>
+        </volist>
+    </div>
+</form>

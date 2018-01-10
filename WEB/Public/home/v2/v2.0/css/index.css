@@ -1,0 +1,857 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 微软雅黑;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:link {
+    text-decoration: none;
+}
+p{margin: 0;}
+/*botsa_bot*/
+/*设置滚动条的宽度和背景颜色*/
+#bottom::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    overflow: visible;
+}
+/*设置滚动条的颜色*/
+#bottom::-webkit-scrollbar-thumb {
+    background-color: #e6e6e6;
+    min-height: 25px;
+    min-width: 25px;
+    border: 1px solid #e0e0e0;
+}
+/*设置滚动槽的背景颜色*/
+#bottom::-webkit-scrollbar-track {
+    background-color: #f7f7f7;
+    border: 1px solid #efefef;
+}
+/*设置滚动条的宽度和背景颜色*/
+#botsa_bot::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    overflow: visible;
+}
+/*设置滚动条的颜色*/
+#botsa_bot::-webkit-scrollbar-thumb {
+    background-color: #e6e6e6;
+    min-height: 25px;
+    min-width: 25px;
+    border: 1px solid #e0e0e0;
+}
+/*设置滚动槽的背景颜色*/
+#botsa_bot::-webkit-scrollbar-track {
+    background-color: #f7f7f7;
+    border: 1px solid #efefef;
+}
+
+/*设置滚动条的宽度和背景颜色*/
+#leftbox::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    overflow: visible;
+}
+/*设置滚动条的颜色*/
+#leftbox::-webkit-scrollbar-thumb {
+    background-color: #e6e6e6;
+    min-height: 25px;
+    min-width: 25px;
+    border: 1px solid #e0e0e0;
+}
+/*设置滚动槽的背景颜色*/
+#leftbox::-webkit-scrollbar-track {
+    background-color: #f7f7f7;
+    border: 1px solid #efefef;
+}
+/*设置滚动条的宽度和背景颜色*/
+#rightbox::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    overflow: visible;
+}
+/*设置滚动条的颜色*/
+#rightbox::-webkit-scrollbar-thumb {
+    background-color: #e6e6e6;
+    min-height: 25px;
+    min-width: 25px;
+    border: 1px solid #e0e0e0;
+}
+/*设置滚动槽的背景颜色*/
+#rightbox::-webkit-scrollbar-track {
+    background-color: #f7f7f7;
+    border: 1px solid #efefef;
+}
+/*菜单*/
+
+#bottom {
+    /*overflow-y: auto;*/
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+
+#bottom .bot_menu {
+    width: 98%;
+    height: 30px;
+    margin: 1%;
+    border: 1px solid #E9E9EE;
+    background: #F5F5F7;
+    font-size: 12px;
+    line-height: 30px;
+    position: relative;
+}
+
+#bottom .bot_menu li {
+    list-style: none;
+    float: left;
+    /*height: 50px;*/
+    width: 85px;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#bottom .bot_menu li:hover {
+    color: #FF630E;
+}
+
+#bottom .bot_menu .b_menu_h {
+    color: #FF630E;
+}
+
+
+/*商品*/
+
+#bottom .bot_goods {
+/*    overflow-y: auto;
+    overflow-x: hidden;*/
+    margin: 0 auto;
+    /*padding-top: 50px;*/
+}
+
+
+/*底部*/
+
+#bottom .bot_selgoods {
+    height: 52px;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    min-width: 1150px;
+    text-align: center;
+    line-height: 52px;
+    background: #FFF;
+    margin-right: 1%;
+    box-shadow: 0px 0px 20px 1px #A0A0A0;
+    z-index: 11;
+}
+
+#bottom .bot_selgoods p {
+    width: 200px;
+    height: 100%;
+    left: 50%;
+    margin-left: -100px;
+    position: absolute;
+    font-size: 16px;
+    cursor: pointer;
+    color: #666;
+}
+#bottom .bot_selgoods p:hover{
+    background: #EDEDF0;
+    color: #f50;
+}
+#bottom .bot_selgoods p:hover .go_myxpk{
+    background-position:-90px -14px;
+}
+
+#bottom .bot_selgoods .bots_yixuan {
+    color: #f50;
+}
+
+#bottom .bot_selgoods .go_myxpk{
+    width: 13px;
+    height: 6px;
+    display: inline-block;
+    background: url("/public/hamster/v2.0/img/icon.png");
+    background-position:-75px -14px;
+    position: relative;
+    margin-left: 3px;
+    top: -2px;
+    transition: transform 500ms;
+}
+
+#bottom .bot_selgoods div {
+    width: 150px;
+    height: 52px;
+    text-align: center;
+    line-height: 52px;
+    border: 1px solid;
+    font-size: 16px;
+    position: absolute;
+    cursor: pointer;
+}
+
+#bottom .bot_selgoods .bots_my {
+    right: 160px;
+    background: #EDEDF0;
+    border-color: #F5F5F6;
+    color: #666;
+}
+
+#bottom .bot_selgoods .bots_add {
+    right: 10px;
+    background: #FFD4BE;
+    cursor: not-allowed;
+    color: #FFF;
+}
+
+
+/*我的选品库*/
+.bots_alradd_bg{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,.2);
+    /*background: red;*/
+    z-index: 9;
+    display: none;
+}
+
+
+#bottom .bots_alradd {
+    height: 420px;
+    width: 100%;
+    position: fixed;
+    bottom: 52px;
+    display: none;
+    background: #FFF;
+    box-shadow: 0px 0px 20px 1px #A0A0A0;
+    z-index: 10;
+}
+
+#bottom .bots_alradd .botsa_top {
+    height: 50px;
+    background: #FAFAFC;
+    line-height: 50px;
+}
+
+#bottom .botsa_top p {
+    font-size: 18px;
+    color: #FF630E;
+    float: left;
+    margin-left: 20px;
+    width: 140px;
+    background: #FFF;
+    text-align: center;
+    cursor: pointer;
+    /*margin-top: 15px;*/
+}
+
+#bottom .botsa_top p span {
+    display: inline-block;
+    width: 24px;
+    height: 18px;
+    border-radius: 8px;
+    color: #FFF;
+    background: #FF630E;
+    text-align: center;
+    position: relative;
+    position: relative;
+    margin-left: 5px;
+    line-height: 18px;
+    font-size: 12px;
+}
+
+#bottom .botsa_top div {
+    font-size: 14px;
+    float: right;
+    margin-right: 15px;
+    cursor: pointer;
+    padding: 0 15px;
+}
+#bottom .botsa_top div:hover {
+    color: #F50;
+    background: #ededf0;
+}
+
+#bottom .botsa_bot {
+    padding: 25px 3%;
+    /*width: 94%;*/
+    height: 370px;
+    overflow: auto;
+}
+
+#bottom .botsa_bot .botsab_img {
+    width: 92px;
+    height: 92px;
+    outline: 1px solid;
+    outline-color: rgba(201, 201, 201, .5);
+    float: left;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+#bottom .botsa_bot .botsab_img span {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    background: url("/public/hamster/v2.0/img/icon.png");
+    background-position:-104px 0;
+    opacity: .4;
+    display: none;
+    cursor: pointer;
+}
+
+#bottom .botsa_bot .botsab_img img {
+    width: 100%;
+}
+
+#bottom .botsa_bot .botsab_img:hover span{
+    display: block;
+}
+#bottom .botsa_bot .botsab_img span:hover{
+    background-position:-104px -18px;
+    opacity: 1;
+}
+
+.f_l {
+    float: left;
+}
+
+.f_r {
+    float: right;
+}
+
+.opac {
+    font-size: 12px;
+    color:#666;
+}
+
+.owt {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.owt1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+
+/*商品有券时，商品标题只显示一行*/
+
+.owt2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 18px;
+    height: 35px;
+}
+
+
+/*商品标题最多两行*/
+
+.qian_b {
+    width: 8px;
+    height: 9px;
+    background: url("/public/hamster/v2.0/img/icon_qian_B.png");
+    display: inline-block;
+}
+
+.good_m,.good_y {
+    height: 28px;
+    font-size: 12px;
+}
+
+.good_y .good_y_b {
+    color: #f50;
+}
+
+.good_but {
+    background: #FCFCFC;
+    height: 40px;
+    font-size: 12px;
+    color: #666;
+    margin-top: 3px;
+}
+
+.good_but .goods_but {
+    background: #FFF;
+    width: 49%;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.good_but .goods_but:hover {
+    background: #EDEDF0;
+    color: #f50;
+}
+.good_d p:first-child:hover{
+    background: #EDEDF0;
+    cursor: pointer;
+}
+.good_d p:first-child:hover span{
+    color: #f50;
+}
+.good_d p:first-child:hover .good_d_dp{
+    background-position:-75px 0;;
+}
+
+.good_d {
+    height: 35px;
+    line-height: 35px;
+    /*padding-left: 10px;*/
+}
+.good_d p:first-child{
+    padding-left: 10px;
+}
+
+.good_d .good_d_dp {
+    width: 12px;
+    height: 10px;
+    display: inline-block;
+    background: url("/public/hamster/v2.0/img/icon.png");
+    background-position:-90px 0;
+    margin-right: 3px;
+}
+
+/*.good_d p {
+    margin: 0;
+}*/
+
+.good_d p:first-child {
+    width: 55%;
+    margin-top: 2px;
+}
+
+.good_d .good_d_r {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    background: url("/public/hamster/v2.0/img/icon.png");
+    /*margin-right: 5px;*/
+    margin-top: 10px;
+}
+
+.good_d .good_d_q {
+    transition: background-position 500ms;
+    background-position: -39px -55px;
+    cursor: pointer;
+}
+
+.good_d .good_d_t {
+    /*background-position: -39px -71px;*/
+}
+
+.good_d .good_d_d {
+    background-position: 0px -55px;
+}
+.good_d .good_d_tb {
+    background-position: -19px -55px;
+}
+
+.good_but .good_but_x .good_but_x_xz {
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    position: relative;
+    top: 2px;
+    margin-right: 5px;
+    background: url("/public/hamster/v2.0/img/icon.png");
+    background-position: -91px -34px;
+}
+.good_but .good_but_x:hover .good_but_x_xz {
+    background-position: -73px -34px;
+}
+
+.goods {
+    background: #FFF;
+    outline: 1px solid #E9E9EE;
+    /*margin: 10px 0;*/
+    float: left;
+    min-width: 174px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 220px;
+    height: 392px;
+}
+.goods span{
+    font-size: 12px;
+}
+
+.goods:hover {
+    box-shadow: 0px 0px 5px 3px #F0F0F0;
+}
+.goods:hover .good_d_q{
+    background-position: -39px -71px;
+}
+
+.good_img {
+    /*width: 100%;*/
+    height:220px;
+    cursor: pointer;
+    padding: 1px;
+}
+
+.goods_info .good_t_q {
+    height: 16px;
+}
+.goods_info .good_t_img{
+    height: 16px;
+    width: 17px;
+    display: inline-block;
+    background: url("/public/hamster/v2.0/img/icon.png") 0 -74px;
+    margin-top: 5px;
+}
+
+.goods_info .good_t_jg {
+    display: inline-block;
+    border: 1px solid #FE5600;
+    border-left: none;
+    height: 16px;
+    text-align: center;
+    color: #FE5600;
+    font-size: 12px;
+    padding-left: 3px;
+    padding-right: 3px;
+    margin-top: 5px;
+    position: absolute;
+}
+.goods_info .goods_title:hover{
+    color: #f50;
+    cursor: pointer;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*.owt4 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}*/
+
+#tg_bg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    background: rgba(50, 50, 50, .5);
+}
+
+.tg_main {
+    width: 698px;
+    /*height: 498px;*/
+    /*min-height: 400px;*/
+    position: relative;
+    left: 50%;
+    margin-left: -350px;
+    margin-top: 120px;
+    background: #FFF;
+    border: 1px solid #2F4048;
+}
+
+.tg_top {
+    height: 37px;
+}
+
+.tg_top .top_title {
+    width: 120px;
+    height: 37px;
+    background: #FF6400;
+    color: #FFF;
+    text-align: center;
+    line-height: 37px;
+    font-size: 23px;
+    float: left;
+}
+
+.tg_top .top_close {
+    width: 37px;
+    height: 37px;
+    float: right;
+    background: #FF6400;
+    text-align: center;
+    line-height: 35px;
+}
+
+.tg_top .top_close:hover {
+    cursor: pointer;
+}
+
+.tg_content .con_title {
+    height: 50px;
+    text-align: center;
+    font-size: 20px;
+    padding-top: 10px;
+}
+
+.tg_content .content {
+    padding: 0 37px 30px 22px;
+}
+
+.content .con_img {
+    width: 234px;
+    height: 234px;
+    border: 1px solid #FF6D0F;
+    float: left;
+    margin-top: 36px;
+}
+
+.content .con_img img {
+    width: 100%;
+    height: 100%;
+}
+
+.content .con_info {
+    width: 380px;
+    float: right;
+}
+
+.content .con_price {
+    width: 378px;
+    height: 66px;
+    background: #FF6400;
+    margin: 15px 0;
+}
+
+.content .con_price>div {}
+
+.content .con_price .con_price_1 {
+    height: 100%;
+    padding: 0 0 0 6px;
+    float: left;
+    min-width: 180px;
+    max-width: 236px;
+}
+
+.content .con_price .con_price_1 .con_price_qian {
+    display: inline-block;
+    width: 18px;
+    height: 25px;
+    background: url("/public/hamster/v2.0/img/icon_qian.png");
+    background-size: 100% 100%;
+    float: left;
+    margin-top: 26px;
+}
+
+.content .con_price .con_price_1 .con_price_jg {
+    font-size: 42px;
+    color: #FFF;
+    font-weight: 700;
+    float: left;
+    margin-top: 4px;
+    min-width: 80px;
+    text-align: center;
+}
+
+.content .con_price .con_price_1 .con_price_qhj {
+    display: inline-block;
+    width: 30px;
+    height: 37px;
+    background: url("/public/hamster/v2.0/img/icon_qhj.png") no-repeat;
+    float: left;
+    margin-top: 24px;
+}
+
+.content .con_price .con_price_zd {
+    height: 50px;
+    float: left;
+    color: #FFF;
+    font-size: 14px;
+    margin: 7px 0;
+    padding: 8px 3px;
+    max-width: 83px;
+}
+
+.content .con_price .con_price_2 {
+    border-right: 1px dashed #FFF;
+}
+
+.content .con_price_a {
+    font-size: 15px;
+    line-height: 1.2;
+}
+
+.content .con_price_a a {
+    text-decoration: underline;
+    color: #0066CC;
+    font-size: 15px;
+}
+
+.content .con_price_order {
+    margin-top: 12px
+}
+
+.content .con_button {
+    margin-top: 20px;
+    float: right;
+}
+
+.content .con_button button {
+    width: 126px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border: none;
+    font-size: 20px;
+    color: #FFF;
+    cursor: pointer;
+}
+
+.content .con_button .con_but_copy {
+    background: #8CC63E;
+}
+
+.content .con_button .con_but_add {
+    background: #9C53D8;
+    margin: 0 10px 0 28px;
+}
+
+.content .con_fx {
+    margin-top: 80px;
+    font-size: 18px;
+}
+
+.content .con_fx p span {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.content .con_fx p .con_fx_qzon {
+    background: url("/public/hamster/v2.0/img/icon_qq.png");
+    width: 29px;
+    height: 29px;
+}
+
+.content .con_fx p .con_fx_wx {
+    background: url("/public/hamster/v2.0/img/icon_wx.png");
+    width: 28px;
+    height: 28px;
+}
+
+.content .con_fx p .con_fx_xl {
+    background: url("/public/hamster/v2.0/img/icon_xl.png");
+    width: 28px;
+    height: 28px;
+}
+
+.content .con_fx p .con_fx_rr {
+    background: url("/public/hamster/v2.0/img/icon_rr.png");
+    width: 27px;
+    height: 27px;
+}
+
+.content .con_fx p .con_fx_qq {
+    background: url("/public/hamster/v2.0/img/qq.png");
+    width: 28px;
+    height: 28px;
+}
+
+.goods_center{
+    margin: 0 auto;
+}
+
+.go_top{
+    display: none;
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #e2e2e9;
+    position: fixed;
+    right: 15px;
+    bottom: 60px;
+    opacity: .8;
+}
+.go_top:hover{
+    background-color: #E6E6E8;
+}
+
+.qh_jiage_c{font-size: 18px;color: #C00006;}
+    .ys_jiage_c{color: #C9303D;}
+    .yj_jiage_c{font-size: 18px;color: #4291B1;}
+    .good_q{height: 30px;line-height: 30px;font-size: 12px;}
+    .good_q p span{color: #ff5500;}
+    .gq_quan{border:1px dashed #C2C2C2;height: 16px;float: left;text-align: center;line-height: 14px;    margin-top: 7px;padding: 0 3px;}
+    .gq_yl{float: left;margin-left: 8px;}
+    .gq_sy{float: left;margin-left: 8px;}
+    .qian_yel {
+    width: 5px;
+    height: 7px;
+    background: url("/public/hamster/v2.0/img/qian_yel.png");
+    display: inline-block;
+    margin: 0 2px 0 4px;
+}
+
+.goods .copy_text{
+    width: 100%;height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    background-color: rgba(255,85,0,.9);
+    color: #FFF;
+    margin-top: -30px; 
+    position: relative;
+    cursor: pointer;
+    display: none;
+}
+.goods .intro{
+    display: none;
+    position: absolute;
+    z-index: 999;
+    top: 80px;
+    left: 228px;
+    width: 228px;
+    background: rgba(27,40,48,.9);
+    border-radius: 4px;
+    padding: 12px;
+    word-break: break-all;
+    font-size: 12px;
+    text-align: left;
+    line-height: 20px;
+    color: #EBF1F4;
+    font-family: "Microsoft Yahei";
+}
+.goods .intro .jiantou_left{
+    position: absolute;
+    left: -8px;
+    top: 115px;
+    display: inline-block;
+    width: 10px;
+    height: 18px;
+    background: url("/public/home/v2/v2.0/img/co_l.png");
+}
+

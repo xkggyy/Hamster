@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <include file="public:header" />
+        <link href="__CSS__/page-min.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="panel">
+                <div class="panel-header">
+                    <h3>日程信息：</h3>
+                </div>
+                <div class="panel-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>日程名称</th>
+                                <th>所属板块</th>
+                                <th>开始时间</th>
+                                <th>结束时间</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{$activity.id}</td>
+                                <td>{$activity.remark}</td>
+                                <td>
+                                    <if condition="$activity['type'] eq 1">
+                                        默认1
+                                        <elseif condition="$activity['type'] eq 2" />
+                                        默认2
+                                        <elseif condition="$activity['type'] eq 3" />
+                                        默认3
+                                        <elseif condition="$activity['type'] eq 4" />
+                                        默认4
+                                        <else />
+                                        默认货架
+                                    </if>
+                                </td>
+                                <td>{$activity.start_time|date='Y-m-d H:i:s',###}</td>
+                                <td>{$activity.end_time|date='Y-m-d H:i:s',###}</td>
+                                <td>
+                                    <if condition="$activity['status'] eq 1 && $now gt $activity['end_time']">
+                                        <span class="label label-inverse" >已失效</span>
+                                        <elseif condition="$activity['status'] eq 1 && $now lt $activity['start_time']"/>
+                                        <span class="label label-warning" >未开始</span>
+                                        <elseif condition="$activity['status'] eq 1"/>
+                                        <span class="label label-success" >展示中</span>
+                                        <else />
+                                        <span class="label label-important">不展示</span>
+                                    </if>
+                                </td>
+                                <td>
+                                    <a type="button" class="button button button-primary " href="{:u('Schedule/schedule_item_list',array('id'=>$activity['id']))}">
+                                        查看已添加商品
+                                    </a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="tips tips-small tips-info">
+                <span class="x-icon x-icon-small x-icon-info"><i class="icon icon-white icon-info"></i></span>
+                <div class="tips-content"><h1>请从下面选择该日程要展示的商品! </h1></div>
+            </div>
+            <form class="pl_del" action="{:u('Schedule/schedule_item_save_batch')}" method="post">
+                <input type="hidden" value="{$activity.id}" name="timeid"/>
+
+                <table cellspacing="0" class="table table-bordered" cellpadding="0">
+                    <thead>
+                        <tr>
+                            <th style="width: 40px;"></th>
+                            <th style="width: 56px;">宝贝主图</th>
+                            <th>商品标题</th>
+                            <th style="width: 120px;">分类</th>
+                            <th style="width: 120px;">价格</th>
+                            <th style="width: 60px;">状态</th>
+                            <th style="width: 140px;">录入时间</th>
+                            <th style="width: 200px;">操作</th>
+                        </tr>
+                    </thead>
+
+                    <foreach name="goodsList" item="item">
+                        <tr>
+                            <td><input class="x-grid-checkbox" type="checkbox" name="vm[]" title="{$item.id}" value="{$item.id}" /></td>
+                            <td><img src="{$item.picturl}" class="img-responsive"/></td>
+                            <td><a href="{$item.auctionurl}" target="_blank">{$item.title}</a></td>
+                            <td>{$item.cate_name}</td>
+                            <td>{$item.reserveprice}</td>
+                            <td>
+                                <if condition="$item.status eq 1">
+                                    <span class="label label-success" >正常</span>
+                                    <else />
+                                    <span class="label label-important">不展示</span>
+                                </if>
+                            </td>
+                            <td>{$item.add_time|date='Y-m-d H:i:s',###}</td>
+                            <td>
+                                <a class="button button-small button-primary" href="{:u('Schedule/schedule_item_save',array('timeid'=>$activity['id'],'itemid'=>$item['id']))}">添加</a>
+                            </td>
+                        </tr>
+                    </foreach>
+                </table>
+
+                <div class="">
+                    <ul class="toolbar pull-left">
+                        <li><label class="checkbox"><input type="checkbox" id="chk_all" />全选</label></li>
+                        <li><button type="submit" onclick="delcfm();" class="button button-primary"><i class="icon icon-ok icon-white"></i>批量添加商品</button></li>
+                        <li>*(仅从该日程中移除，但不可恢复！)</li>
+                    </ul>
+                    <div class="pagination pull-right">
+                        {$page}
+                    </div>
+                </div>
+            </form>            
+        </div>
+
+        <include file="public:foot" />
+        <!--全选js-->
+        <script type="text/javascript">
+            $("#chk_all").click(function () {
+                //全选
+                if ($(this).attr("checked")) {
+                    $("input[name='vm[]']").attr("checked", true);
+                } else {
+                    $("input[name='vm[]']").attr("checked", false);
+                }
+            });
+        </script>
+    </body>
+</html>

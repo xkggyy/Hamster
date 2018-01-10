@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>个人中心</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <link rel="stylesheet" href="__CSS2__/newindex.css" />
+    </head>
+    <body style="min-width: 975px;min-height: 650px;overflow:auto;overflow:hidden">
+        <div id='center'>
+            <div class="top">
+                <div onmousedown="TApp.hWMove()" style="width:100%;height: 100%;position: absolute;z-index: 0"></div>
+                <!--返回-->
+                <div class="toplogo" onclick="window.parent.hiddenIframe('usercenter');"><img src="__IMG2__/img/back.png" alt="" /></div>
+                <!--最小化、最大化、关闭-->
+                <div class="top_cmi">
+                    <!--回菜单-->
+                    <!--<div class="topc_menu t_r_least" onclick="window.parent.hiddenIframe('usercenter');" ><img src="__IMG2__/img/icon_menu.png" alt=""></div>-->
+
+                    <!--最小化-->
+                    <div onclick="TApp.hWMin();" class="topc_min t_r_least"><img src="__IMG2__/img/icon_zuixiao.png" alt=""></div>
+                    <!--最大化-->
+                    <!--<div onclick="TApp.hWMax();" class="topc_max t_r_most"><img src="__IMG2__/img/icon_zuida.png" alt=""></div>-->
+                    <!--关闭-->
+                    <div onclick="TApp.hExitApp();" class="topc_close t_r_close"><img src="__IMG2__/img/icon_close.png" alt=""></div>
+                </div>
+            </div>
+            <div class="userInfo">
+                <div class="touxiang">
+                    <!--用户头像-->
+                    <img class="user_touxiang" src="__IMG2__/img/user/touxiang.jpg" alt=""/>
+                    <!--用户等级勋章-->
+                    <img class="user_dengji" src="__IMG2__/img/user/x_v1.png" alt=""/>
+                </div>
+                <div class="info">
+                    <p class="user_name" style="margin-top: 45px;">hi,<span>5000000</span></p>
+                    <p class="user_jifen" style="color: #ff5500;margin-top: 20px;"><span></span>1200</p>
+                </div>
+                <div class="dengji">
+                    <div class="jdtiao">
+                        <!--等级红色进度条-->
+                        <div style="width: 0%;"></div>
+                    </div>
+                    <div class="jddengji">
+                        <div class="xunzhang">
+                            <span class="xz_v0" style="width: 0;height: 0;"></span>
+                            <span class="xz_v1" style="background-position:-87px -66px;width: 46px;height: 50px;left: 74px;top: 3px;"></span>
+                            <span class="xz_v2" style="background-position:-137px -66px;left: 178px;"></span>
+                            <span class="xz_v3" style="background-position:-82px -121px;left: 282px;"></span>
+                            <span class="xz_v4" style="background-position:-137px -121px;left: 386px;"></span>
+                            <span class="xz_v5" style="background-position:0px -180px;left: 490px;"></span>
+                            <span class="xz_v6" style="background-position:-55px -180px;left: 594px;"></span>
+                        </div>
+                        <div class="dengjibiaozhi">
+                            <!--达到等级将background-position-y: -254px;改为：background-position-y: -239px;-->
+                            <span class="dj_v0" style="background-position-x: 0px;background-position-y: -241px;left: 8px;"></span>
+                            <span class="dj_v1" style="background-position-x: -20px;background-position-y: -254px;left: 90px;"></span>
+                            <span class="dj_v2" style="background-position-x: -43px;background-position-y: -254px;left: 194px;"></span>
+                            <span class="dj_v3" style="background-position-x: -66px;background-position-y: -254px;left: 300px;"></span>
+                            <span class="dj_v4" style="background-position-x: -89px;background-position-y: -254px;left: 404px;"></span>
+                            <span class="dj_v5" style="background-position-x: -112px;background-position-y: -254px;left: 508px;"></span>
+                            <span class="dj_v6" style="background-position-x: -142px;background-position-y: -254px;left: 612px;"></span>
+                        </div>
+                    </div>
+<!--                    <div class="sign" style="margin-top: 30px;">
+                        <img src="__IMG2__/img/user/dengji.png" alt="" />
+                    </div>-->
+                </div>
+            </div>
+            <div style="width: 95%;height: 380px;border: 1px solid #d3d3d3;margin: 0 auto;margin-top: -60px;">
+                
+            </div>
+        </div>
+    <include file="public:foot" />
+    <script type="text/javascript">
+
+    </script>
+</body>
+</html>

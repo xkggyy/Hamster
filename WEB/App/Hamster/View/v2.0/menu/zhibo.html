@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>直播海报</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body style="margin: 0;padding: 0;">
+        <div id='zhibo' style='background: url("__IMG2__/img/zhibo.jpg");background-size: 100% 100%;position: relative;'>
+            <div onmousedown="TApp.hWMove()" style="width: 100%;height: 100%;position: absolute;z-index: 0;"></div>
+            <div style='position: absolute;left: 40px;top: 35px;cursor: pointer;z-index: 2;'><a href="javascript: window.parent.hiddenIframe('zhibo');" ><img src="__IMG2__/img/back.png" alt='' /></a></div>
+            <div id="zhibo_btn" style="position: absolute;right: 85px;bottom: 58px;cursor: pointer;z-index: 2;" onclick="TApp.hOpenUrl('http://www.douyu.com/j1m1')"><img src="__IMG2__/img/zhibo_btn.png" alt=""/></div>
+        </div>
+    </body>
+    <include file="public:foot" />
+    <script>
+        $(function () {
+            setbah();
+            window.onresize = setbah;
+        });
+        function setbah() {
+            $("#zhibo").width($(window).width());
+            $("#zhibo").height($(window).height());
+        }
+    </script>
+</html>

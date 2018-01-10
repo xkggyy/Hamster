@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+    <head>
+        <include file="public:header" />
+        <link href="__CSS__/page-min.css" rel="stylesheet" type="text/css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="toolbar pull-left">
+                <a id="cadd" data-type="{$type}" class="button button-small button-primary" href="#">
+                    <i class="icon-white icon-plus" data-href=""></i>{$typename}
+                </a>
+            </div>
+            <form id="J_Form" action="{:u('Category/category_del_batch')}" method="post">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th style="width: 40px;">&nbsp;</th>
+                            <th style="width: 120px;">图标</th>
+                            <th style="width: 120px;">分类名称</th>
+                            <th style="width: 60px;">排序</th>
+                            <th style="width: 60px;">状态</th>
+                            <th style="width: 200px;">操作</th>
+                        </tr>
+                    </thead>
+                    <foreach name="cateList" item="item">
+                        <tr>
+                            <td><input class="x-grid-checkbox" type="checkbox" name="vm[]" title="{$item.id}" value="{$item.id}" /></td>
+                             <td><img src="{$item.cate_icon}" style="width: 25px" /></td>
+                            <td>{$item.name}</td>
+                            <td>{$item.ordid}</td>
+                            <td>
+                                <if condition="$item['status'] eq 1">
+                                    <span class="label label-success" >正常</span>
+                                    <else />
+                                    <span class="label label-important">不展示</span>
+                                </if>
+                            </td>
+                            <td>
+                                <a class="cedit button button-small button-primary" cate_id="{$item['id']}" href="#">编辑</a>
+                            </td>
+                        </tr>
+                    </foreach>
+                </table>
+                <div class="row-fluid">
+                    <ul class="toolbar pull-left">
+                        <li><label class="checkbox"><input type="checkbox" id="chk_all" />全选</label></li>
+                        <li><a class="delcfm button button-danger"><i class="icon-white icon-trash"></i>删除</a></li>
+                    </ul>
+                    <div class="pagination pull-right">
+                        {$page}
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+
+        <include file="public:foot" />
+        <!--全选js-->
+        <script type="text/javascript">
+            $("#chk_all").click(function () {
+                //全选
+                if ($(this).attr("checked")) {
+                    $("input[name='vm[]']").attr("checked", true);
+                } else {
+                    $("input[name='vm[]']").attr("checked", false);
+                }
+            });
+
+            BUI.use(['bui/overlay', 'bui/form', 'bui/mask'], function (Overlay, Form) {
+                function showdel() {
+                    BUI.Message.Confirm('请核实清楚后再做批量删除操作！', function () {
+                        var DForm = new Form.HForm({
+                            srcNode: '#J_Form',
+                            submitType: 'ajax',
+                            callback: function (data) {
+                                location.reload();
+                            }
+                        }).render();
+                        DForm && DForm.ajaxSubmit();
+                    }, 'question');
+                }
+                $('.delcfm').on('click', function () {
+                    showdel();
+                });
+                // 显示添加对话框
+                $('#cadd').on('click', function () {
+                    $this=$(this);
+                    var form, dialog = new Overlay.Dialog({
+                        title: $this.text(),
+                        width: 600,
+                        height: 400,
+                        closeAction: 'destroy', //每次关闭dialog释放
+                        loader: {
+                            url: '{:u("Category/category_add")}?type='+$this.attr("data-type"),
+                            autoLoad: false, //不自动加载
+                            lazyLoad: false,
+                            callback: function () {
+                                var node = dialog.get('el').find('form');//查找内部的表单元素
+                                form = new Form.HForm({
+                                    srcNode: node,
+                                    autoRender: true,
+                                    submitType: 'ajax',
+                                    callback: function (data) {
+                                        dialog.close();
+                                        if (data.status == 2) {
+                                            BUI.Message.Alert(data.content, 'error');
+                                        } else {
+                                            location.reload();
+                                        }
+                                    }
+                                }).render();
+                            }
+                        },
+                        mask: true,
+                        success: function () {
+                            //可以直接action 提交
+                            form && form.ajaxSubmit(); //也可以form.ajaxSubmit(params);
+                        }
+                    });
+                    form && form.destroy(); //移除掉之前的表单
+                    dialog.show();
+                    var params = {}; //加载表单的参数
+                    dialog.get('loader').load(params);
+                });
+                // 显示编辑对话框
+                $('.cedit').on('click', function () {
+                    var iid = $(this).attr('cate_id');
+                    var form, dialog = new Overlay.Dialog({
+                        title: '修改分类',
+                        width: 600,
+                        height: 400,
+                        closeAction: 'destroy', //每次关闭dialog释放
+                        loader: {
+                            url: "{:u('Category/category_edit')}",
+                            autoLoad: false, //不自动加载
+                            lazyLoad: false,
+                            callback: function () {
+                                var node = dialog.get('el').find('form');//查找内部的表单元素
+                                form = new Form.HForm({
+                                    srcNode: node,
+                                    autoRender: true,
+                                    submitType: 'ajax',
+                                    callback: function (data) {
+                                        dialog.close();
+                                        if (data.status == 2) {
+                                            BUI.Message.Alert(data.content, 'error');
+                                        } else {
+                                            location.reload();
+                                        }
+                                    }
+                                }).render();
+                            }
+                        },
+                        mask: true,
+                        success: function () {
+                            //可以直接action 提交
+                            form && form.ajaxSubmit(); //也可以form.ajaxSubmit(params);
+                        }
+                    });
+                    form && form.destroy(); //移除掉之前的表单
+                    dialog.show();
+                    var params = {id: iid}; //加载表单的参数
+                    dialog.get('loader').load(params);
+                });
+            });
+        </script>
+    </body>
+</html>
